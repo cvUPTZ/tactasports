@@ -1,0 +1,177 @@
+{
+    "TotalClubs": 2,
+    "TotalPlayers": 36,
+    "Match": {
+        "Home": "Algeria",
+        "Away": "Nigeria",
+        "Type": "Starting Lineups"
+    },
+    "Clubs": [
+        {
+            "ClubID": 9002,
+            "ClubName": "Algeria",
+            "Players": [
+                {
+                    "ID": 900201,
+                    "Forename": "A.",
+                    "Surname": "Guendouz",
+                    "Number": 1,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900202,
+                    "Forename": "A.",
+                    "Surname": "Mandi",
+                    "Number": 2,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900203,
+                    "Forename": "Mehdi",
+                    "Surname": "Dorval",
+                    "Number": 3,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900205,
+                    "Forename": "Z.",
+                    "Surname": "Belaid",
+                    "Number": 5,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900206,
+                    "Forename": "R.",
+                    "Surname": "Zerrouki",
+                    "Number": 6,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900207,
+                    "Forename": "R.",
+                    "Surname": "Mahrez",
+                    "Number": 7,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900208,
+                    "Forename": "H.",
+                    "Surname": "Aouar",
+                    "Number": 8,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900209,
+                    "Forename": "B.",
+                    "Surname": "Bounedjah",
+                    "Number": 9,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900210,
+                    "Forename": "I.",
+                    "Surname": "Bennacer",
+                    "Number": 10,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900211,
+                    "Forename": "A. H.",
+                    "Surname": "Moussa",
+                    "Number": 11,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900215,
+                    "Forename": "R.",
+                    "Surname": "Aït-Nouri",
+                    "Number": 15,
+                    "ImageURL": ""
+                }
+            ]
+        },
+        {
+            "ClubID": 9004,
+            "ClubName": "Nigeria",
+            "Players": [
+                {
+                    "ID": 900401,
+                    "Forename": "",
+                    "Surname": "Goalkeeper",
+                    "Number": 1,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900402,
+                    "Forename": "",
+                    "Surname": "Defender",
+                    "Number": 2,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900403,
+                    "Forename": "",
+                    "Surname": "Defender",
+                    "Number": 3,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900404,
+                    "Forename": "",
+                    "Surname": "Defender",
+                    "Number": 5,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900405,
+                    "Forename": "",
+                    "Surname": "Midfielder",
+                    "Number": 6,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900406,
+                    "Forename": "",
+                    "Surname": "Midfielder",
+                    "Number": 8,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900407,
+                    "Forename": "",
+                    "Surname": "Midfielder",
+                    "Number": 10,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900408,
+                    "Forename": "",
+                    "Surname": "Winger",
+                    "Number": 11,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900409,
+                    "Forename": "",
+                    "Surname": "Forward",
+                    "Number": 9,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900410,
+                    "Forename": "",
+                    "Surname": "Forward",
+                    "Number": 14,
+                    "ImageURL": ""
+                },
+                {
+                    "ID": 900411,
+                    "Forename": "",
+                    "Surname": "Forward",
+                    "Number": 18,
+                    "ImageURL": ""
+                }
+            ]
+        }
+    ]
+}

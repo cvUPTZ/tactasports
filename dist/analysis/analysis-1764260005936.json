@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "metadata": {
+    "video_path": "C:\\Users\\lenovo\\Downloads\\soccer-controller-log-main\\soccer-controller-log-main\\public\\uploads\\video-1764260004396.mp4",
+    "duration": 312.4,
+    "fps": 30.0,
+    "resolution": "1280x720",
+    "processing_time": 3913.98,
+    "annotated_video": "C:\\Users\\lenovo\\Downloads\\soccer-controller-log-main\\soccer-controller-log-main\\public\\uploads\\video-1764260004396_annotated.mp4"
+  },
+  "stats": {
+    "5": {
+      "player_id": 

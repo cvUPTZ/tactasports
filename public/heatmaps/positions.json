@@ -1,0 +1,1021 @@
+{
+  "video_info": {
+    "total_frames": 69602,
+    "fps": 30.0,
+    "width": 1920,
+    "height": 1080,
+    "duration": 2320.0666666666666,
+    "analysis_start": 50.0,
+    "analysis_end": 52.0
+  },
+  "positions": [
+    {
+      "frame": 1500,
+      "timestamp": 50.0,
+      "x": 51.93,
+      "y": 56.75,
+      "team": "B",
+      "confidence": 0.82
+    },
+    {
+      "frame": 1500,
+      "timestamp": 50.0,
+      "x": 54.75,
+      "y": 34.6,
+      "team": "B",
+      "confidence": 0.78
+    },
+    {
+      "frame": 1500,
+      "timestamp": 50.0,
+      "x": 10.67,
+      "y": 35.87,
+      "team": "A",
+      "confidence": 0.75
+    },
+    {
+      "frame": 1500,
+      "timestamp": 50.0,
+      "x": 42.41,
+      "y": 32.87,
+      "team": "A",
+      "confidence": 0.71
+    },
+    {
+      "frame": 1500,
+      "timestamp": 50.0,
+      "x": 46.53,
+      "y": 48.9,
+      "team": "A",
+      "confidence": 0.65
+    },
+    {
+      "frame": 1500,
+      "timestamp": 50.0,
+      "x": 46.85,
+      "y": 25.46,
+      "team": "A",
+      "confidence": 0.62
+    },
+    {
+      "frame": 1500,
+      "timestamp": 50.0,
+      "x": 37.86,
+      "y": 12.08,
+      "team": "A",
+      "confidence": 0.57
+    },
+    {
+      "frame": 1505,
+      "timestamp": 50.17,
+      "x": 13.25,
+      "y": 35.62,
+      "team": "A",
+      "confidence": 0.79
+    },
+    {
+      "frame": 1505,
+      "timestamp": 50.17,
+      "x": 2.06,
+      "y": 34.23,
+      "team": "A",
+      "confidence": 0.78
+    },
+    {
+      "frame": 1505,
+      "timestamp": 50.17,
+      "x": 55.45,
+      "y": 56.04,
+      "team": "B",
+      "confidence": 0.73
+    },
+    {
+      "frame": 1505,
+      "timestamp": 50.17,
+      "x": 49.15,
+      "y": 48.21,
+      "team": "A",
+      "confidence": 0.71
+    },
+    {
+      "frame": 1505,
+      "timestamp": 50.17,
+      "x": 56.81,
+      "y": 34.84,
+      "team": "B",
+      "confidence": 0.7
+    },
+    {
+      "frame": 1505,
+      "timestamp": 50.17,
+      "x": 47.69,
+      "y": 25.04,
+      "team": "A",
+      "confidence": 0.62
+    },
+    {
+      "frame": 1505,
+      "timestamp": 50.17,
+      "x": 44.73,
+      "y": 32.88,
+      "team": "A",
+      "confidence": 0.6
+    },
+    {
+      "frame": 1505,
+      "timestamp": 50.17,
+      "x": 20.81,
+      "y": 13.66,
+      "team": "A",
+      "confidence": 0.58
+    },
+    {
+      "frame": 1505,
+      "timestamp": 50.17,
+      "x": 38.62,
+      "y": 12.13,
+      "team": "A",
+      "confidence": 0.5
+    },
+    {
+      "frame": 1510,
+      "timestamp": 50.33,
+      "x": 58.73,
+      "y": 55.51,
+      "team": "B",
+      "confidence": 0.82
+    },
+    {
+      "frame": 1510,
+      "timestamp": 50.33,
+      "x": 59.21,
+      "y": 34.14,
+      "team": "B",
+      "confidence": 0.8
+    },
+    {
+      "frame": 1510,
+      "timestamp": 50.33,
+      "x": 52.35,
+      "y": 48.28,
+      "team": "B",
+      "confidence": 0.74
+    },
+    {
+      "frame": 1510,
+      "timestamp": 50.33,
+      "x": 47.5,
+      "y": 32.67,
+      "team": "A",
+      "confidence": 0.64
+    },
+    {
+      "frame": 1510,
+      "timestamp": 50.33,
+      "x": 16.06,
+      "y": 35.34,
+      "team": "A",
+      "confidence": 0.64
+    },
+    {
+      "frame": 1510,
+      "timestamp": 50.33,
+      "x": 22.06,
+      "y": 13.69,
+      "team": "A",
+      "confidence": 0.6
+    },
+    {
+      "frame": 1510,
+      "timestamp": 50.33,
+      "x": 5.51,
+      "y": 34.33,
+      "team": "A",
+      "confidence": 0.6
+    },
+    {
+      "frame": 1510,
+      "timestamp": 50.33,
+      "x": 6.1,
+      "y": 34.3,
+      "team": "A",
+      "confidence": 0.59
+    },
+    {
+      "frame": 1510,
+      "timestamp": 50.33,
+      "x": 49.14,
+      "y": 25.17,
+      "team": "A",
+      "confidence": 0.55
+    },
+    {
+      "frame": 1510,
+      "timestamp": 50.33,
+      "x": 39.86,
+      "y": 12.12,
+      "team": "A",
+      "confidence": 0.52
+    },
+    {
+      "frame": 1515,
+      "timestamp": 50.5,
+      "x": 62.89,
+      "y": 54.84,
+      "team": "B",
+      "confidence": 0.85
+    },
+    {
+      "frame": 1515,
+      "timestamp": 50.5,
+      "x": 19.95,
+      "y": 35.11,
+      "team": "A",
+      "confidence": 0.83
+    },
+    {
+      "frame": 1515,
+      "timestamp": 50.5,
+      "x": 62.17,
+      "y": 34.32,
+      "team": "B",
+      "confidence": 0.8
+    },
+    {
+      "frame": 1515,
+      "timestamp": 50.5,
+      "x": 9.87,
+      "y": 33.93,
+      "team": "A",
+      "confidence": 0.78
+    },
+    {
+      "frame": 1515,
+      "timestamp": 50.5,
+      "x": 56.14,
+      "y": 47.71,
+      "team": "B",
+      "confidence": 0.74
+    },
+    {
+      "frame": 1515,
+      "timestamp": 50.5,
+      "x": 49.76,
+      "y": 32.87,
+      "team": "A",
+      "confidence": 0.62
+    },
+    {
+      "frame": 1515,
+      "timestamp": 50.5,
+      "x": 51.63,
+      "y": 32.62,
+      "team": "B",
+      "confidence": 0.58
+    },
+    {
+      "frame": 1515,
+      "timestamp": 50.5,
+      "x": 41.47,
+      "y": 12.14,
+      "team": "A",
+      "confidence": 0.57
+    },
+    {
+      "frame": 1520,
+      "timestamp": 50.67,
+      "x": 66.74,
+      "y": 54.27,
+      "team": "B",
+      "confidence": 0.83
+    },
+    {
+      "frame": 1520,
+      "timestamp": 50.67,
+      "x": 64.62,
+      "y": 34.51,
+      "team": "B",
+      "confidence": 0.79
+    },
+    {
+      "frame": 1520,
+      "timestamp": 50.67,
+      "x": 23.86,
+      "y": 34.7,
+      "team": "A",
+      "confidence": 0.78
+    },
+    {
+      "frame": 1520,
+      "timestamp": 50.67,
+      "x": 59.43,
+      "y": 47.36,
+      "team": "B",
+      "confidence": 0.78
+    },
+    {
+      "frame": 1520,
+      "timestamp": 50.67,
+      "x": 2.65,
+      "y": 38.54,
+      "team": "A",
+      "confidence": 0.73
+    },
+    {
+      "frame": 1520,
+      "timestamp": 50.67,
+      "x": 14.11,
+      "y": 33.9,
+      "team": "A",
+      "confidence": 0.7
+    },
+    {
+      "frame": 1520,
+      "timestamp": 50.67,
+      "x": 55.07,
+      "y": 32.08,
+      "team": "B",
+      "confidence": 0.7
+    },
+    {
+      "frame": 1520,
+      "timestamp": 50.67,
+      "x": 43.2,
+      "y": 12.32,
+      "team": "A",
+      "confidence": 0.59
+    },
+    {
+      "frame": 1520,
+      "timestamp": 50.67,
+      "x": 45.23,
+      "y": 25.45,
+      "team": "A",
+      "confidence": 0.51
+    },
+    {
+      "frame": 1525,
+      "timestamp": 50.83,
+      "x": 70.64,
+      "y": 53.65,
+      "team": "B",
+      "confidence": 0.84
+    },
+    {
+      "frame": 1525,
+      "timestamp": 50.83,
+      "x": 6.24,
+      "y": 38.24,
+      "team": "A",
+      "confidence": 0.78
+    },
+    {
+      "frame": 1525,
+      "timestamp": 50.83,
+      "x": 27.68,
+      "y": 34.82,
+      "team": "A",
+      "confidence": 0.75
+    },
+    {
+      "frame": 1525,
+      "timestamp": 50.83,
+      "x": 66.7,
+      "y": 33.9,
+      "team": "B",
+      "confidence": 0.7
+    },
+    {
+      "frame": 1525,
+      "timestamp": 50.83,
+      "x": 18.5,
+      "y": 33.72,
+      "team": "A",
+      "confidence": 0.67
+    },
+    {
+      "frame": 1525,
+      "timestamp": 50.83,
+      "x": 58.95,
+      "y": 32.1,
+      "team": "B",
+      "confidence": 0.63
+    },
+    {
+      "frame": 1525,
+      "timestamp": 50.83,
+      "x": 63.22,
+      "y": 47.07,
+      "team": "B",
+      "confidence": 0.55
+    },
+    {
+      "frame": 1530,
+      "timestamp": 51.0,
+      "x": 76.38,
+      "y": 53.32,
+      "team": "B",
+      "confidence": 0.78
+    },
+    {
+      "frame": 1530,
+      "timestamp": 51.0,
+      "x": 63.57,
+      "y": 32.34,
+      "team": "B",
+      "confidence": 0.74
+    },
+    {
+      "frame": 1530,
+      "timestamp": 51.0,
+      "x": 32.38,
+      "y": 34.71,
+      "team": "A",
+      "confidence": 0.73
+    },
+    {
+      "frame": 1530,
+      "timestamp": 51.0,
+      "x": 69.57,
+      "y": 34.31,
+      "team": "B",
+      "confidence": 0.73
+    },
+    {
+      "frame": 1530,
+      "timestamp": 51.0,
+      "x": 23.97,
+      "y": 33.48,
+      "team": "A",
+      "confidence": 0.72
+    },
+    {
+      "frame": 1530,
+      "timestamp": 51.0,
+      "x": 11.08,
+      "y": 37.68,
+      "team": "A",
+      "confidence": 0.71
+    },
+    {
+      "frame": 1530,
+      "timestamp": 51.0,
+      "x": 11.14,
+      "y": 35.24,
+      "team": "A",
+      "confidence": 0.7
+    },
+    {
+      "frame": 1530,
+      "timestamp": 51.0,
+      "x": 46.84,
+      "y": 25.53,
+      "team": "A",
+      "confidence": 0.61
+    },
+    {
+      "frame": 1530,
+      "timestamp": 51.0,
+      "x": 48.11,
+      "y": 12.33,
+      "team": "A",
+      "confidence": 0.61
+    },
+    {
+      "frame": 1530,
+      "timestamp": 51.0,
+      "x": 56.84,
+      "y": 31.72,
+      "team": "B",
+      "confidence": 0.55
+    },
+    {
+      "frame": 1530,
+      "timestamp": 51.0,
+      "x": 67.92,
+      "y": 46.83,
+      "team": "B",
+      "confidence": 0.53
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 66.3,
+      "y": 32.49,
+      "team": "B",
+      "confidence": 0.75
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 13.89,
+      "y": 37.24,
+      "team": "A",
+      "confidence": 0.73
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 79.59,
+      "y": 52.49,
+      "team": "B",
+      "confidence": 0.71
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 71.68,
+      "y": 46.57,
+      "team": "B",
+      "confidence": 0.71
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 27.67,
+      "y": 33.46,
+      "team": "A",
+      "confidence": 0.7
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 71.49,
+      "y": 34.74,
+      "team": "B",
+      "confidence": 0.68
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 36.25,
+      "y": 34.96,
+      "team": "A",
+      "confidence": 0.67
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 47.39,
+      "y": 25.05,
+      "team": "A",
+      "confidence": 0.66
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 58.43,
+      "y": 29.56,
+      "team": "B",
+      "confidence": 0.62
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 49.94,
+      "y": 12.09,
+      "team": "A",
+      "confidence": 0.62
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 14.09,
+      "y": 34.56,
+      "team": "A",
+      "confidence": 0.55
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 3.58,
+      "y": 26.02,
+      "team": "A",
+      "confidence": 0.54
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 24.14,
+      "y": 24.39,
+      "team": "A",
+      "confidence": 0.52
+    },
+    {
+      "frame": 1535,
+      "timestamp": 51.17,
+      "x": 58.49,
+      "y": 31.67,
+      "team": "B",
+      "confidence": 0.51
+    },
+    {
+      "frame": 1540,
+      "timestamp": 51.33,
+      "x": 39.13,
+      "y": 34.52,
+      "team": "A",
+      "confidence": 0.84
+    },
+    {
+      "frame": 1540,
+      "timestamp": 51.33,
+      "x": 82.62,
+      "y": 52.72,
+      "team": "B",
+      "confidence": 0.79
+    },
+    {
+      "frame": 1540,
+      "timestamp": 51.33,
+      "x": 68.48,
+      "y": 31.62,
+      "team": "B",
+      "confidence": 0.75
+    },
+    {
+      "frame": 1540,
+      "timestamp": 51.33,
+      "x": 17.06,
+      "y": 37.57,
+      "team": "A",
+      "confidence": 0.74
+    },
+    {
+      "frame": 1540,
+      "timestamp": 51.33,
+      "x": 31.13,
+      "y": 33.5,
+      "team": "A",
+      "confidence": 0.71
+    },
+    {
+      "frame": 1540,
+      "timestamp": 51.33,
+      "x": 73.04,
+      "y": 34.91,
+      "team": "B",
+      "confidence": 0.7
+    },
+    {
+      "frame": 1540,
+      "timestamp": 51.33,
+      "x": 1.8,
+      "y": 55.84,
+      "team": "A",
+      "confidence": 0.68
+    },
+    {
+      "frame": 1540,
+      "timestamp": 51.33,
+      "x": 59.69,
+      "y": 32.41,
+      "team": "B",
+      "confidence": 0.66
+    },
+    {
+      "frame": 1540,
+      "timestamp": 51.33,
+      "x": 46.85,
+      "y": 25.02,
+      "team": "A",
+      "confidence": 0.62
+    },
+    {
+      "frame": 1540,
+      "timestamp": 51.33,
+      "x": 8.37,
+      "y": 26.28,
+      "team": "A",
+      "confidence": 0.61
+    },
+    {
+      "frame": 1540,
+      "timestamp": 51.33,
+      "x": 74.6,
+      "y": 46.06,
+      "team": "B",
+      "confidence": 0.6
+    },
+    {
+      "frame": 1540,
+      "timestamp": 51.33,
+      "x": 51.46,
+      "y": 12.12,
+      "team": "B",
+      "confidence": 0.59
+    },
+    {
+      "frame": 1540,
+      "timestamp": 51.33,
+      "x": 43.27,
+      "y": 23.21,
+      "team": "A",
+      "confidence": 0.56
+    },
+    {
+      "frame": 1545,
+      "timestamp": 51.5,
+      "x": 85.17,
+      "y": 51.97,
+      "team": "B",
+      "confidence": 0.83
+    },
+    {
+      "frame": 1545,
+      "timestamp": 51.5,
+      "x": 18.74,
+      "y": 37.46,
+      "team": "A",
+      "confidence": 0.8
+    },
+    {
+      "frame": 1545,
+      "timestamp": 51.5,
+      "x": 33.0,
+      "y": 33.72,
+      "team": "A",
+      "confidence": 0.78
+    },
+    {
+      "frame": 1545,
+      "timestamp": 51.5,
+      "x": 74.1,
+      "y": 34.72,
+      "team": "B",
+      "confidence": 0.77
+    },
+    {
+      "frame": 1545,
+      "timestamp": 51.5,
+      "x": 59.54,
+      "y": 30.18,
+      "team": "B",
+      "confidence": 0.66
+    },
+    {
+      "frame": 1545,
+      "timestamp": 51.5,
+      "x": 76.96,
+      "y": 46.05,
+      "team": "B",
+      "confidence": 0.65
+    },
+    {
+      "frame": 1545,
+      "timestamp": 51.5,
+      "x": 70.11,
+      "y": 31.44,
+      "team": "B",
+      "confidence": 0.64
+    },
+    {
+      "frame": 1545,
+      "timestamp": 51.5,
+      "x": 12.41,
+      "y": 26.66,
+      "team": "A",
+      "confidence": 0.64
+    },
+    {
+      "frame": 1545,
+      "timestamp": 51.5,
+      "x": 5.51,
+      "y": 55.86,
+      "team": "A",
+      "confidence": 0.63
+    },
+    {
+      "frame": 1545,
+      "timestamp": 51.5,
+      "x": 41.92,
+      "y": 34.98,
+      "team": "A",
+      "confidence": 0.61
+    },
+    {
+      "frame": 1545,
+      "timestamp": 51.5,
+      "x": 52.48,
+      "y": 11.91,
+      "team": "B",
+      "confidence": 0.58
+    },
+    {
+      "frame": 1550,
+      "timestamp": 51.67,
+      "x": 86.74,
+      "y": 51.88,
+      "team": "B",
+      "confidence": 0.83
+    },
+    {
+      "frame": 1550,
+      "timestamp": 51.67,
+      "x": 8.47,
+      "y": 55.05,
+      "team": "A",
+      "confidence": 0.81
+    },
+    {
+      "frame": 1550,
+      "timestamp": 51.67,
+      "x": 79.04,
+      "y": 45.3,
+      "team": "B",
+      "confidence": 0.77
+    },
+    {
+      "frame": 1550,
+      "timestamp": 51.67,
+      "x": 44.16,
+      "y": 34.58,
+      "team": "A",
+      "confidence": 0.77
+    },
+    {
+      "frame": 1550,
+      "timestamp": 51.67,
+      "x": 20.5,
+      "y": 36.77,
+      "team": "A",
+      "confidence": 0.75
+    },
+    {
+      "frame": 1550,
+      "timestamp": 51.67,
+      "x": 74.81,
+      "y": 34.91,
+      "team": "B",
+      "confidence": 0.71
+    },
+    {
+      "frame": 1550,
+      "timestamp": 51.67,
+      "x": 71.33,
+      "y": 31.56,
+      "team": "B",
+      "confidence": 0.64
+    },
+    {
+      "frame": 1550,
+      "timestamp": 51.67,
+      "x": 34.47,
+      "y": 32.82,
+      "team": "A",
+      "confidence": 0.63
+    },
+    {
+      "frame": 1550,
+      "timestamp": 51.67,
+      "x": 59.59,
+      "y": 29.07,
+      "team": "B",
+      "confidence": 0.63
+    },
+    {
+      "frame": 1550,
+      "timestamp": 51.67,
+      "x": 53.23,
+      "y": 11.84,
+      "team": "B",
+      "confidence": 0.62
+    },
+    {
+      "frame": 1550,
+      "timestamp": 51.67,
+      "x": 20.13,
+      "y": 29.16,
+      "team": "A",
+      "confidence": 0.55
+    },
+    {
+      "frame": 1550,
+      "timestamp": 51.67,
+      "x": 15.78,
+      "y": 25.57,
+      "team": "A",
+      "confidence": 0.54
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 88.88,
+      "y": 51.0,
+      "team": "B",
+      "confidence": 0.85
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 11.67,
+      "y": 54.8,
+      "team": "A",
+      "confidence": 0.79
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 80.71,
+      "y": 45.2,
+      "team": "B",
+      "confidence": 0.78
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 46.71,
+      "y": 34.87,
+      "team": "A",
+      "confidence": 0.76
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 22.56,
+      "y": 36.72,
+      "team": "A",
+      "confidence": 0.76
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 71.79,
+      "y": 30.95,
+      "team": "B",
+      "confidence": 0.7
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 75.88,
+      "y": 35.46,
+      "team": "B",
+      "confidence": 0.69
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 35.31,
+      "y": 32.05,
+      "team": "A",
+      "confidence": 0.69
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 1.66,
+      "y": 39.65,
+      "team": "A",
+      "confidence": 0.66
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 46.54,
+      "y": 22.1,
+      "team": "A",
+      "confidence": 0.62
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 30.27,
+      "y": 23.75,
+      "team": "A",
+      "confidence": 0.62
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 54.31,
+      "y": 11.51,
+      "team": "B",
+      "confidence": 0.61
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 44.08,
+      "y": 22.98,
+      "team": "A",
+      "confidence": 0.57
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 19.88,
+      "y": 13.49,
+      "team": "A",
+      "confidence": 0.54
+    },
+    {
+      "frame": 1555,
+      "timestamp": 51.83,
+      "x": 21.98,
+      "y": 29.0,
+      "team": "A",
+      "confidence": 0.52
+    }
+  ]
+}

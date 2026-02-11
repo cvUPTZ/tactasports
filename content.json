@@ -1,0 +1,310 @@
+{
+  "slides": [
+    {
+      "page_number": 1,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_1_img_1.png",
+          "path": "extracted_assets\\slide_1_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_2_img_1.png",
+          "path": "extracted_assets\\slide_2_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_3_img_1.png",
+          "path": "extracted_assets\\slide_3_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_4_img_1.png",
+          "path": "extracted_assets\\slide_4_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_5_img_1.png",
+          "path": "extracted_assets\\slide_5_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_6_img_1.png",
+          "path": "extracted_assets\\slide_6_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_7_img_1.png",
+          "path": "extracted_assets\\slide_7_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_8_img_1.png",
+          "path": "extracted_assets\\slide_8_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_9_img_1.png",
+          "path": "extracted_assets\\slide_9_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_10_img_1.png",
+          "path": "extracted_assets\\slide_10_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_11_img_1.png",
+          "path": "extracted_assets\\slide_11_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_12_img_1.png",
+          "path": "extracted_assets\\slide_12_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 13,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_13_img_1.png",
+          "path": "extracted_assets\\slide_13_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 14,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_14_img_1.png",
+          "path": "extracted_assets\\slide_14_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 15,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_15_img_1.png",
+          "path": "extracted_assets\\slide_15_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 16,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_16_img_1.png",
+          "path": "extracted_assets\\slide_16_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "page_number": 17,
+      "text_blocks": [],
+      "images": [
+        {
+          "filename": "slide_17_img_1.png",
+          "path": "extracted_assets\\slide_17_img_1.png",
+          "bboxes": [
+            [
+              0.0,
+              0.0,
+              1376.0,
+              768.0
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2610 @@
+{
+  "TotalClubs": 16,
+  "TotalPlayers": 418,
+  "Clubs": [
+    {
+      "ClubID": 409,
+      "ClubName": "Club 409",
+      "Players": [
+        {
+          "ID": 59521,
+          "Forename": "حديددي",
+          "Surname": "بدرالدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634601-1760556467.png"
+        },
+        {
+          "ID": 41900,
+          "Forename": "رحال جلال",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634615-1760555782.png"
+        },
+        {
+          "ID": 377220,
+          "Forename": "MAACHOU",
+          "Surname": "REDOUANE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634706-1760556215.png"
+        },
+        {
+          "ID": 42353,
+          "Forename": "رجام",
+          "Surname": "معاد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634362-1760556445.png"
+        },
+        {
+          "ID": 40499,
+          "Forename": "YACINE",
+          "Surname": "ZEGHAD",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634616-1760555918.png"
+        },
+        {
+          "ID": 40680,
+          "Forename": "Fouad",
+          "Surname": "RAHMANI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634628-1760556159.png"
+        },
+        {
+          "ID": 504258,
+          "Forename": "SIAKA",
+          "Surname": "BAGAYOKO",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 504326,
+          "Forename": "FATAWU Hamidu",
+          "Surname": "ABDUL",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635422-1760555890.png"
+        },
+        {
+          "ID": 499672,
+          "Forename": "SAIKOU",
+          "Surname": "DJIGO",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636645-1760555845.png"
+        },
+        {
+          "ID": 41712,
+          "Forename": "ميدون",
+          "Surname": "مسعود",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634361-1760555985.png"
+        },
+        {
+          "ID": 40316,
+          "Forename": "بلعريبي محمد علاء",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634431-1760556234.png"
+        },
+        {
+          "ID": 44528,
+          "Forename": "بن ساسي عبد",
+          "Surname": "الناصر",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 52363,
+          "Forename": "بلقوراي محمد",
+          "Surname": "فايز",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634621-1760556195.png"
+        },
+        {
+          "ID": 41193,
+          "Forename": "BADR EDDINE",
+          "Surname": "TOUKI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634993-1760555940.png"
+        },
+        {
+          "ID": 40501,
+          "Forename": "Necer Marouane",
+          "Surname": "BENZID",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636626-1760556252.png"
+        },
+        {
+          "ID": 44213,
+          "Forename": "تليلي محمد",
+          "Surname": "عبدالوهاب",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637052-1760556339.png"
+        },
+        {
+          "ID": 505312,
+          "Forename": "نغاندزيامي بانديسي جوليو",
+          "Surname": "كريسدون",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637493-1760556358.png"
+        },
+        {
+          "ID": 377993,
+          "Forename": "بن ساسي عبد",
+          "Surname": "القدوس",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641532-1760556053.png"
+        },
+        {
+          "ID": 44586,
+          "Forename": "مرجة",
+          "Surname": "نوفل",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634366-1760556295.png"
+        },
+        {
+          "ID": 58259,
+          "Forename": "بن ساري محمد",
+          "Surname": "ايهاب",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634386-1760556397.png"
+        },
+        {
+          "ID": 40877,
+          "Forename": "KHAYREDDINE",
+          "Surname": "MERZOUGUI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634415-1760556271.png"
+        },
+        {
+          "ID": 227499,
+          "Forename": "بن خيرة",
+          "Surname": "ناجي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634436-1760555961.png"
+        },
+        {
+          "ID": 41055,
+          "Forename": "عمران",
+          "Surname": "فائق",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634618-1760556033.png"
+        },
+        {
+          "ID": 42050,
+          "Forename": "جحدو محمد",
+          "Surname": "رضا",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634622-1760556319.png"
+        },
+        {
+          "ID": 40580,
+          "Forename": "Abderraouf",
+          "Surname": "OTHMANI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634996-1760556421.png"
+        },
+        {
+          "ID": 41122,
+          "Forename": "Massinissa",
+          "Surname": "NEZLA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635738-1760556006.png"
+        },
+        {
+          "ID": 105885,
+          "Forename": "بن ساسي أحمد",
+          "Surname": "مرتضى",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 524,
+      "ClubName": "Club 524",
+      "Players": [
+        {
+          "ID": 25739,
+          "Forename": "ترقو تاج",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637740-1756651992.png"
+        },
+        {
+          "ID": 40753,
+          "Forename": "Mohamed",
+          "Surname": "MEDJADJI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637770-1756650442.png"
+        },
+        {
+          "ID": 41116,
+          "Forename": "مجادل عبد",
+          "Surname": "الرحمان",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640361-1756651351.png"
+        },
+        {
+          "ID": 40900,
+          "Forename": "Mohammed El-Amine",
+          "Surname": "BARKA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637413-1756650523.png"
+        },
+        {
+          "ID": 378265,
+          "Forename": "بوعبطة",
+          "Surname": "طارق",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637415-1756651563.png"
+        },
+        {
+          "ID": 44392,
+          "Forename": "صداحين",
+          "Surname": "أيوب",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637419-1756650630.png"
+        },
+        {
+          "ID": 40922,
+          "Forename": "Belkacem",
+          "Surname": "BRAHIMI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637421-1756651516.png"
+        },
+        {
+          "ID": 40891,
+          "Forename": "Abdelhak",
+          "Surname": "DEBBARI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637423-1756651753.png"
+        },
+        {
+          "ID": 50864,
+          "Forename": "عـزوز",
+          "Surname": "كـريـم",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637425-1756651222.png"
+        },
+        {
+          "ID": 54039,
+          "Forename": "بداني محمد عبد",
+          "Surname": "الإله",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637426-1756651868.png"
+        },
+        {
+          "ID": 40534,
+          "Forename": "Chems Eddine",
+          "Surname": "BEKKOUCHE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639661-1756651296.png"
+        },
+        {
+          "ID": 41177,
+          "Forename": "Achref",
+          "Surname": "ABADA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640362-1756651676.png"
+        },
+        {
+          "ID": 50009,
+          "Forename": "عبدلي",
+          "Surname": "زكرياء",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 40814,
+          "Forename": "Imad eddine",
+          "Surname": "LARBI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637416-1756651018.png"
+        },
+        {
+          "ID": 377413,
+          "Forename": "ABBOUB MOHAMMED",
+          "Surname": "ILYAS",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637420-1756650948.png"
+        },
+        {
+          "ID": 40307,
+          "Forename": "Ibrahim ben halima",
+          "Surname": "FARHI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637422-1756650565.png"
+        },
+        {
+          "ID": 40912,
+          "Forename": "بلعالم",
+          "Surname": "جمال",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637741-1756651393.png"
+        },
+        {
+          "ID": 377677,
+          "Forename": "محامادو موسى",
+          "Surname": "اسماعيل",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637745-1756651120.png"
+        },
+        {
+          "ID": 44084,
+          "Forename": "حسان خوجة دليل",
+          "Surname": "عادل",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 40852,
+          "Forename": "ANIS ELHADJ",
+          "Surname": "BENCHOUYA",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 367090,
+          "Forename": "بوتمان زين",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637418-1756651068.png"
+        },
+        {
+          "ID": 64769,
+          "Forename": "قوادري هباز",
+          "Surname": "أيمن",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637424-1756651466.png"
+        },
+        {
+          "ID": 200405,
+          "Forename": "فدال",
+          "Surname": "عيسى",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637742-1756651795.png"
+        },
+        {
+          "ID": 496830,
+          "Forename": "ليدلوم ايدوارد",
+          "Surname": "دادي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637762-1756651633.png"
+        },
+        {
+          "ID": 499684,
+          "Forename": "افوتور كوكو",
+          "Surname": "برينو",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637765-1756651714.png"
+        },
+        {
+          "ID": 164212,
+          "Forename": "دحمان بونوة",
+          "Surname": "محمد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639931-1756651940.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 653,
+      "ClubName": "Club 653",
+      "Players": [
+        {
+          "ID": 377252,
+          "Forename": "MORCELY",
+          "Surname": "ABDELKADER",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 51916,
+          "Forename": "زيتوني",
+          "Surname": "ياسر",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 40455,
+          "Forename": "Oussama",
+          "Surname": "LITIM",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 40955,
+          "Forename": "Mohamed Abdelali",
+          "Surname": "GUEMROUD",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634712-1757781368.png"
+        },
+        {
+          "ID": 377854,
+          "Forename": "BADJO SERGE",
+          "Surname": "ANTHONY",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636464-1757617720.png"
+        },
+        {
+          "ID": 40927,
+          "Forename": "Mohammed Amine",
+          "Surname": "EZZEMANI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636731-1757616593.png"
+        },
+        {
+          "ID": 75461,
+          "Forename": "مدور زين",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636753-1757616534.png"
+        },
+        {
+          "ID": 40988,
+          "Forename": "Bedr Eddine",
+          "Surname": "SOUYAD",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637352-1757617749.png"
+        },
+        {
+          "ID": 40721,
+          "Forename": "ABDELHAMID",
+          "Surname": "DRIS",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637484-1757616661.png"
+        },
+        {
+          "ID": 53994,
+          "Forename": "قروجة",
+          "Surname": "وائل",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639206-1757617693.png"
+        },
+        {
+          "ID": 193496,
+          "Forename": "سامر عبد",
+          "Surname": "الحكيم",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636729-1757617789.png"
+        },
+        {
+          "ID": 40909,
+          "Forename": "Ahmida",
+          "Surname": "ZENASNI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637406-1757781278.png"
+        },
+        {
+          "ID": 40285,
+          "Forename": "Mohamed islam",
+          "Surname": "BAKIR",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637427-1757615005.png"
+        },
+        {
+          "ID": 41068,
+          "Forename": "Mohammed Reda",
+          "Surname": "BOUMECHRA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637430-1757617961.png"
+        },
+        {
+          "ID": 40892,
+          "Forename": "Samir",
+          "Surname": "AIBOUD",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637431-1757617932.png"
+        },
+        {
+          "ID": 499650,
+          "Forename": "سامانقوا نقولو",
+          "Surname": "كريستوفار",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637432-1757615132.png"
+        },
+        {
+          "ID": 377306,
+          "Forename": "CHEKAL AFFARI",
+          "Surname": "HADJI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-638268-1757714100.png"
+        },
+        {
+          "ID": 40590,
+          "Forename": "Aymen Abdeldjalil",
+          "Surname": "BENDAOUD",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641456-1757714138.png"
+        },
+        {
+          "ID": 504216,
+          "Forename": "ايتوقا مبيلا فرانك",
+          "Surname": "تيري",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 377267,
+          "Forename": "ESSANG-MATOUTI Edlin",
+          "Surname": "RANDY",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634714-1757618412.png"
+        },
+        {
+          "ID": 72256,
+          "Forename": "قابوش",
+          "Surname": "ايوب",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636755-1757617885.png"
+        },
+        {
+          "ID": 41027,
+          "Forename": "AMMAR ABDELMALEK",
+          "Surname": "OUKIL",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637407-1757617817.png"
+        },
+        {
+          "ID": 377518,
+          "Forename": "جاوشي",
+          "Surname": "حميد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637429-1757616827.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 657,
+      "ClubName": "Club 657",
+      "Players": [
+        {
+          "ID": 41180,
+          "Forename": "شريف محمد",
+          "Surname": "الطيب",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636593-1756645871.png"
+        },
+        {
+          "ID": 64540,
+          "Forename": "بوشيخي نبيل عبد",
+          "Surname": "القادر",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636601-1756646252.png"
+        },
+        {
+          "ID": 41219,
+          "Forename": "صالحي عبد",
+          "Surname": "القادر",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637343-1756644128.png"
+        },
+        {
+          "ID": 50106,
+          "Forename": "حداد",
+          "Surname": "عادل",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636587-1756645775.png"
+        },
+        {
+          "ID": 40303,
+          "Forename": "مرواني",
+          "Surname": "محمد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636628-1756644268.png"
+        },
+        {
+          "ID": 40879,
+          "Forename": "Adel",
+          "Surname": "GHANEM",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636630-1756644329.png"
+        },
+        {
+          "ID": 40919,
+          "Forename": "KHALED",
+          "Surname": "BOUHAKAK",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636710-1756644173.png"
+        },
+        {
+          "ID": 43448,
+          "Forename": "يرو",
+          "Surname": "أسامة",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637346-1756645816.png"
+        },
+        {
+          "ID": 42238,
+          "Forename": "بن عبدة زهر",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637348-1756645994.png"
+        },
+        {
+          "ID": 40621,
+          "Forename": "عطالله",
+          "Surname": "الياس",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637394-1756646162.png"
+        },
+        {
+          "ID": 41163,
+          "Forename": "ABDELLAH",
+          "Surname": "MEDDAH",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640760-1756646051.png"
+        },
+        {
+          "ID": 18192,
+          "Forename": "خياري",
+          "Surname": "اسامة",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636596-1756646135.png"
+        },
+        {
+          "ID": 63147,
+          "Forename": "بوشوشة معتز",
+          "Surname": "بالله",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636599-1756646197.png"
+        },
+        {
+          "ID": 40378,
+          "Forename": "MORTADA KHIR EDDINE",
+          "Surname": "KENICHE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636631-1756644622.png"
+        },
+        {
+          "ID": 41148,
+          "Forename": "KHALID",
+          "Surname": "DAHAMNI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636632-1756645734.png"
+        },
+        {
+          "ID": 40418,
+          "Forename": "ISLAM EDDINE",
+          "Surname": "KAIDI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636660-1756645926.png"
+        },
+        {
+          "ID": 55402,
+          "Forename": "محبوب احمد",
+          "Surname": "امين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636888-1756646023.png"
+        },
+        {
+          "ID": 41097,
+          "Forename": "AMMAR",
+          "Surname": "ELORFI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637344-1756644396.png"
+        },
+        {
+          "ID": 41008,
+          "Forename": "شيتة",
+          "Surname": "أسامة",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641042-1757342248.png"
+        },
+        {
+          "ID": 377251,
+          "Forename": "YAICHE",
+          "Surname": "ILYES",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 505326,
+          "Forename": "أمقران عبد",
+          "Surname": "الحكيم",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636575-1756645696.png"
+        },
+        {
+          "ID": 63664,
+          "Forename": "شلالي عبد القادر",
+          "Surname": "أكرم",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636664-1756646229.png"
+        },
+        {
+          "ID": 377293,
+          "Forename": "BENYAHIA DHIYA",
+          "Surname": "EDDINE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636666-1756646090.png"
+        },
+        {
+          "ID": 40677,
+          "Forename": "عجوط",
+          "Surname": "الوناس",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636680-1756644439.png"
+        },
+        {
+          "ID": 42313,
+          "Forename": "بلميلود",
+          "Surname": "كمال",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636718-1756645897.png"
+        },
+        {
+          "ID": 40692,
+          "Forename": "Mohamed",
+          "Surname": "BELKHADEM.",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636950-1756645847.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 670,
+      "ClubName": "Club 670",
+      "Players": [
+        {
+          "ID": 42110,
+          "Forename": "مختار محمد",
+          "Surname": "انس",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636711-1757631510.png"
+        },
+        {
+          "ID": 377622,
+          "Forename": "زغبة",
+          "Surname": "مصطفى",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 40946,
+          "Forename": "Farid",
+          "Surname": "CHAAL",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640659-1757631877.png"
+        },
+        {
+          "ID": 52598,
+          "Forename": "عباسي",
+          "Surname": "اسلام",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636712-1757631537.png"
+        },
+        {
+          "ID": 41181,
+          "Forename": "YOUNES ABDELHAK",
+          "Surname": "OUASSA",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 377223,
+          "Forename": "LAOUAFI",
+          "Surname": "YOUCEF",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637057-1757631652.png"
+        },
+        {
+          "ID": 377257,
+          "Forename": "BENAYADA",
+          "Surname": "HOUCINE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637296-1757633980.png"
+        },
+        {
+          "ID": 91362,
+          "Forename": "بن كيحول",
+          "Surname": "أسامة",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640102-1757631423.png"
+        },
+        {
+          "ID": 40947,
+          "Forename": "Chouhaib",
+          "Surname": "KEDDAD",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640650-1757629283.png"
+        },
+        {
+          "ID": 377287,
+          "Forename": "KHACEF Mohamed",
+          "Surname": "NAOUFEL",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640654-1757631752.png"
+        },
+        {
+          "ID": 377327,
+          "Forename": "BOUKARCHAOUI",
+          "Surname": "BILLEL",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640655-1757631848.png"
+        },
+        {
+          "ID": 377418,
+          "Forename": "BEKKOUR",
+          "Surname": "ABDERRAHMANE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640658-1757629469.png"
+        },
+        {
+          "ID": 41168,
+          "Forename": "كعسيس",
+          "Surname": "جابر",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 505558,
+          "Forename": "سيكيسي",
+          "Surname": "اندري",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637054-1757631295.png"
+        },
+        {
+          "ID": 52637,
+          "Forename": "قلالش عبد",
+          "Surname": "المالك",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640100-1757631163.png"
+        },
+        {
+          "ID": 41196,
+          "Forename": "Abderaouf",
+          "Surname": "BENGUIT",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640651-1757631254.png"
+        },
+        {
+          "ID": 40894,
+          "Forename": "Housseyn",
+          "Surname": "SELMI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640652-1757631468.png"
+        },
+        {
+          "ID": 505216,
+          "Forename": "كسيكسا",
+          "Surname": "رودون",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636706-1757631573.png"
+        },
+        {
+          "ID": 505392,
+          "Forename": "بن حمودة محمد",
+          "Surname": "علي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636714-1757631616.png"
+        },
+        {
+          "ID": 377261,
+          "Forename": "BELHOCINI Abdennour",
+          "Surname": "IHEB",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637202-1757631199.png"
+        },
+        {
+          "ID": 40538,
+          "Forename": "Mohammed Islem",
+          "Surname": "BELKHIR",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640040-1757631694.png"
+        },
+        {
+          "ID": 42101,
+          "Forename": "بوصوار",
+          "Surname": "لطفي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640653-1757631387.png"
+        },
+        {
+          "ID": 40932,
+          "Forename": "Abderrahmane MEZIANE",
+          "Surname": "BENTAHAR",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640657-1757631344.png"
+        },
+        {
+          "ID": 507470,
+          "Forename": "الملالي",
+          "Surname": "فريد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641361-1757631813.png"
+        },
+        {
+          "ID": 77025,
+          "Forename": "قرقور",
+          "Surname": "الشافعي",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 672,
+      "ClubName": "Club 672",
+      "Players": [
+        {
+          "ID": 52220,
+          "Forename": "سقاري",
+          "Surname": "زكرياء",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635403-1756747454.png"
+        },
+        {
+          "ID": 47664,
+          "Forename": "مرحاب عبد",
+          "Surname": "الباريء",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636115-1757068140.png"
+        },
+        {
+          "ID": 41921,
+          "Forename": "جـودار عـبـد",
+          "Surname": "الـنـاصـر",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636221-1756746787.png"
+        },
+        {
+          "ID": 377249,
+          "Forename": "MATALLAH SID",
+          "Surname": "AHMED",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635622-1756752371.png"
+        },
+        {
+          "ID": 41151,
+          "Forename": "RIYANE",
+          "Surname": "AKACEM",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636220-1756746851.png"
+        },
+        {
+          "ID": 40281,
+          "Forename": "ABDELKADER",
+          "Surname": "BOUTICHE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636222-1756746942.png"
+        },
+        {
+          "ID": 43310,
+          "Forename": "براهيمي",
+          "Surname": "رفيق",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636223-1756746975.png"
+        },
+        {
+          "ID": 377228,
+          "Forename": "ZAALANI",
+          "Surname": "NASREDDINE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636224-1756747223.png"
+        },
+        {
+          "ID": 42862,
+          "Forename": "حدوش إلياس",
+          "Surname": "فيصل",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636225-1756752234.png"
+        },
+        {
+          "ID": 377351,
+          "Forename": "BARKAT",
+          "Surname": "ABDENOUR",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636229-1756747903.png"
+        },
+        {
+          "ID": 40417,
+          "Forename": "Fayçal",
+          "Surname": "MEBARKI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636232-1756746900.png"
+        },
+        {
+          "ID": 46095,
+          "Forename": "طاهوري عصام",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637178-1756747414.png"
+        },
+        {
+          "ID": 506321,
+          "Forename": "قاي كاقنو نين ولفريد",
+          "Surname": "سيمولو",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640612-1757067852.png"
+        },
+        {
+          "ID": 504141,
+          "Forename": "وايو",
+          "Surname": "كنسطو",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634571-1756747610.png"
+        },
+        {
+          "ID": 44832,
+          "Forename": "علاوي خالد",
+          "Surname": "منير",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636231-1756747829.png"
+        },
+        {
+          "ID": 119671,
+          "Forename": "بداوي",
+          "Surname": "مصطفى",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636315-1756748069.png"
+        },
+        {
+          "ID": 41028,
+          "Forename": "أوقاسي",
+          "Surname": "جوبا",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636410-1756747555.png"
+        },
+        {
+          "ID": 42187,
+          "Forename": "خوماني عبد",
+          "Surname": "الحق",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641392-1756752404.png"
+        },
+        {
+          "ID": 237175,
+          "Forename": "بن طالب",
+          "Surname": "اسامة",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636226-1756752340.png"
+        },
+        {
+          "ID": 41080,
+          "Forename": "Adel",
+          "Surname": "BOUCHIBA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636227-1756747952.png"
+        },
+        {
+          "ID": 40641,
+          "Forename": "Mohamed El Amine",
+          "Surname": "HAMMIA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636230-1756748004.png"
+        },
+        {
+          "ID": 110114,
+          "Forename": "لعوفي",
+          "Surname": "فاروق",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636720-1756752299.png"
+        },
+        {
+          "ID": 41188,
+          "Forename": "NOUR EL ISLAM",
+          "Surname": "FETTOUHI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636722-1756747068.png"
+        },
+        {
+          "ID": 40313,
+          "Forename": "ISMAIL",
+          "Surname": "SAADI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636723-1756747147.png"
+        },
+        {
+          "ID": 499541,
+          "Forename": "بيذي قاي",
+          "Surname": "ستيفان",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 507235,
+          "Forename": "اليمي سكيري",
+          "Surname": "ادوال",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640765-1756814540.png"
+        },
+        {
+          "ID": 129191,
+          "Forename": "عياد",
+          "Surname": "العيد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641213-1756746650.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 673,
+      "ClubName": "Club 673",
+      "Players": [
+        {
+          "ID": 41104,
+          "Forename": "ABDELMOUMENE",
+          "Surname": "SIFOUR",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636427-1758119219.png"
+        },
+        {
+          "ID": 40282,
+          "Forename": "Kamel",
+          "Surname": "SOUFI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636431-1758120016.png"
+        },
+        {
+          "ID": 40921,
+          "Forename": "Oussama",
+          "Surname": "BENBOT",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 40429,
+          "Forename": "Hocine",
+          "Surname": "DEHIRI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634797-1758119883.png"
+        },
+        {
+          "ID": 504446,
+          "Forename": "شي مالون فونده",
+          "Surname": "جونيور",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634852-1758119384.png"
+        },
+        {
+          "ID": 53207,
+          "Forename": "عثمانىه صفى",
+          "Surname": "الدىن",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636428-1758119318.png"
+        },
+        {
+          "ID": 68884,
+          "Forename": "كورذى",
+          "Surname": "وليذ",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636437-1758119271.png"
+        },
+        {
+          "ID": 40983,
+          "Forename": "Saadi",
+          "Surname": "RADOUANI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636442-1758120161.png"
+        },
+        {
+          "ID": 41144,
+          "Forename": "Adem",
+          "Surname": "ALILET",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636443-1758120250.png"
+        },
+        {
+          "ID": 377459,
+          "Forename": "CHETI",
+          "Surname": "ILYES",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636444-1758120405.png"
+        },
+        {
+          "ID": 52077,
+          "Forename": "محروز ريان عبد",
+          "Surname": "المجيد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639561-1758120207.png"
+        },
+        {
+          "ID": 40290,
+          "Forename": "Haithem",
+          "Surname": "LOUCIF",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639563-1758119807.png"
+        },
+        {
+          "ID": 41121,
+          "Forename": "Ghiles",
+          "Surname": "GUENAOUI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635063-1758119712.png"
+        },
+        {
+          "ID": 40928,
+          "Forename": "DRAOUI",
+          "Surname": "ZAKARIA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635070-1758119419.png"
+        },
+        {
+          "ID": 41114,
+          "Forename": "ISLAM",
+          "Surname": "MERILI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636429-1758119611.png"
+        },
+        {
+          "ID": 53891,
+          "Forename": "بولعراس",
+          "Surname": "عمر",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637269-1758120715.png"
+        },
+        {
+          "ID": 41064,
+          "Forename": "BRAHIM",
+          "Surname": "BENZAZA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639562-1758119920.png"
+        },
+        {
+          "ID": 40634,
+          "Forename": "Salim",
+          "Surname": "BOUKHANCHOUCHE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639564-1758120110.png"
+        },
+        {
+          "ID": 507223,
+          "Forename": "تندنق اتان جنيور",
+          "Surname": "امي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641081-1758120909.png"
+        },
+        {
+          "ID": 507651,
+          "Forename": "ارنسة",
+          "Surname": "إمنيال",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641560-1758119971.png"
+        },
+        {
+          "ID": 64817,
+          "Forename": "بودربالة",
+          "Surname": "مخمد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634289-1758120462.png"
+        },
+        {
+          "ID": 41048,
+          "Forename": "KHALED",
+          "Surname": "BOUSSELIOU",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636430-1758120075.png"
+        },
+        {
+          "ID": 377487,
+          "Forename": "غشة حسام",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636433-1758120805.png"
+        },
+        {
+          "ID": 41117,
+          "Forename": "AHMED",
+          "Surname": "KHALDI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636434-1758119548.png"
+        },
+        {
+          "ID": 115685,
+          "Forename": "بوطاوي منصف عبد",
+          "Surname": "الرحمن",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636440-1758120284.png"
+        },
+        {
+          "ID": 40289,
+          "Forename": "بن عياد",
+          "Surname": "رياض",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639565-1758119650.png"
+        },
+        {
+          "ID": 377559,
+          "Forename": "ليكونز أدنغو",
+          "Surname": "غلودي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639566-1758119763.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 674,
+      "ClubName": "Club 674",
+      "Players": [
+        {
+          "ID": 377484,
+          "Forename": "مرباح",
+          "Surname": "قايا",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639570-1756764946.png"
+        },
+        {
+          "ID": 40804,
+          "Forename": "Mohamed Idir",
+          "Surname": "HADID",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639571-1756765383.png"
+        },
+        {
+          "ID": 43665,
+          "Forename": "بن رابح",
+          "Surname": "سيف",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639572-1756764232.png"
+        },
+        {
+          "ID": 66164,
+          "Forename": "بن عطية",
+          "Surname": "اسامة",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637555-1756764112.png"
+        },
+        {
+          "ID": 68980,
+          "Forename": "شرير عبد",
+          "Surname": "الحق",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637559-1756765727.png"
+        },
+        {
+          "ID": 41159,
+          "Forename": "ZINEDDINE",
+          "Surname": "BELAID",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-638114-1756765041.png"
+        },
+        {
+          "ID": 40311,
+          "Forename": "Hamza",
+          "Surname": "MOUALI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-638152-1756765199.png"
+        },
+        {
+          "ID": 40357,
+          "Forename": "LAID CHAHINE",
+          "Surname": "BELLAOUEL",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-638169-1756765346.png"
+        },
+        {
+          "ID": 40588,
+          "Forename": "Mohamed reda",
+          "Surname": "HAMIDI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639031-1756897941.png"
+        },
+        {
+          "ID": 499648,
+          "Forename": "بن شاعة رضا محمد",
+          "Surname": "أمين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639576-1756765078.png"
+        },
+        {
+          "ID": 40901,
+          "Forename": "Mohamed Amine",
+          "Surname": "MADANI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639577-1756766044.png"
+        },
+        {
+          "ID": 40565,
+          "Forename": "FARES NECHAT",
+          "Surname": "DJABRI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640373-1756765463.png"
+        },
+        {
+          "ID": 65177,
+          "Forename": "بوط مصطفى رزق",
+          "Surname": "الله",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641198-1756764963.png"
+        },
+        {
+          "ID": 506173,
+          "Forename": "بادا جوزافات",
+          "Surname": "أرتر",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-638145-1756765678.png"
+        },
+        {
+          "ID": 377532,
+          "Forename": "صار",
+          "Surname": "باباكر",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639573-1756766286.png"
+        },
+        {
+          "ID": 76594,
+          "Forename": "ازم",
+          "Surname": "يوسف",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640117-1756764775.png"
+        },
+        {
+          "ID": 499682,
+          "Forename": "بوجمعة",
+          "Surname": "مهدي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640371-1756765608.png"
+        },
+        {
+          "ID": 499407,
+          "Forename": "مرغم",
+          "Surname": "مهدي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640983-1756764146.png"
+        },
+        {
+          "ID": 41077,
+          "Forename": "Aimen",
+          "Surname": "MAHIOUS",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637372-1756766248.png"
+        },
+        {
+          "ID": 164398,
+          "Forename": "سليمان تبش تيش اسلام",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639495-1756764276.png"
+        },
+        {
+          "ID": 41026,
+          "Forename": "Aimen Abdelaziz",
+          "Surname": "LAHMERI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639568-1756765584.png"
+        },
+        {
+          "ID": 378260,
+          "Forename": "بودبوز",
+          "Surname": "رياض",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639569-1756764861.png"
+        },
+        {
+          "ID": 41070,
+          "Forename": "AHMED",
+          "Surname": "MAMMERI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639574-1756766336.png"
+        },
+        {
+          "ID": 65352,
+          "Forename": "ملكي",
+          "Surname": "وليد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640372-1756766375.png"
+        },
+        {
+          "ID": 42131,
+          "Forename": "ا خريب",
+          "Surname": "لحلو",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640478-1756765649.png"
+        },
+        {
+          "ID": 40306,
+          "Forename": "Billal",
+          "Surname": "MESSAOUDI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641050-1756765629.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 675,
+      "ClubName": "Club 675",
+      "Players": [
+        {
+          "ID": 66130,
+          "Forename": "منديل انيس",
+          "Surname": "مهدي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634697-1757637382.png"
+        },
+        {
+          "ID": 377474,
+          "Forename": "عقون ليونار أنطوان",
+          "Surname": "روني",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636234-1757796708.png"
+        },
+        {
+          "ID": 40291,
+          "Forename": "Mokhtar",
+          "Surname": "FERRAHI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641380-1757636989.png"
+        },
+        {
+          "ID": 41071,
+          "Forename": "Abderrahim",
+          "Surname": "HAMRA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634684-1757637212.png"
+        },
+        {
+          "ID": 56167,
+          "Forename": "عدي",
+          "Surname": "توفيق",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634694-1757637319.png"
+        },
+        {
+          "ID": 40860,
+          "Forename": "Mokhtar",
+          "Surname": "BELKHITHER",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635555-1757637080.png"
+        },
+        {
+          "ID": 41066,
+          "Forename": "OUSSAMA SAFA",
+          "Surname": "KADDOUR",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635835-1757636889.png"
+        },
+        {
+          "ID": 377463,
+          "Forename": "معمر شاوش عبد",
+          "Surname": "الكريم",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636233-1757636600.png"
+        },
+        {
+          "ID": 40416,
+          "Forename": "ABDELKADER ALAA EDDINE",
+          "Surname": "BELHARRANE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636240-1757637181.png"
+        },
+        {
+          "ID": 40401,
+          "Forename": "ahmed",
+          "Surname": "KERROUM",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636243-1757637239.png"
+        },
+        {
+          "ID": 41199,
+          "Forename": "IBRAHIM",
+          "Surname": "HACHOUD",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641340-1757636670.png"
+        },
+        {
+          "ID": 42134,
+          "Forename": "عوجان",
+          "Surname": "شكيب",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634685-1757637019.png"
+        },
+        {
+          "ID": 55383,
+          "Forename": "محدان منير",
+          "Surname": "المهدي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634698-1757637348.png"
+        },
+        {
+          "ID": 377222,
+          "Forename": "MOHUTSIWA GAPE",
+          "Surname": "EDWIN",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635420-1757636958.png"
+        },
+        {
+          "ID": 69436,
+          "Forename": "فاطمي",
+          "Surname": "اسامة",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635556-1757637269.png"
+        },
+        {
+          "ID": 41013,
+          "Forename": "JUBA",
+          "Surname": "AGUIEB",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636235-1757636757.png"
+        },
+        {
+          "ID": 40941,
+          "Forename": "Abderrahmane",
+          "Surname": "BOURDIM",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636236-1757636633.png"
+        },
+        {
+          "ID": 377472,
+          "Forename": "بوخو لدة شهر",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636239-1757636823.png"
+        },
+        {
+          "ID": 377225,
+          "Forename": "SENHADJI MOHAMED ES",
+          "Surname": "SEDDIK",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636241-1757636928.png"
+        },
+        {
+          "ID": 377271,
+          "Forename": "EMBAREK",
+          "Surname": "OMAR",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636283-1757636697.png"
+        },
+        {
+          "ID": 377290,
+          "Forename": "BAAKOH",
+          "Surname": "MAXWELL",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637300-1757636725.png"
+        },
+        {
+          "ID": 66305,
+          "Forename": "قوجيل",
+          "Surname": "ياسين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634683-1757636785.png"
+        },
+        {
+          "ID": 41797,
+          "Forename": "مولاي عبدالعزيز",
+          "Surname": "عبدالقادر",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636242-1757637111.png"
+        },
+        {
+          "ID": 41141,
+          "Forename": "Yacine",
+          "Surname": "ALIANE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636244-1757637292.png"
+        },
+        {
+          "ID": 499668,
+          "Forename": "جوب با",
+          "Surname": "عمر",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637295-1757636849.png"
+        },
+        {
+          "ID": 69571,
+          "Forename": "ميلودي",
+          "Surname": "الياس",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641407-1757637056.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 676,
+      "ClubName": "Club 676",
+      "Players": [
+        {
+          "ID": 40334,
+          "Forename": "بوسدر",
+          "Surname": "طارق",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636401-1758032750.png"
+        },
+        {
+          "ID": 40700,
+          "Forename": "بو عون علاء",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 41032,
+          "Forename": "سعيدي",
+          "Surname": "زكرياء",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637309-1757238622.png"
+        },
+        {
+          "ID": 41887,
+          "Forename": "دردار",
+          "Surname": "عدة",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633831-1757238453.png"
+        },
+        {
+          "ID": 41025,
+          "Forename": "KAMEL",
+          "Surname": "HAMIDI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633832-1757239047.png"
+        },
+        {
+          "ID": 41829,
+          "Forename": "بوزيان",
+          "Surname": "لحسن",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633838-1757238564.png"
+        },
+        {
+          "ID": 52326,
+          "Forename": "نعيم عصام عبد",
+          "Surname": "الحميد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633851-1757237220.png"
+        },
+        {
+          "ID": 366698,
+          "Forename": "بودشيشة",
+          "Surname": "عيسى",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634079-1757239002.png"
+        },
+        {
+          "ID": 40310,
+          "Forename": "دوار",
+          "Surname": "يوسف",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636402-1757237311.png"
+        },
+        {
+          "ID": 40893,
+          "Forename": "فرحاني",
+          "Surname": "هواري",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636403-1757237612.png"
+        },
+        {
+          "ID": 40994,
+          "Forename": "بوبكر عماد",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636406-1757237252.png"
+        },
+        {
+          "ID": 40858,
+          "Forename": "بكاكشي ابراهيم",
+          "Surname": "الخليل",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636447-1757238923.png"
+        },
+        {
+          "ID": 49579,
+          "Forename": "بن سليمان",
+          "Surname": "هاشمي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633852-1757238879.png"
+        },
+        {
+          "ID": 41774,
+          "Forename": "دعبيش",
+          "Surname": "أوسامة",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633853-1757237344.png"
+        },
+        {
+          "ID": 62859,
+          "Forename": "عريب عبد",
+          "Surname": "الرؤوف",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633967-1757238509.png"
+        },
+        {
+          "ID": 41194,
+          "Forename": "طوال خير",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634583-1757238415.png"
+        },
+        {
+          "ID": 504149,
+          "Forename": "موداسيرو",
+          "Surname": "ساليفو",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634588-1757239130.png"
+        },
+        {
+          "ID": 40650,
+          "Forename": "جحنيط",
+          "Surname": "أكرم",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636404-1757238361.png"
+        },
+        {
+          "ID": 40616,
+          "Forename": "بوكرمة",
+          "Surname": "محمد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636408-1757238656.png"
+        },
+        {
+          "ID": 52986,
+          "Forename": "بن لبنة محمد شمس",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633850-1757238322.png"
+        },
+        {
+          "ID": 504119,
+          "Forename": "سيلاه",
+          "Surname": "جبريل",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633982-1757238749.png"
+        },
+        {
+          "ID": 41091,
+          "Forename": "Aymane Issad",
+          "Surname": "LAKDJA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634489-1757238700.png"
+        },
+        {
+          "ID": 504334,
+          "Forename": "أبيدي",
+          "Surname": "بيرماهير",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634652-1757238965.png"
+        },
+        {
+          "ID": 40482,
+          "Forename": "Merouane",
+          "Surname": "ZERROUKI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635078-1757238821.png"
+        },
+        {
+          "ID": 65106,
+          "Forename": "غربي",
+          "Surname": "يوسف",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636407-1757239087.png"
+        },
+        {
+          "ID": 40465,
+          "Forename": "بوشامة صلاح عبد",
+          "Surname": "التواب",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637306-1757237391.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 677,
+      "ClubName": "Club 677",
+      "Players": [
+        {
+          "ID": 41011,
+          "Forename": "Alexis",
+          "Surname": "GUENDOUZ",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636271-1757108872.png"
+        },
+        {
+          "ID": 40559,
+          "Forename": "ABDELATIF",
+          "Surname": "RAMDANE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640745-1757107454.png"
+        },
+        {
+          "ID": 40309,
+          "Forename": "Aimen",
+          "Surname": "BOUGUERRA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636717-1757108812.png"
+        },
+        {
+          "ID": 40345,
+          "Forename": "MERWANE",
+          "Surname": "KHELIF",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640746-1757107790.png"
+        },
+        {
+          "ID": 377224,
+          "Forename": "ABDELLAOUI",
+          "Surname": "AYOUB",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640747-1757107860.png"
+        },
+        {
+          "ID": 40980,
+          "Forename": "Ayoub",
+          "Surname": "GHEZALA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641218-1757108484.png"
+        },
+        {
+          "ID": 377232,
+          "Forename": "HALAIMIA MED",
+          "Surname": "REDHA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641219-1757108524.png"
+        },
+        {
+          "ID": 377233,
+          "Forename": "MENEZLA",
+          "Surname": "ABDELKADER",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 66435,
+          "Forename": "دنداوي",
+          "Surname": "رستم",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641228-1757107582.png"
+        },
+        {
+          "ID": 377250,
+          "Forename": "BENKHEMASSA",
+          "Surname": "MOHAMMED",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640748-1757107946.png"
+        },
+        {
+          "ID": 366695,
+          "Forename": "زوغرانا",
+          "Surname": "محمد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640753-1757108267.png"
+        },
+        {
+          "ID": 51972,
+          "Forename": "عيساوي",
+          "Surname": "سيدأحمد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640779-1757109080.png"
+        },
+        {
+          "ID": 507337,
+          "Forename": "بنغورا",
+          "Surname": "الحسن",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 40820,
+          "Forename": "MEHDI",
+          "Surname": "BOUCHERIT",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641216-1757108424.png"
+        },
+        {
+          "ID": 40904,
+          "Forename": "Larbi",
+          "Surname": "TABTI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641221-1757108572.png"
+        },
+        {
+          "ID": 66418,
+          "Forename": "سيبوس محمد",
+          "Surname": "اسلام",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641230-1757108364.png"
+        },
+        {
+          "ID": 367335,
+          "Forename": "بوالصوف",
+          "Surname": "طلال",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 377256,
+          "Forename": "BAYAZID",
+          "Surname": "SOFIANE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640749-1757108140.png"
+        },
+        {
+          "ID": 499683,
+          "Forename": "بانغورا محمد",
+          "Surname": "ساليوا",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 377282,
+          "Forename": "NAIDJI",
+          "Surname": "ZAKARIA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640752-1757108743.png"
+        },
+        {
+          "ID": 377461,
+          "Forename": "ZUNON KIPRE TIAGOURI EMMANUEL",
+          "Surname": "JUNIOR",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641222-1757108611.png"
+        },
+        {
+          "ID": 377347,
+          "Forename": "BENHAOUA",
+          "Surname": "OUSSAMA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641225-1757108936.png"
+        },
+        {
+          "ID": 377669,
+          "Forename": "مسوسة أمين عبد الرحمان بن",
+          "Surname": "مليك",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 63436,
+          "Forename": "حما دوش يا",
+          "Surname": "سين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641227-1757108320.png"
+        },
+        {
+          "ID": 55355,
+          "Forename": "بوبطاش شمس",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641229-1757108649.png"
+        },
+        {
+          "ID": 377666,
+          "Forename": "مزياني",
+          "Surname": "طيب",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641231-1757108228.png"
+        },
+        {
+          "ID": 507615,
+          "Forename": "فرحات زين",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641517-1757108191.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 678,
+      "ClubName": "Club 678",
+      "Players": [
+        {
+          "ID": 40315,
+          "Forename": "Zakaria",
+          "Surname": "BOUHALFAYA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634388-1756554284.png"
+        },
+        {
+          "ID": 79038,
+          "Forename": "خنيش محمد",
+          "Surname": "معتز",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636700-1756554847.png"
+        },
+        {
+          "ID": 40664,
+          "Forename": "ABDELMALEK",
+          "Surname": "NECIR",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636704-1756555082.png"
+        },
+        {
+          "ID": 41018,
+          "Forename": "شيخي",
+          "Surname": "عبدالمومن",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634503-1756555203.png"
+        },
+        {
+          "ID": 40639,
+          "Forename": "Oussama",
+          "Surname": "MEDDAHI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636262-1756554727.png"
+        },
+        {
+          "ID": 40872,
+          "Forename": "Chamseddine",
+          "Surname": "DERRADJI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636265-1756554910.png"
+        },
+        {
+          "ID": 377258,
+          "Forename": "بودرامة",
+          "Surname": "أشرف",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636268-1756555248.png"
+        },
+        {
+          "ID": 63460,
+          "Forename": "بن عدلة عبد",
+          "Surname": "الرحمان",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636690-1756554340.png"
+        },
+        {
+          "ID": 378261,
+          "Forename": "ندياي",
+          "Surname": "ميلو",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637289-1756554380.png"
+        },
+        {
+          "ID": 40979,
+          "Forename": "Houari",
+          "Surname": "BAOUCHE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637308-1756554557.png"
+        },
+        {
+          "ID": 2198,
+          "Forename": "بن موسى رحماني عماد",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639330-1756554761.png"
+        },
+        {
+          "ID": 40668,
+          "Forename": "بركان",
+          "Surname": "مصطفى",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634499-1756554805.png"
+        },
+        {
+          "ID": 40526,
+          "Forename": "بوزكري ولاء",
+          "Surname": "منذر",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634500-1756554495.png"
+        },
+        {
+          "ID": 40859,
+          "Forename": "Mohamed",
+          "Surname": "BENCHAIRA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636258-1756554440.png"
+        },
+        {
+          "ID": 40910,
+          "Forename": "Brahim",
+          "Surname": "DIB",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636260-1756554634.png"
+        },
+        {
+          "ID": 40945,
+          "Forename": "Messala",
+          "Surname": "MERBAH",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636263-1757501416.png"
+        },
+        {
+          "ID": 40924,
+          "Forename": "Feth-Allah",
+          "Surname": "TAHAR",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636270-1756555278.png"
+        },
+        {
+          "ID": 40897,
+          "Forename": "Miloud",
+          "Surname": "REBIAI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636703-1756555135.png"
+        },
+        {
+          "ID": 377720,
+          "Forename": "طابسوبا",
+          "Surname": "ساليفو",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641509-1757501365.png"
+        },
+        {
+          "ID": 40287,
+          "Forename": "DADI El hocine",
+          "Surname": "MOUAKI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636267-1756554675.png"
+        },
+        {
+          "ID": 40951,
+          "Forename": "Rida",
+          "Surname": "BENSAYAH",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636707-1756554873.png"
+        },
+        {
+          "ID": 52616,
+          "Forename": "قرين",
+          "Surname": "حاتم",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636890-1756555008.png"
+        },
+        {
+          "ID": 377245,
+          "Forename": "OMOYELE TOSIN",
+          "Surname": "ABRAHAM",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637291-1756555050.png"
+        },
+        {
+          "ID": 60631,
+          "Forename": "خلفاوي",
+          "Surname": "وجيه",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637307-1756554971.png"
+        },
+        {
+          "ID": 506241,
+          "Forename": "الغول نسيم جلول",
+          "Surname": "سالم",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-638220-1756555170.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 680,
+      "ClubName": "Club 680",
+      "Players": [
+        {
+          "ID": 41157,
+          "Forename": "AHMED",
+          "Surname": "ABDELKADER",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637319-1757431006.png"
+        },
+        {
+          "ID": 66482,
+          "Forename": "بودجة",
+          "Surname": "امياس",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637334-1757429122.png"
+        },
+        {
+          "ID": 40649,
+          "Forename": "Toufik",
+          "Surname": "MOUSSAOUI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641475-1757429604.png"
+        },
+        {
+          "ID": 505576,
+          "Forename": "كوني",
+          "Surname": "سمبا",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637186-1757429471.png"
+        },
+        {
+          "ID": 41092,
+          "Forename": "HAMZA",
+          "Surname": "SALEM",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637249-1757429205.png"
+        },
+        {
+          "ID": 41674,
+          "Forename": "كرميش",
+          "Surname": "فؤاد",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 377343,
+          "Forename": "BOUZAHZAH",
+          "Surname": "OUANISSE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637326-1757429176.png"
+        },
+        {
+          "ID": 42105,
+          "Forename": "زاوي صلاح",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637335-1757429385.png"
+        },
+        {
+          "ID": 40796,
+          "Forename": "رقيق محمد",
+          "Surname": "عماد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637357-1757430630.png"
+        },
+        {
+          "ID": 40757,
+          "Forename": "MOHAMED AIT EL",
+          "Surname": "HADJ",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637310-1757429317.png"
+        },
+        {
+          "ID": 41090,
+          "Forename": "Abdeldjalil",
+          "Surname": "TAHRI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637314-1757429901.png"
+        },
+        {
+          "ID": 377305,
+          "Forename": "BISKER",
+          "Surname": "MONCEF",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 40427,
+          "Forename": "Taha Yassine",
+          "Surname": "TAHAR",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 42154,
+          "Forename": "طاهر محمد",
+          "Surname": "لمين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637323-1757430008.png"
+        },
+        {
+          "ID": 42151,
+          "Forename": "عبد القادر محمد",
+          "Surname": "اسلام",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637324-1757429298.png"
+        },
+        {
+          "ID": 55424,
+          "Forename": "زبايو",
+          "Surname": "جعفر",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637329-1757430417.png"
+        },
+        {
+          "ID": 55462,
+          "Forename": "بودركة محمد نزيم",
+          "Surname": "ازواو",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637332-1757429154.png"
+        },
+        {
+          "ID": 377308,
+          "Forename": "NAMANI",
+          "Surname": "ABDELKRIM",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637356-1757430965.png"
+        },
+        {
+          "ID": 507612,
+          "Forename": "رافانوميسونتوزاو نومينا",
+          "Surname": "لالاينا",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 40739,
+          "Forename": "Adel Amar BELKACEM",
+          "Surname": "BOUZIDA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637311-1757429340.png"
+        },
+        {
+          "ID": 377313,
+          "Forename": "SOUKKOU Mustapha",
+          "Surname": "DJABRIL",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637315-1757429366.png"
+        },
+        {
+          "ID": 377226,
+          "Forename": "BENDOUMA",
+          "Surname": "ABDELLAH",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637316-1757430518.png"
+        },
+        {
+          "ID": 42252,
+          "Forename": "رمضاوي محمد",
+          "Surname": "الامين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637322-1757429575.png"
+        },
+        {
+          "ID": 74642,
+          "Forename": "لحمر سيد",
+          "Surname": "احمد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637327-1757430343.png"
+        },
+        {
+          "ID": 377270,
+          "Forename": "DAO",
+          "Surname": "YOUSSOUF",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637330-1757429446.png"
+        },
+        {
+          "ID": 55447,
+          "Forename": "كحيلي بن",
+          "Surname": "احمد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637331-1757429245.png"
+        },
+        {
+          "ID": 377227,
+          "Forename": "باشا عبد",
+          "Surname": "الرحمن",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639497-1757430987.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 694,
+      "ClubName": "Club 694",
+      "Players": [
+        {
+          "ID": 185821,
+          "Forename": "عزيرية",
+          "Surname": "منير",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637040-1758063995.png"
+        },
+        {
+          "ID": 377260,
+          "Forename": "MBOLHI Adi - Rais, Cobos",
+          "Surname": "ADRIEN",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637063-1758055945.png"
+        },
+        {
+          "ID": 43057,
+          "Forename": "هنان عبد",
+          "Surname": "السلام",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637301-1758024542.png"
+        },
+        {
+          "ID": 83058,
+          "Forename": "سليمان عبد",
+          "Surname": "الإله",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636887-1758059556.png"
+        },
+        {
+          "ID": 83068,
+          "Forename": "لعريش فريد",
+          "Surname": "حمزة",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636892-1758056042.png"
+        },
+        {
+          "ID": 377297,
+          "Forename": "MESMOUDI",
+          "Surname": "BOUALEM",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637061-1758024762.png"
+        },
+        {
+          "ID": 40546,
+          "Forename": "بو القابول",
+          "Surname": "شعيب",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637126-1758048009.png"
+        },
+        {
+          "ID": 40568,
+          "Forename": "بوعلاق",
+          "Surname": "أيمن",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637162-1758024633.png"
+        },
+        {
+          "ID": 40967,
+          "Forename": "BENALI",
+          "Surname": "BENAMMAR",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637302-1758024904.png"
+        },
+        {
+          "ID": 377269,
+          "Forename": "BENLAMRI",
+          "Surname": "DJAMEL",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637303-1758025362.png"
+        },
+        {
+          "ID": 507231,
+          "Forename": "زفان مهدي",
+          "Surname": "امبارك",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-640741-1758059727.png"
+        },
+        {
+          "ID": 40638,
+          "Forename": "العمري سيد",
+          "Surname": "علي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637161-1758047957.png"
+        },
+        {
+          "ID": 41088,
+          "Forename": "بعيود حسام",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637163-1758048139.png"
+        },
+        {
+          "ID": 40939,
+          "Forename": "بن خليفة",
+          "Surname": "الطاهر",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637266-1758025672.png"
+        },
+        {
+          "ID": 42949,
+          "Forename": "بيبي أبو",
+          "Surname": "بكر",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637304-1758055771.png"
+        },
+        {
+          "ID": 40961,
+          "Forename": "Abdelhafid",
+          "Surname": "BENAMARA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637369-1758025238.png"
+        },
+        {
+          "ID": 377300,
+          "Forename": "المودن",
+          "Surname": "عبدالله",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637371-1758028963.png"
+        },
+        {
+          "ID": 40925,
+          "Forename": "Ahmed",
+          "Surname": "GAGAA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637380-1758055856.png"
+        },
+        {
+          "ID": 274351,
+          "Forename": "KHODJA EL",
+          "Surname": "KACEM",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 40288,
+          "Forename": "Mohamed hacene",
+          "Surname": "BENGRINA",
+          "ImageURL": "https://lfp.dz/images/default-person.png"
+        },
+        {
+          "ID": 62782,
+          "Forename": "عيشوس آدم عبد",
+          "Surname": "الرحمن",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636842-1758048216.png"
+        },
+        {
+          "ID": 40998,
+          "Forename": "ZOUBIR",
+          "Surname": "MOTRANI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637032-1758025435.png"
+        },
+        {
+          "ID": 40996,
+          "Forename": "AMEUR",
+          "Surname": "BOUGUETTAYA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637305-1758055902.png"
+        },
+        {
+          "ID": 377462,
+          "Forename": "عسكر عبد",
+          "Surname": "الحق",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637367-1758047870.png"
+        },
+        {
+          "ID": 377296,
+          "Forename": "هارون",
+          "Surname": "علي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637377-1758028911.png"
+        },
+        {
+          "ID": 40589,
+          "Forename": "Boualem Abdelghani",
+          "Surname": "SRYER",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-637385-1758059599.png"
+        },
+        {
+          "ID": 40956,
+          "Forename": "ZINE MOHAMED TOUMI",
+          "Surname": "SIEF",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-638165-1758680031.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 755,
+      "ClubName": "Club 755",
+      "Players": [
+        {
+          "ID": 68942,
+          "Forename": "قادري ضيف",
+          "Surname": "الله",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633778-1756732161.png"
+        },
+        {
+          "ID": 41041,
+          "Forename": "Kheir-Eddine",
+          "Surname": "BOUSSOUF",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633779-1756731098.png"
+        },
+        {
+          "ID": 42139,
+          "Forename": "بن شقال",
+          "Surname": "ينيس",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635868-1756731477.png"
+        },
+        {
+          "ID": 40902,
+          "Forename": "Fateh",
+          "Surname": "TALAH",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633780-1756731059.png"
+        },
+        {
+          "ID": 378101,
+          "Forename": "شحرور",
+          "Surname": "إسلام",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634178-1756730702.png"
+        },
+        {
+          "ID": 40350,
+          "Forename": "لكحل شمس",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634329-1756730997.png"
+        },
+        {
+          "ID": 41073,
+          "Forename": "AYMEN",
+          "Surname": "CHAARAOUI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635182-1756730611.png"
+        },
+        {
+          "ID": 42145,
+          "Forename": "اوكالي عبد الكريم ارسلان",
+          "Surname": "حمزة",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635640-1756730747.png"
+        },
+        {
+          "ID": 40531,
+          "Forename": "ABDELKADER",
+          "Surname": "TAMIMI",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635672-1756730661.png"
+        },
+        {
+          "ID": 41083,
+          "Forename": "Abderrahmane",
+          "Surname": "HACHOUD",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636360-1756731392.png"
+        },
+        {
+          "ID": 42473,
+          "Forename": "خلوف",
+          "Surname": "وسيم",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636375-1756731356.png"
+        },
+        {
+          "ID": 41096,
+          "Forename": "بونوة رضوان عبد",
+          "Surname": "الوحيد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633815-1756731295.png"
+        },
+        {
+          "ID": 377480,
+          "Forename": "يطو محمد",
+          "Surname": "نسيم",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634180-1756731323.png"
+        },
+        {
+          "ID": 52677,
+          "Forename": "عيساني علاء",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634197-1756730845.png"
+        },
+        {
+          "ID": 40463,
+          "Forename": "MASSINISSA",
+          "Surname": "BENCHELOUCHE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635198-1756730777.png"
+        },
+        {
+          "ID": 58604,
+          "Forename": "بوعمامة",
+          "Surname": "باديس",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635864-1756730931.png"
+        },
+        {
+          "ID": 377295,
+          "Forename": "BENABDI",
+          "Surname": "AZIZ",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635866-1756731205.png"
+        },
+        {
+          "ID": 59256,
+          "Forename": "عراش",
+          "Surname": "فادي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635870-1756731427.png"
+        },
+        {
+          "ID": 40866,
+          "Forename": "Abdeldjalil Taki Eddine",
+          "Surname": "SAAD",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634090-1756730874.png"
+        },
+        {
+          "ID": 40644,
+          "Forename": "Mohamed",
+          "Surname": "SOUIBAAH",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634179-1756731154.png"
+        },
+        {
+          "ID": 376802,
+          "Forename": "مسعود سالم",
+          "Surname": "محمد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634198-1756731250.png"
+        },
+        {
+          "ID": 40864,
+          "Forename": "جعبوط",
+          "Surname": "عادل",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635197-1756730806.png"
+        },
+        {
+          "ID": 377363,
+          "Forename": "ALLAM",
+          "Surname": "YANIS",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635867-1756731128.png"
+        },
+        {
+          "ID": 377263,
+          "Forename": "ZAOUACHE",
+          "Surname": "AHMED",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635869-1756730970.png"
+        },
+        {
+          "ID": 63590,
+          "Forename": "عبري",
+          "Surname": "شكيب",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636361-1756731034.png"
+        },
+        {
+          "ID": 377490,
+          "Forename": "محمد سديكي",
+          "Surname": "سيلا",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-641673-1757791453.png"
+        }
+      ]
+    },
+    {
+      "ClubID": 758,
+      "ClubName": "Club 758",
+      "Players": [
+        {
+          "ID": 42253,
+          "Forename": "عليلي",
+          "Surname": "احمد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634311-1756833577.png"
+        },
+        {
+          "ID": 41147,
+          "Forename": "بن الشيخ الفقون",
+          "Surname": "حاتم",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636418-1756832627.png"
+        },
+        {
+          "ID": 41908,
+          "Forename": "قليلش بن",
+          "Surname": "عودة",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636421-1756833319.png"
+        },
+        {
+          "ID": 503987,
+          "Forename": "بن شريفة محمد",
+          "Surname": "وليد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-633587-1756833071.png"
+        },
+        {
+          "ID": 66675,
+          "Forename": "صابري محمد عبد",
+          "Surname": "الرحمان",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634374-1756833218.png"
+        },
+        {
+          "ID": 40949,
+          "Forename": "بن عمران خير",
+          "Surname": "الدين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634976-1756832916.png"
+        },
+        {
+          "ID": 48088,
+          "Forename": "علا",
+          "Surname": "احمد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636148-1756833041.png"
+        },
+        {
+          "ID": 377236,
+          "Forename": "بحوصي عبد",
+          "Surname": "الجليل",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636416-1756833633.png"
+        },
+        {
+          "ID": 40899,
+          "Forename": "Billal",
+          "Surname": "BOUKARROUM",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636419-1756833278.png"
+        },
+        {
+          "ID": 41987,
+          "Forename": "بوثلجة",
+          "Surname": "سليمان",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636422-1757931947.png"
+        },
+        {
+          "ID": 41915,
+          "Forename": "شـلـفـاوي مـحـمـد",
+          "Surname": "يـاسـر",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636425-1756832774.png"
+        },
+        {
+          "ID": 80374,
+          "Forename": "فريد حار امام عبد",
+          "Surname": "المنعم",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634189-1756832809.png"
+        },
+        {
+          "ID": 237552,
+          "Forename": "برابح محمد",
+          "Surname": "نجيب",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634328-1756833160.png"
+        },
+        {
+          "ID": 41101,
+          "Forename": "ALI",
+          "Surname": "AMRICHE",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634658-1756833615.png"
+        },
+        {
+          "ID": 72964,
+          "Forename": "-",
+          "Surname": "-",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636332-1756832671.png"
+        },
+        {
+          "ID": 377221,
+          "Forename": "ADDADI",
+          "Surname": "TOUFIK",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636413-1756832953.png"
+        },
+        {
+          "ID": 41165,
+          "Forename": "مسيعد",
+          "Surname": "هشام",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636415-1756833124.png"
+        },
+        {
+          "ID": 42179,
+          "Forename": "مهداوي",
+          "Surname": "مروان",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636423-1756832737.png"
+        },
+        {
+          "ID": 42456,
+          "Forename": "زيدي",
+          "Surname": "لوناس",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636424-1756833655.png"
+        },
+        {
+          "ID": 377498,
+          "Forename": "بن سعد الله",
+          "Surname": "ظرار",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636426-1756833378.png"
+        },
+        {
+          "ID": 377668,
+          "Forename": "حمرون",
+          "Surname": "رزقي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-639068-1756833469.png"
+        },
+        {
+          "ID": 42627,
+          "Forename": "سديري",
+          "Surname": "محند",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-634975-1756833247.png"
+        },
+        {
+          "ID": 40977,
+          "Forename": "RAMDANE",
+          "Surname": "HITALA",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-635173-1756833423.png"
+        },
+        {
+          "ID": 42567,
+          "Forename": "غربي محمد",
+          "Surname": "امين",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636417-1756833490.png"
+        },
+        {
+          "ID": 377231,
+          "Forename": "زاموم",
+          "Surname": "وليد",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636420-1756833355.png"
+        },
+        {
+          "ID": 377289,
+          "Forename": "OUATTARA DOGNIMIN",
+          "Surname": "ROMARIC",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636559-1756832989.png"
+        },
+        {
+          "ID": 505233,
+          "Forename": "سيسوكو علي",
+          "Surname": "ديسي",
+          "ImageURL": "https://lfp.dz/licence-photo/photo-pro-636563-1756832866.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "success": false,
+  "error": "Failed to load YOLO model: __enter__",
+  "error_type": "ProcessingError"
+}

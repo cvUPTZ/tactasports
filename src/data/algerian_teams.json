@@ -1,0 +1,195 @@
+{
+    "MC Alger": {
+        "teamName": "MC Alger",
+        "PlayerData": [
+            {
+                "ID": 1001,
+                "Forename": "Oussama",
+                "Surname": "Litim",
+                "Number": 1
+            },
+            {
+                "ID": 1002,
+                "Forename": "Ayoub",
+                "Surname": "Abdellaoui",
+                "Number": 5
+            },
+            {
+                "ID": 1003,
+                "Forename": "Mohamed",
+                "Surname": "Benkhemassa",
+                "Number": 8
+            },
+            {
+                "ID": 1004,
+                "Forename": "Youcof",
+                "Surname": "Belaïli",
+                "Number": 10
+            },
+            {
+                "ID": 1005,
+                "Forename": "Zakaria",
+                "Surname": "Naidji",
+                "Number": 7
+            },
+            {
+                "ID": 1006,
+                "Forename": "Sofiane",
+                "Surname": "Bayazid",
+                "Number": 9
+            },
+            {
+                "ID": 1007,
+                "Forename": "Hamza",
+                "Surname": "Mouali",
+                "Number": 15
+            },
+            {
+                "ID": 1008,
+                "Forename": "Reda",
+                "Surname": "Halaipmia",
+                "Number": 27
+            }
+        ]
+    },
+    "CR Belouizdad": {
+        "teamName": "CR Belouizdad",
+        "PlayerData": [
+            {
+                "ID": 2001,
+                "Forename": "Alexis",
+                "Surname": "Guendouz",
+                "Number": 26
+            },
+            {
+                "ID": 2002,
+                "Forename": "Chouaib",
+                "Surname": "Keddad",
+                "Number": 2
+            },
+            {
+                "ID": 2003,
+                "Forename": "Houcine",
+                "Surname": "Benayada",
+                "Number": 13
+            },
+            {
+                "ID": 2004,
+                "Forename": "Abderrahmane",
+                "Surname": "Meziane",
+                "Number": 11
+            },
+            {
+                "ID": 2005,
+                "Forename": "Mohamed",
+                "Surname": "Islam Belkhir",
+                "Number": 7
+            },
+            {
+                "ID": 2006,
+                "Forename": "Leonel",
+                "Surname": "Wamba",
+                "Number": 42
+            }
+        ]
+    },
+    "USM Alger": {
+        "teamName": "USM Alger",
+        "PlayerData": [
+            {
+                "ID": 3001,
+                "Forename": "Oussama",
+                "Surname": "Benbot",
+                "Number": 25
+            },
+            {
+                "ID": 3002,
+                "Forename": "Saâdi",
+                "Surname": "Radouani",
+                "Number": 19
+            },
+            {
+                "ID": 3003,
+                "Forename": "Zinedine",
+                "Surname": "Belaïd",
+                "Number": 4
+            },
+            {
+                "ID": 3004,
+                "Forename": "Brahim",
+                "Surname": "Benzaza",
+                "Number": 6
+            },
+            {
+                "ID": 3005,
+                "Forename": "Ismail",
+                "Surname": "Belkacemi",
+                "Number": 10
+            }
+        ]
+    },
+    "JS Kabylie": {
+        "teamName": "JS Kabylie",
+        "PlayerData": [
+            {
+                "ID": 4001,
+                "Forename": "Chamseddine",
+                "Surname": "Rahmani",
+                "Number": 16
+            },
+            {
+                "ID": 4002,
+                "Forename": "Badreddine",
+                "Surname": "Souyad",
+                "Number": 4
+            },
+            {
+                "ID": 4003,
+                "Forename": "Salim",
+                "Surname": "Boukhenchouche",
+                "Number": 6
+            },
+            {
+                "ID": 4004,
+                "Forename": "Kouceila",
+                "Surname": "Boualia",
+                "Number": 7
+            },
+            {
+                "ID": 4005,
+                "Forename": "Dadi",
+                "Surname": "El Hocine",
+                "Number": 11
+            }
+        ]
+    },
+    "ES Sétif": {
+        "teamName": "ES Sétif",
+        "PlayerData": [
+            {
+                "ID": 5001,
+                "Forename": "Zakaria",
+                "Surname": "Saidi",
+                "Number": 1
+            },
+            {
+                "ID": 5002,
+                "Forename": "Tarek",
+                "Surname": "Aggoun",
+                "Number": 5
+            },
+            {
+                "ID": 5003,
+                "Forename": "Amir",
+                "Surname": "Karaoui",
+                "Number": 14
+            },
+            {
+                "ID": 5004,
+                "Forename": "Walid",
+                "Surname": "Zamoum",
+                "Number": 10
+            }
+        ]
+    }
+}

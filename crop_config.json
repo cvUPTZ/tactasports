@@ -1,0 +1,35 @@
+{
+    "slides": [
+        {
+            "page": 1,
+            "crops": [
+                {
+                    "name": "illustration",
+                    "bbox": [688, 113, 1364, 720]
+                }
+            ]
+        },
+        {
+            "page": 2,
+            "crops": [
+                {
+                    "name": "illustration",
+                    "bbox": [688, 124, 1375, 720]
+                }
+            ]
+        },
+        {
+            "page": 3,
+            "crops": [
+                {
+                    "name": "text",
+                    "bbox": [55, 57, 680, 757]
+                },
+                {
+                    "name": "illustration",
+                    "bbox": [688, 57, 1364, 720]
+                }
+            ]
+        }
+    ]
+}

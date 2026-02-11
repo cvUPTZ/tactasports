@@ -1,0 +1,5 @@
+{
+  "success": false,
+  "error": "'TeamAssigner' object has no attribute 'kmeans'",
+  "error_type": "AttributeError"
+}

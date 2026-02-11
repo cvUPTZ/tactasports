@@ -1,0 +1,456 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  TACTA DESIGN SYSTEM
+  Enhanced with proper spacing scale, typography system, and semantic colors
+*/
+
+@layer base {
+  :root {
+    /* ==================== TYPOGRAPHY ==================== */
+    --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    /* Typography Scale (14px base) */
+    --text-xs: 0.6875rem;
+    /* 11px - micro labels */
+    --text-sm: 0.8125rem;
+    /* 13px - secondary text */
+    --text-base: 0.875rem;
+    /* 14px - body text */
+    --text-md: 1rem;
+    /* 16px - emphasized text */
+    --text-lg: 1.125rem;
+    /* 18px - section headers */
+    --text-xl: 1.25rem;
+    /* 20px - card headers */
+    --text-2xl: 1.5rem;
+    /* 24px - main stats */
+    --text-3xl: 2rem;
+    /* 32px - hero numbers */
+
+    /* Font Weights */
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+
+    /* ==================== SPACING SCALE ==================== */
+    /* 8px base unit system for consistent spacing */
+    --space-0: 0;
+    --space-1: 0.25rem;
+    /* 4px */
+    --space-2: 0.5rem;
+    /* 8px - base unit */
+    --space-3: 0.75rem;
+    /* 12px */
+    --space-4: 1rem;
+    /* 16px */
+    --space-5: 1.25rem;
+    /* 20px */
+    --space-6: 1.5rem;
+    /* 24px */
+    --space-8: 2rem;
+    /* 32px */
+    --space-10: 2.5rem;
+    /* 40px */
+    --space-12: 3rem;
+    /* 48px */
+    --space-16: 4rem;
+    /* 64px */
+
+    /* ==================== COLOR SYSTEM ==================== */
+    /* Backgrounds */
+    --background: 215 40% 10%;
+    /* Deep Navy */
+    --background-elevated: 215 35% 13%;
+    /* Slightly lighter for cards */
+    --foreground: 0 0% 100%;
+
+    /* Cards & Surfaces */
+    --card: 215 35% 15%;
+    --card-hover: 215 35% 18%;
+    --card-foreground: 0 0% 100%;
+
+    /* Popovers & Modals */
+    --popover: 215 35% 15%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Primary (Tacta Blue) */
+    --primary: 212 90% 52%;
+    /* Slightly brighter for better contrast */
+    --primary-hover: 212 90% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary & Muted */
+    --secondary: 215 25% 22%;
+    /* More contrast */
+    --secondary-hover: 215 25% 26%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 215 25% 20%;
+    --muted-foreground: 215 15% 65%;
+    /* Better readability */
+
+    /* Accent (same as primary for consistency) */
+    --accent: 212 90% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Semantic Colors */
+    --success: 142 70% 45%;
+    /* Green */
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    /* Orange */
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    /* Red */
+    --destructive-foreground: 0 0% 100%;
+    --info: 212 90% 52%;
+    /* Blue (same as primary) */
+    --info-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 215 30% 28%;
+    /* More visible borders */
+    --border-hover: 215 30% 35%;
+    --input: 215 30% 25%;
+    --input-focus: 215 30% 30%;
+    --ring: 212 90% 52%;
+
+    /* ==================== EFFECTS ==================== */
+    --radius-sm: 0.375rem;
+    /* 6px */
+    --radius: 0.5rem;
+    /* 8px */
+    --radius-md: 0.75rem;
+    /* 12px */
+    --radius-lg: 1rem;
+    /* 16px */
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(215 40% 5% / 0.05);
+    --shadow: 0 2px 8px 0 hsl(215 40% 5% / 0.1);
+    --shadow-md: 0 4px 12px 0 hsl(215 40% 5% / 0.15);
+    --shadow-lg: 0 8px 24px 0 hsl(215 40% 5% / 0.2);
+    --shadow-glow: 0 0 30px hsl(212 90% 50% / 0.3);
+    --shadow-glow-sm: 0 0 15px hsl(212 90% 50% / 0.2);
+    --shadow-success: 0 0 20px hsl(142 70% 45% / 0.4);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(212 90% 45%), hsl(212 90% 60%));
+    --gradient-success: linear-gradient(135deg, hsl(142 70% 40%), hsl(142 70% 50%));
+    --gradient-overlay: linear-gradient(180deg, hsl(215 40% 10% / 0) 0%, hsl(215 40% 10% / 0.8) 100%);
+
+    /* ==================== TRANSITIONS ==================== */
+    --transition-fast: 150ms ease;
+    --transition-base: 200ms ease;
+    --transition-slow: 300ms ease;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.5;
+    font-weight: var(--font-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+  }
+
+  /* Typography Elements */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: var(--font-semibold);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: var(--text-3xl);
+  }
+
+  h2 {
+    font-size: var(--text-2xl);
+  }
+
+  h3 {
+    font-size: var(--text-xl);
+  }
+
+  h4 {
+    font-size: var(--text-lg);
+  }
+
+  h5 {
+    font-size: var(--text-md);
+  }
+
+  h6 {
+    font-size: var(--text-base);
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  small {
+    font-size: var(--text-sm);
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+
+  /* Better button defaults */
+  button {
+    font-weight: var(--font-medium);
+    transition: all var(--transition-base);
+  }
+
+  button:hover {
+    transform: translateY(-1px);
+  }
+
+  button:active {
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+
+  /* ==================== SCROLLBARS ==================== */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--border) / 0.6);
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--border-hover) / 0.8);
+  }
+
+  /* ==================== TYPOGRAPHY UTILITIES ==================== */
+  .text-xs {
+    font-size: var(--text-xs);
+  }
+
+  .text-sm {
+    font-size: var(--text-sm);
+  }
+
+  .text-base {
+    font-size: var(--text-base);
+  }
+
+  .text-md {
+    font-size: var(--text-md);
+  }
+
+  .text-lg {
+    font-size: var(--text-lg);
+  }
+
+  .text-xl {
+    font-size: var(--text-xl);
+  }
+
+  .text-2xl {
+    font-size: var(--text-2xl);
+  }
+
+  .text-3xl {
+    font-size: var(--text-3xl);
+  }
+
+  .font-normal {
+    font-weight: var(--font-normal);
+  }
+
+  .font-medium {
+    font-weight: var(--font-medium);
+  }
+
+  .font-semibold {
+    font-weight: var(--font-semibold);
+  }
+
+  .font-bold {
+    font-weight: var(--font-bold);
+  }
+
+  /* ==================== SPACING UTILITIES ==================== */
+  .space-1 {
+    gap: var(--space-1);
+  }
+
+  .space-2 {
+    gap: var(--space-2);
+  }
+
+  .space-3 {
+    gap: var(--space-3);
+  }
+
+  .space-4 {
+    gap: var(--space-4);
+  }
+
+  .space-5 {
+    gap: var(--space-5);
+  }
+
+  .space-6 {
+    gap: var(--space-6);
+  }
+
+  .space-8 {
+    gap: var(--space-8);
+  }
+
+  /* ==================== CARD UTILITIES ==================== */
+  .card-elevated {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: all var(--transition-base);
+  }
+
+  .card-elevated:hover {
+    background: hsl(var(--card-hover));
+    border-color: hsl(var(--border-hover));
+    box-shadow: var(--shadow-md);
+  }
+
+  /* ==================== BUTTON UTILITIES ==================== */
+  .btn-glow {
+    box-shadow: var(--shadow-glow-sm);
+  }
+
+  .btn-glow:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-success-glow {
+    box-shadow: var(--shadow-success);
+  }
+
+  /* ==================== GRADIENT UTILITIES ==================== */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-success {
+    background: var(--gradient-success);
+  }
+
+  .gradient-overlay {
+    background: var(--gradient-overlay);
+  }
+
+  /* ==================== STATE UTILITIES ==================== */
+  .state-success {
+    color: hsl(var(--success));
+  }
+
+  .state-warning {
+    color: hsl(var(--warning));
+  }
+
+  .state-error {
+    color: hsl(var(--destructive));
+  }
+
+  .state-info {
+    color: hsl(var(--info));
+  }
+
+  /* Background variants */
+  .bg-success {
+    background: hsl(var(--success));
+    color: hsl(var(--success-foreground));
+  }
+
+  .bg-warning {
+    background: hsl(var(--warning));
+    color: hsl(var(--warning-foreground));
+  }
+
+  .bg-error {
+    background: hsl(var(--destructive));
+    color: hsl(var(--destructive-foreground));
+  }
+
+  .bg-info {
+    background: hsl(var(--info));
+    color: hsl(var(--info-foreground));
+  }
+
+  /* ==================== FOCUS UTILITIES ==================== */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* ==================== ANIMATION UTILITIES ==================== */
+  .transition-fast {
+    transition: all var(--transition-fast);
+  }
+
+  .transition-base {
+    transition: all var(--transition-base);
+  }
+
+  .transition-slow {
+    transition: all var(--transition-slow);
+  }
+
+  /* ==================== GLASSMORPHISM ==================== */
+  .glass {
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  .glass-strong {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.6);
+  }
+}

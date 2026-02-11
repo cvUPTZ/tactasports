@@ -1,0 +1,13 @@
+{
+  "success": false,
+  "error": "Production modules not installed",
+  "message": "Please install required dependencies: pip install -r requirements.txt",
+  "details": {
+    "video_path": "C:\\Users\\lenovo\\Downloads\\soccer-controller-log-main\\soccer-controller-log-main\\public\\uploads\\video-1764238656866.mp4",
+    "legacy_mode": true,
+    "missing_modules": [
+      "soccer_analysis_processor",
+      "soccer_analysis_core"
+    ]
+  }
+}

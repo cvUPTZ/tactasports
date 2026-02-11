@@ -1,0 +1,16 @@
+build:
+  gpu: true
+  python_version: "3.11"
+  system_packages:
+    - "libgl1-mesa-glx"
+    - "libglib2.0-0"
+  python_packages:
+    - "opencv-python==4.8.1.78"
+    - "ultralytics==8.0.200"
+    - "numpy==1.24.3"
+    - "scipy==1.11.3"
+    - "scikit-learn==1.3.2"
+    - "matplotlib==3.7.2"
+    - "Pillow==10.0.1"
+
+predict: "predict.py:Predictor"

@@ -1,0 +1,214 @@
+import { fileURLToPath } from 'url';
+import path from 'path';
+import fs from 'fs';
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import { createServer } from 'http';
+import { Server } from 'socket.io';
+import { spawn } from 'child_process';
+import http from 'http';
+import https from 'https';
+import multer from 'multer';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// ===== CONFIGURATION =====
+
+// Configure multer for video uploads
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        const uploadDir = path.join(__dirname, 'public', 'uploads');
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
+        }
+        cb(null, uploadDir);
+    },
+    filename: function (req, file, cb) {
+        cb(null, 'video-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ storage: storage });
+
+const app = express();
+app.use(cors());
+// Increased limit for heavy JSON payloads (like team data)
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use('/heatmaps', express.static(path.join(__dirname, 'public', 'heatmaps')));
+
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+});
+
+// ===== STATE MANAGEMENT =====
+
+// Store current state to sync with new connections
+let currentState = {
+    events: [],
+    matchTime: 0,
+    isMatchActive: false,
+    selectedTeam: "", // Holds the ID of the currently selected team
+    teams: []         // Holds the array of team objects
+};
+
+let broadcasterId = null;
+
+// ===== HEATMAP API ENDPOINTS (Unchanged) =====
+
+app.post('/api/extract-positions', upload.single('video'), (req, res) => {
+    if (!req.file) return res.status(400).json({ error: 'No video file uploaded' });
+
+    const videoPath = req.file.path;
+    const startTime = req.body.startTime || 0;
+    const endTime = req.body.endTime || null;
+    const outputPath = path.join(__dirname, 'public', 'heatmaps', 'positions.json');
+    const pythonScript = path.join(__dirname, 'python', 'extract_positions.py');
+
+    const args = [pythonScript, '--video', videoPath, '--output', outputPath, '--frame-skip', '5', '--start-time', startTime.toString()];
+    if (endTime) args.push('--end-time', endTime.toString());
+
+    console.log(`Extracting positions: ${videoPath}`);
+    const python = spawn('python', args);
+    let stderr = '';
+
+    python.stderr.on('data', (data) => stderr += data.toString());
+    python.on('close', (code) => {
+        if (code !== 0) return res.status(500).json({ error: 'Position extraction failed', details: stderr });
+        fs.readFile(outputPath, 'utf8', (err, data) => {
+            if (err) return res.status(500).json({ error: 'Failed to read positions file' });
+            try { res.json({ success: true, positions: JSON.parse(data) }); }
+            catch (e) { res.status(500).json({ error: 'Failed to parse positions data' }); }
+        });
+    });
+});
+
+app.post('/api/generate-heatmap', (req, res) => {
+    const { team } = req.body;
+    const scatter = req.body.scatter === true;
+    const positionsPath = path.join(__dirname, 'public', 'heatmaps', 'positions.json');
+    if (!broadcasterId) {
+        broadcasterId = socket.id;
+        socket.emit('role-assignment', 'broadcaster');
+        console.log(`Assigned BROADCASTER role to ${socket.id}`);
+    } else {
+        socket.emit('role-assignment', 'viewer');
+        console.log(`Assigned VIEWER role to ${socket.id}`);
+    }
+
+    // 3. WEBRTC SIGNALING (Video)
+    socket.on('watcher', () => {
+        if (broadcasterId) io.to(broadcasterId).emit('watcher', socket.id);
+    });
+    socket.on('offer', (id, message) => io.to(id).emit('offer', socket.id, message));
+    socket.on('answer', (id, message) => io.to(id).emit('answer', socket.id, message));
+    socket.on('candidate', (id, message) => io.to(id).emit('candidate', socket.id, message));
+
+    // 4. WEBRTC SIGNALING (Audio)
+    socket.on('audio-watcher', () => {
+        if (broadcasterId) io.to(broadcasterId).emit('audio-watcher', socket.id);
+    });
+    socket.on('audio-broadcaster-ready', () => socket.broadcast.emit('audio-broadcaster-ready'));
+    socket.on('audio-offer', (data) => io.to(data.to).emit('audio-offer', { offer: data.offer, from: socket.id }));
+    socket.on('audio-answer', (data) => io.to(data.to).emit('audio-answer', { answer: data.answer, from: socket.id }));
+    socket.on('audio-candidate', (data) => io.to(data.to).emit('audio-candidate', { candidate: data.candidate, from: socket.id }));
+    socket.on('audio-broadcast-stopped', () => socket.broadcast.emit('audio-broadcast-stopped'));
+
+    // 5. DATA SYNCHRONIZATION EVENTS
+
+    // Handle new event logged (e.g., Goal, Foul)
+    socket.on('new-event', (event) => {
+        console.log('New event received:', event.eventName);
+        currentState.events.push(event);
+        socket.broadcast.emit('new-event', event);
+    });
+
+    // Handle match timer updates
+    socket.on('sync-timer', (data) => {
+        currentState.matchTime = data.matchTime;
+        currentState.isMatchActive = data.isMatchActive;
+        // Optimization: Use volatile for timer to prevent backlog
+        socket.broadcast.emit('sync-timer', data);
+    });
+
+    // Handle Teams Sync
+    socket.on('sync-teams', (teams) => {
+        console.log(`Syncing teams: Received ${teams.length} teams.`);
+        // CRITICAL: Update server memory
+        currentState.teams = teams;
+        // CRITICAL: Broadcast to everyone else (Viewers)
+        socket.broadcast.emit('sync-teams', teams);
+    });
+
+    // Handle Team Selection
+    socket.on('select-team', (teamId) => {
+        console.log(`Team Selected: ${teamId}`);
+        // CRITICAL: Update server memory
+        currentState.selectedTeam = teamId;
+        // CRITICAL: Broadcast to everyone else
+        socket.broadcast.emit('select-team', teamId);
+    });
+
+    // Handle Full State Update (Nuclear option)
+    socket.on('update-full-state', (state) => {
+        console.log('Full state update received');
+        currentState = { ...currentState, ...state };
+        socket.broadcast.emit('sync-state', currentState);
+    });
+
+    socket.on('disconnect', () => {
+        console.log('Client disconnected:', socket.id);
+        if (socket.id === broadcasterId) {
+            broadcasterId = null;
+            socket.broadcast.emit('stream-ended');
+            console.log('Broadcaster disconnected. Role reset.');
+            // Note: We do NOT wipe currentState here so viewers keep data
+        }
+    });
+});
+
+// ===== PROXY ENDPOINT =====
+app.get(/^\/api\/proxy(\/.*)?$/, (req, res) => {
+    let targetUrl = req.query.url;
+    if (!targetUrl && req.params[0]) targetUrl = req.params[0].substring(1);
+    if (!targetUrl) return res.status(400).send('URL required');
+
+    const fetchUrl = (url, redirectCount = 0) => {
+        if (redirectCount > 5) return res.status(500).send('Too many redirects');
+
+        try {
+            const parsedUrl = new URL(url);
+            const client = parsedUrl.protocol === 'https:' ? https : http;
+
+            client.get(url, (proxyRes) => {
+                if (proxyRes.statusCode >= 300 && proxyRes.statusCode < 400 && proxyRes.headers.location) {
+                    return fetchUrl(proxyRes.headers.location, redirectCount + 1);
+                }
+
+                res.status(proxyRes.statusCode);
+                Object.keys(proxyRes.headers).forEach(key => {
+                    if (key.toLowerCase() === 'access-control-allow-origin') return;
+                    res.setHeader(key, proxyRes.headers[key]);
+                });
+                res.setHeader('Access-Control-Allow-Origin', '*');
+                proxyRes.pipe(res);
+            }).on('error', (err) => {
+                if (!res.headersSent) res.status(500).send('Proxy request error');
+            });
+        } catch (err) {
+            if (!res.headersSent) res.status(400).send('Invalid URL');
+        }
+    };
+    fetchUrl(targetUrl);
+});
+
+const PORT = process.env.PORT || 3003;
+httpServer.listen(PORT, '0.0.0.0', () => {
+    console.log(`Socket.io server running on port ${PORT}`);
+    console.log(`API available at http://localhost:${PORT}/api`);
+});

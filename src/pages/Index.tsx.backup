@@ -1,0 +1,1267 @@
+import { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
+import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Download, Gamepad2, Users, Mic, MicOff, Monitor, X, Wifi, WifiOff, RefreshCw, Upload } from "lucide-react";
+import { exportToCSV } from "@/utils/csvExport";
+import { ControllerGrid } from "@/components/ControllerGrid";
+import { EventLog } from "@/components/EventLog";
+import { StatisticsDashboard } from "@/components/StatisticsDashboard";
+import { VideoUpload } from "@/components/VideoUpload";
+import { VideoPlayer } from "@/components/VideoPlayer";
+import { AnalysisVideoPlayer } from "@/components/VideoPlayer/AnalysisVideoPlayer";
+import { PlayerUpload } from "@/components/PlayerUpload";
+import { TeamGrid } from "@/components/TeamGrid";
+import { PlayerSelectionSidebar } from "@/components/PlayerSelectionSidebar";
+import { StartingLineup } from "@/components/StartingLineup";
+import { Dashboard } from "@/components/Dashboard";
+import { TeamRoster, Player } from "@/types/player";
+import { useToast } from "@/hooks/use-toast";
+import { useGamepad, LoggedEvent } from "@/hooks/useGamepad";
+import { TacticalAnalysisDashboard } from "@/components/TacticalAnalysisDashboard";
+import { AnalysisResultsViewer } from "@/components/AnalysisResultsViewer";
+import { ButtonMappingConfig } from "@/components/ButtonMappingConfig";
+import LiveStreamPlayer from "@/components/LiveStreamPlayer";
+import { SmartPlayerSelector } from "@/components/SmartPlayerSelector";
+
+import { useVoiceRecognition } from "@/hooks/useVoiceRecognition";
+import { useAudioBroadcast } from "@/hooks/useAudioBroadcast";
+import { COMMANDS, matchCommand, parseNumber } from "@/utils/voiceUtils";
+import { io, Socket } from 'socket.io-client';
+
+import { API_BASE_URL } from "@/utils/apiConfig";
+
+// Initialize socket outside component to avoid reconnection on re-renders
+const socket: Socket = io(API_BASE_URL, {
+  autoConnect: true,
+  reconnection: true
+});
+
+const Index = () => {
+  const [events, setEvents] = useState<LoggedEvent[]>([]);
+  const [teams, setTeams] = useState<Map<string, TeamRoster>>(new Map());
+  const [selectedTeam, setSelectedTeam] = useState<string>("");
+  const [lastEventButtonLabel, setLastEventButtonLabel] = useState<string>();
+  const [voiceLanguage, setVoiceLanguage] = useState<'en' | 'fr' | 'ar'>('en');
+
+  const [gamepadConnected, setGamepadConnected] = useState(false);
+  const [editingEventId, setEditingEventId] = useState<number | null>(null);
+  const [isSocketConnected, setIsSocketConnected] = useState(socket.connected);
+  const [role, setRole] = useState<'broadcaster' | 'viewer' | null>(null);
+  const { toast } = useToast();
+
+  const [matchTime, setMatchTime] = useState(0);
+  const [isMatchActive, setIsMatchActive] = useState(false);
+  const matchTimeRef = useRef(0); // Ref to access current time without re-rendering callback
+  const videoTimeRef = useRef(0); // Ref for video time to avoid callback recreation
+
+  // Video state
+  const [videoFile, setVideoFile] = useState<File | null>(null);
+  const [remoteVideoUrl, setRemoteVideoUrl] = useState<string | null>(null);
+  const [videoTime, setVideoTime] = useState(0);
+  const [useVideoMode, setUseVideoMode] = useState(false);
+  const [seekTime, setSeekTime] = useState<number | null>(null);
+  const [analysisResults, setAnalysisResults] = useState<any>(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [videoMode, setVideoMode] = useState<'upload' | 'live'>('upload'); // Tab state for video source
+  const [showAnalysisView, setShowAnalysisView] = useState(false);
+
+  // Socket.io Logic
+  useEffect(() => {
+    function onConnect() {
+      setIsSocketConnected(true);
+      console.log("Socket connected");
+    }
+
+    function onDisconnect() {
+      setIsSocketConnected(false);
+      console.log("Socket disconnected");
+    }
+
+    function onSyncState(state: any) {
+      console.log("Syncing state:", state);
+      if (state.events && state.events.length > events.length) {
+        setEvents(state.events);
+      }
+      if (state.matchTime > matchTimeRef.current) {
+        setMatchTime(state.matchTime);
+        matchTimeRef.current = state.matchTime;
+      }
+      if (state.isMatchActive !== undefined) setIsMatchActive(state.isMatchActive);
+
+      // FIX: Always respect server's selected team on connect
+      if (state.selectedTeam) setSelectedTeam(state.selectedTeam);
+
+      if (state.teams && state.teams.length > 0) {
+        try {
+          const newTeams = new Map<string, TeamRoster>();
+          // If it comes as array of entries [[name, roster], ...]
+          if (Array.isArray(state.teams)) {
+            state.teams.forEach((t: any) => {
+              if (Array.isArray(t) && t.length === 2) newTeams.set(t[0], t[1]);
+            });
+          }
+          if (newTeams.size > 0) setTeams(newTeams);
+        } catch (e) {
+          console.error("Error syncing teams:", e);
+        }
+      }
+    }
+
+    function onSyncTeams(teamsData: any[]) {
+      console.log("Received synced teams:", teamsData);
+      try {
+        const newTeams = new Map<string, TeamRoster>();
+        if (Array.isArray(teamsData)) {
+          teamsData.forEach((t: any) => {
+            if (Array.isArray(t) && t.length === 2) newTeams.set(t[0], t[1]);
+          });
+        }
+        if (newTeams.size > 0) setTeams(newTeams);
+        toast({ title: "Teams Synced", description: "Received team data from broadcaster." });
+      } catch (e) {
+        console.error("Error handling sync-teams:", e);
+      }
+    }
+
+    function onNewEvent(event: LoggedEvent) {
+      console.log("Received remote event:", event);
+      setEvents(prev => [...prev, event]);
+    }
+
+    function onSyncTimer(data: { matchTime: number, isMatchActive: boolean }) {
+      setMatchTime(data.matchTime);
+      matchTimeRef.current = data.matchTime;
+      setIsMatchActive(data.isMatchActive);
+    }
+
+    // FIX: Renamed listener function and event name to match server
+    function onSelectTeam(teamId: string) {
+      console.log("Broadcaster switched team to:", teamId);
+      setSelectedTeam(teamId);
+    }
+
+    function onRoleAssignment(assignedRole: 'broadcaster' | 'viewer') {
+      console.log("Assigned role:", assignedRole);
+      setRole(assignedRole);
+      toast({
+        title: "Role Assigned",
+        description: `You are the ${assignedRole === 'broadcaster' ? 'Broadcaster (Host)' : 'Viewer'}`,
+      });
+    }
+
+    socket.on('connect', onConnect);
+    socket.on('disconnect', onDisconnect);
+    socket.on('sync-state', onSyncState);
+    socket.on('new-event', onNewEvent);
+    socket.on('sync-timer', onSyncTimer);
+
+    // FIX: Changed 'update-team' to 'select-team'
+    socket.on('select-team', onSelectTeam);
+    socket.on('sync-teams', onSyncTeams);
+    socket.on('role-assignment', onRoleAssignment);
+
+    socket.on('undo-event', (eventId: number) => {
+      console.log("Received undo event:", eventId);
+      setEvents(prev => prev.filter(e => e.id !== eventId));
+      toast({
+        title: "Event Annulled",
+        description: `Event #${eventId} was removed by broadcaster`,
+      });
+    });
+
+    socket.on('update-event', (updatedEvent: LoggedEvent) => {
+      console.log("Received update event:", updatedEvent);
+      setEvents(prev => prev.map(e => e.id === updatedEvent.id ? updatedEvent : e));
+    });
+
+    // ===== VIDEO SYNC LISTENERS =====
+    socket.on('video-sync', (data: any) => {
+      console.log("Received video sync:", data);
+      if (data.videoUrl && data.videoUrl !== videoFile?.name) { // Simple check, ideally check URL
+        // If it's a remote URL (starts with /uploads), we might need to handle it
+        // For now, we assume handleVideoUpload sets local state for broadcaster
+        // But for viewer, we need to set videoUrl.
+        // Since videoFile is File object, we might need a separate videoUrl state in Index or pass string to VideoPlayer
+      }
+    });
+
+    socket.on('video-loaded', (url: string) => {
+      console.log("Broadcaster loaded video:", url);
+      console.log("Setting remoteVideoUrl to:", url);
+      setRemoteVideoUrl(url);
+      setUseVideoMode(true);
+      setVideoMode('upload');
+      console.log("Video mode set to: upload");
+    });
+
+    socket.on('video-play', (time: number) => {
+      console.log("Broadcaster played at:", time);
+      setIsVideoPlaying(true);
+      setVideoTime(time);
+    });
+
+    socket.on('video-pause', (time: number) => {
+      console.log("Broadcaster paused at:", time);
+      setIsVideoPlaying(false);
+      setVideoTime(time);
+    });
+
+    socket.on('video-seek', (time: number) => {
+      console.log("Broadcaster seeked to:", time);
+      setSeekTime(time);
+    });
+    // ===============================
+
+    return () => {
+      socket.off('connect', onConnect);
+      socket.off('disconnect', onDisconnect);
+      socket.off('sync-state', onSyncState);
+      socket.off('new-event', onNewEvent);
+      socket.off('sync-timer', onSyncTimer);
+
+      // FIX: Changed 'update-team' to 'select-team'
+      socket.off('select-team', onSelectTeam);
+      socket.off('sync-teams', onSyncTeams);
+      socket.off('role-assignment', onRoleAssignment);
+      socket.off('undo-event');
+      socket.off('update-event');
+      socket.off('video-sync');
+      socket.off('video-loaded');
+      socket.off('video-play');
+      socket.off('video-pause');
+      socket.off('video-seek');
+    };
+  }, []);
+
+  // Broadcast Timer Changes
+  useEffect(() => {
+    socket.emit('sync-timer', { matchTime, isMatchActive });
+  }, [isMatchActive]);
+
+  // Match Timer Logic
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isMatchActive && !useVideoMode) {
+      interval = setInterval(() => {
+        setMatchTime((prev) => {
+          const newTime = prev + 1;
+          matchTimeRef.current = newTime; // Update ref
+          return newTime;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isMatchActive, useVideoMode]);
+
+  // Sync Match Time & Refs with Video Time
+  useEffect(() => {
+    if (useVideoMode) {
+      videoTimeRef.current = videoTime;
+      const timeInSeconds = Math.floor(videoTime);
+      if (matchTimeRef.current !== timeInSeconds) {
+        setMatchTime(timeInSeconds);
+        matchTimeRef.current = timeInSeconds;
+      }
+    }
+  }, [videoTime, useVideoMode]);
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  // Stable callback for gamepad events
+  const handleEventLogged = useCallback((event: LoggedEvent) => {
+    const currentTime = matchTimeRef.current;
+    const currentVideoTime = videoTimeRef.current;
+
+    const eventWithTime = {
+      ...event,
+      matchTime: formatTime(currentTime),
+      ...(useVideoMode && videoFile ? { videoTime: currentVideoTime } : {})
+    };
+    setEvents((prev) => [eventWithTime, ...prev]);
+    setLastEventButtonLabel(event.buttonLabel);
+
+    // Broadcast event to other clients
+    socket.emit('new-event', eventWithTime);
+  }, [useVideoMode, videoFile]);
+
+  const {
+    isConnected,
+    manualCheck,
+    pressedButtons,
+    axes,
+    buttons,
+    mappings,
+    updateMapping,
+    resetMappings,
+    playerSelection
+  } = useGamepad(handleEventLogged, {
+    // Pass the selected team's roster as Team A (primary)
+    teamARoster: teams.get(selectedTeam)?.PlayerData?.map(p => ({
+      id: p.ID,
+      name: `${p.Forename} ${p.Surname}`,
+      number: p.Number
+    })) || [],
+    // Try to find another team for Team B if exists
+    teamBRoster: Array.from(teams.entries())
+      .find(([id]) => id !== selectedTeam)?.[1]?.PlayerData?.map(p => ({
+        id: p.ID,
+        name: `${p.Forename} ${p.Surname}`,
+        number: p.Number
+      })) || [],
+    // Pass starting numbers if available (currently hardcoded for Algeria)
+    teamAStartingNumbers: selectedTeam === "Algeria" ? [1, 2, 5, 6, 7, 8, 9, 10, 11, 15, 22] : undefined
+  });
+
+  const handleTeamUpload = (newTeams: Map<string, TeamRoster>) => {
+    const updatedTeams = new Map(teams);
+    newTeams.forEach((roster, teamName) => {
+      updatedTeams.set(teamName, roster);
+    });
+
+    setTeams(updatedTeams);
+
+    // Emit sync-teams to server
+    const teamsArray = Array.from(updatedTeams.entries());
+    socket.emit('sync-teams', teamsArray);
+
+    if (newTeams.size > 0) {
+      setSelectedTeam("");
+    }
+  };
+
+  const handleTeamSelect = (teamId: string) => {
+    setSelectedTeam(teamId);
+    // FIX: Changed 'update-team' to 'select-team' to match server expectations
+    socket.emit('select-team', teamId);
+  };
+
+  const handleUndoEvent = (eventId: number) => {
+    setEvents(prev => prev.filter(e => e.id !== eventId));
+    socket.emit('undo-event', eventId);
+    toast({
+      title: "Event Annulled",
+      description: `Event #${eventId} removed`,
+    });
+  };
+
+  const handlePlayerSelect = (playerId: number) => {
+    setEvents((prevEvents) => {
+      const newEvents = [...prevEvents];
+      let targetIndex = -1;
+
+      // If we are editing a specific event, find it
+      if (editingEventId !== null) {
+        targetIndex = newEvents.findIndex(e => e.id === editingEventId);
+      } else {
+        // Fallback to finding the last unassigned event
+        const searchLimit = Math.min(newEvents.length, 10);
+        for (let i = searchLimit - 1; i >= 0; i--) {
+          if (!newEvents[i].player && !newEvents[i].isCalculated) {
+            targetIndex = i;
+            break;
+          }
+        }
+        // If no unassigned event found, try to assign to the last event (even if assigned, maybe?)
+        // The original logic had a fallback to just the last event if it wasn't calculated
+        if (targetIndex === -1 && newEvents.length > 0) {
+          for (let i = 0; i < newEvents.length; i++) {
+            if (!newEvents[i].isCalculated) {
+              targetIndex = i;
+              break;
+            }
+          }
+        }
+      }
+
+      if (targetIndex !== -1) {
+        const targetEvent = newEvents[targetIndex];
+        const roster = teams.get(selectedTeam);
+        const player = roster?.PlayerData.find((p) => p.ID === playerId);
+
+        if (player) {
+          const updatedEvent = {
+            ...targetEvent,
+            player: {
+              id: player.ID,
+              name: `${player.Forename} ${player.Surname}`,
+            },
+          };
+          newEvents[targetIndex] = updatedEvent;
+
+          // Emit update to server
+          socket.emit('update-event', updatedEvent);
+
+          toast({
+            title: "Player Assigned",
+            description: `Assigned ${player.Surname} to ${targetEvent.eventName}`,
+          });
+
+          // Clear editing state if we were editing
+          if (editingEventId !== null) {
+            setEditingEventId(null);
+          }
+        }
+      }
+
+      return newEvents;
+    });
+  };
+
+  const handleGameEvent = (eventName: string, source: string = "Manual") => {
+    const newEvent: LoggedEvent = {
+      id: Date.now(),
+      timestamp: new Date().toISOString(),
+      eventName: eventName,
+      team: selectedTeam || "TEAM_A",
+      buttonLabel: source,
+      matchTime: formatTime(matchTimeRef.current)
+    };
+    handleEventLogged(newEvent);
+  };
+
+  const handleVoiceResult = (transcript: string) => {
+    console.log("Voice result:", transcript);
+    const lowerTranscript = transcript.toLowerCase();
+
+    // 1. Check for Player Number Selection
+    const number = parseNumber(lowerTranscript);
+    if (number !== null) {
+      const currentTeamRoster = teams.get(selectedTeam)?.PlayerData;
+      if (currentTeamRoster) {
+        const player = currentTeamRoster.find(p => p.Number === number);
+        if (player) {
+          handlePlayerSelect(player.ID);
+          toast({
+            title: "Voice Selection",
+            description: `Selected Player #${number}: ${player.Forename} ${player.Surname}`,
+          });
+        } else {
+          toast({
+            title: "Voice Selection",
+            description: `Player #${number} not found in ${selectedTeam}`,
+            variant: "destructive"
+          });
+        }
+      }
+    }
+
+    // 2. Check for Commands
+    let matchedCommand = null;
+
+    if (matchCommand(lowerTranscript, COMMANDS.PASS)) matchedCommand = "PASS";
+    else if (matchCommand(lowerTranscript, COMMANDS.SHOOT)) matchedCommand = "SHOT";
+    else if (matchCommand(lowerTranscript, COMMANDS.GOAL)) matchedCommand = "GOAL";
+    else if (matchCommand(lowerTranscript, COMMANDS.FOUL)) matchedCommand = "FOUL";
+    else if (matchCommand(lowerTranscript, COMMANDS.OFFSIDE)) matchedCommand = "OFFSIDE";
+    else if (matchCommand(lowerTranscript, COMMANDS.PENALTY)) matchedCommand = "PENALTY";
+    else if (matchCommand(lowerTranscript, COMMANDS.CORNER)) matchedCommand = "CORNER";
+    else if (matchCommand(lowerTranscript, COMMANDS.SUBSTITUTION)) matchedCommand = "SUBSTITUTION";
+
+    if (matchedCommand) {
+      handleGameEvent(matchedCommand, "Voice");
+      toast({
+        title: "Voice Command",
+        description: `Executed: ${matchedCommand}`,
+      });
+    } else if (number === null) {
+      if (transcript.length > 2) {
+        toast({
+          title: "Voice Unrecognized",
+          description: `Heard: "${transcript}"`,
+          variant: "secondary"
+        });
+      }
+    }
+  };
+
+  const handleVoiceError = (error: string) => {
+    toast({
+      title: "Voice Error",
+      description: error,
+      variant: "destructive",
+    });
+  };
+
+  const { isListening, toggleListening, isSupported, availableDevices, startListening } = useVoiceRecognition({
+    onResult: handleVoiceResult,
+    onError: handleVoiceError,
+    language: voiceLanguage
+  });
+
+  const toggleMatch = () => {
+    console.log("toggleMatch called. Current state:", isMatchActive);
+    if (!isMatchActive) {
+      // Start Match
+      setIsMatchActive(true);
+      if (useVideoMode) {
+        setIsVideoPlaying(true);
+      }
+
+      if (!isListening) {
+        console.log("Attempting to auto-start voice control...");
+        try {
+          startListening();
+          toast({
+            title: "Match Started",
+            description: "Timer started and Voice Control activated.",
+          });
+        } catch (err) {
+          console.error("Auto-start voice failed:", err);
+          toast({
+            title: "Match Started",
+            description: "Timer started, but Voice Control failed to start.",
+            variant: "destructive"
+          });
+        }
+      } else {
+        toast({
+          title: "Match Started",
+          description: "Timer started.",
+        });
+      }
+    } else {
+      // Pause Match
+      setIsMatchActive(false);
+      if (useVideoMode) {
+        setIsVideoPlaying(false);
+      }
+      toast({
+        title: "Match Paused",
+        description: "Timer paused.",
+      });
+    }
+  };
+
+  // Document Picture-in-Picture Logic
+  const [pipWindow, setPipWindow] = useState<Window | null>(null);
+
+  const togglePiP = async () => {
+    if (pipWindow) {
+      pipWindow.close();
+      setPipWindow(null);
+      return;
+    }
+
+    const setupWindow = (win: Window) => {
+      [...document.styleSheets].forEach((styleSheet) => {
+        try {
+          if (styleSheet.href) {
+            const link = win.document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = styleSheet.href;
+            win.document.head.appendChild(link);
+          } else {
+            const style = win.document.createElement("style");
+            [...styleSheet.cssRules].forEach((rule) => {
+              style.appendChild(win.document.createTextNode(rule.cssText));
+            });
+            win.document.head.appendChild(style);
+          }
+        } catch (e) {
+          console.error("Error copying style:", e);
+        }
+      });
+
+      win.addEventListener("pagehide", () => {
+        setPipWindow(null);
+      });
+
+      win.addEventListener("unload", () => {
+        setPipWindow(null);
+      });
+
+      setPipWindow(win);
+    };
+
+    if ("documentPictureInPicture" in window) {
+      try {
+        const pip = await (window as any).documentPictureInPicture.requestWindow({
+          width: 1000,
+          height: 800,
+        });
+        setupWindow(pip);
+        return;
+      } catch (err) {
+        console.warn("Document PiP failed, falling back to popup:", err);
+      }
+    }
+
+    try {
+      const popup = window.open("", "SoccerLoggerPopup", "width=1000,height=800,popup=yes");
+      if (popup) {
+        if (!popup.document.body) {
+          popup.document.write('<body></body>');
+        }
+        popup.document.title = "Soccer Event Logger (Overlay)";
+        setupWindow(popup);
+      } else {
+        toast({
+          title: "Popup Blocked",
+          description: "Please allow popups for this site to use the overlay.",
+          variant: "destructive",
+        });
+      }
+    } catch (err) {
+      console.error("Failed to open popup:", err);
+      toast({
+        title: "Error",
+        description: "Failed to open Pop-out window.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  // HUD Mode (Video Background) Logic
+  const [videoStream, setVideoStream] = useState<MediaStream | null>(null);
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  // Audio Broadcasting Integration
+  const { localAudioStream, remoteAudioStream, isBroadcasting, startAudioBroadcast, stopAudioBroadcast } = useAudioBroadcast(socket, role);
+
+  // Auto-play remote audio for viewers
+  useEffect(() => {
+    if (audioRef.current && remoteAudioStream) {
+      audioRef.current.srcObject = remoteAudioStream;
+      audioRef.current.play().catch(err => console.error('Error playing audio:', err));
+    }
+  }, [remoteAudioStream]);
+
+  const toggleWatchMatch = async () => {
+    if (videoStream) {
+      videoStream.getTracks().forEach(track => track.stop());
+      setVideoStream(null);
+    } else {
+      try {
+        toast({
+          title: "Select Window or Screen",
+          description: "Use 'Window' tab for apps. If your app is missing from the list, use 'Entire Screen' and switch to the app.",
+          duration: 8000,
+        });
+
+        const stream = await navigator.mediaDevices.getDisplayMedia({
+          video: {
+            // @ts-ignore
+            displaySurface: "window",
+          },
+          audio: false
+        });
+
+        setVideoStream(stream);
+
+        stream.getVideoTracks()[0].onended = () => {
+          setVideoStream(null);
+        };
+
+      } catch (err) {
+        console.error("Error sharing screen:", err);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (videoRef.current && videoStream) {
+      videoRef.current.srcObject = videoStream;
+    }
+  }, [videoStream]);
+
+  const handleExport = () => {
+    if (events.length === 0) {
+      toast({
+        title: "No events to export",
+        description: "Log some events first!",
+        variant: "destructive",
+      });
+      return;
+    }
+    exportToCSV(events);
+    toast({
+      title: "Export Successful",
+      description: "Events exported to CSV",
+    });
+  };
+
+  const MainContent = (
+    <div className="min-h-screen bg-background overflow-hidden flex flex-col relative">
+      {/* Video Background Layer */}
+      {videoStream && (
+        <video
+          ref={videoRef}
+          autoPlay
+          playsInline
+          muted
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+      )}
+
+      {/* Smart Player Selector Overlay */}
+      {playerSelection && (
+        <SmartPlayerSelector
+          currentBallHolder={playerSelection.currentBallHolder}
+          predictedTargets={playerSelection.predictedTargets}
+          selectedTargetIndex={playerSelection.selectedTargetIndex}
+          isActive={playerSelection.isSelecting}
+        />
+      )}
+
+      {/* Hidden Audio Element for Remote Audio */}
+      <audio ref={audioRef} autoPlay />
+
+      {/* Header Layer */}
+      <div className={`border-b border-border p-2 md:p-4 bg-card relative z-10 transition-colors duration-300 ${videoStream ? 'bg-black/40 backdrop-blur-sm border-white/10 text-white' : ''}`}>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-4">
+          <div className="flex items-center gap-2 md:gap-4 w-full md:w-auto">
+            <h1 className="text-lg md:text-2xl font-bold flex items-center gap-2">
+              <Gamepad2 className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+              <span className="hidden sm:inline">Soccer Event Logger</span>
+              <span className="sm:hidden">Logger</span>
+            </h1>
+
+            {/* Connection Status Indicator */}
+            <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${isSocketConnected ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'}`}>
+              {isSocketConnected ? <Wifi className="w-3 h-3" /> : <WifiOff className="w-3 h-3" />}
+              <span className="hidden sm:inline">{isSocketConnected ? 'Synced' : 'Offline'}</span>
+            </div>
+          </div>
+          {/* Match Timer Control */}
+          <div className="flex items-center gap-2 md:gap-4 md:ml-8 md:border-l md:pl-8 w-full md:w-auto justify-between md:justify-start">
+            <div className="flex flex-col items-center">
+              <span className="text-2xl md:text-3xl font-mono font-bold tabular-nums text-primary">
+                {formatTime(matchTime)}
+              </span>
+              <span className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider">Match Time</span>
+            </div>
+            <Button
+              variant={isMatchActive ? "secondary" : "default"}
+              size="sm"
+              onClick={toggleMatch}
+              className="min-w-[80px] md:min-w-[120px] text-xs md:text-sm"
+            >
+              {isMatchActive ? "Pause" : matchTime === 0 ? "Start" : "Resume"}
+            </Button>
+          </div>
+          <div className="flex flex-wrap items-center gap-1 md:gap-2 w-full md:w-auto">
+            {/* Watch Match Button (HUD Mode) */}
+            <Button
+              variant={videoStream ? "destructive" : "secondary"}
+              size="sm"
+              onClick={toggleWatchMatch}
+              className="gap-1 text-xs"
+              title={videoStream ? "Stop Watching" : "Watch Match (HUD Mode)"}
+            >
+              {videoStream ? <X className="h-3 w-3 md:h-4 md:w-4" /> : <Monitor className="h-3 w-3 md:h-4 md:w-4" />}
+              <span className="hidden sm:inline">{videoStream ? "Stop Match" : "Watch Match"}</span>
+            </Button>
+
+            {/* Audio Broadcast Button */}
+            {role === 'broadcaster' && (
+              <Button
+                variant={isBroadcasting ? "destructive" : "outline"}
+                size="sm"
+                onClick={isBroadcasting ? stopAudioBroadcast : startAudioBroadcast}
+                className="gap-1 text-xs"
+                title={isBroadcasting ? "Stop Audio Broadcast" : "Start Audio Broadcast"}
+              >
+                {isBroadcasting ? <MicOff className="h-3 w-3 md:h-4 md:w-4 animate-pulse" /> : <Mic className="h-3 w-3 md:h-4 md:w-4" />}
+                <span className="hidden sm:inline">{isBroadcasting ? "Broadcasting" : "Broadcast Audio"}</span>
+              </Button>
+            )}
+            {role === 'viewer' && remoteAudioStream && (
+              <div className="flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-500">
+                <Mic className="w-3 h-3 animate-pulse" />
+                <span className="hidden sm:inline">Receiving Audio</span>
+              </div>
+            )}
+
+            {/* Pop Out Button */}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={togglePiP}
+              className="gap-1 text-xs hidden md:flex"
+              title={pipWindow ? "Restore to Tab" : "Pop Out Window"}
+            >
+              <Download className="h-3 w-3 md:h-4 md:w-4 rotate-180" />
+              <span className="hidden lg:inline">{pipWindow ? "Restore" : "Pop Out"}</span>
+            </Button>
+
+            {isSupported && (
+              <div className="flex items-center gap-1 md:gap-2">
+                <Select value={voiceLanguage} onValueChange={(value: 'en' | 'fr' | 'ar') => setVoiceLanguage(value)}>
+                  <SelectTrigger className="w-[70px] md:w-[100px] h-8 md:h-9 text-xs">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="en">🇬🇧 EN</SelectItem>
+                    <SelectItem value="fr">🇫🇷 FR</SelectItem>
+                    <SelectItem value="ar">🇸🇦 AR</SelectItem>
+                  </SelectContent>
+                </Select>
+                <div className="flex flex-col items-center gap-1">
+                  <Button
+                    variant={isListening ? "destructive" : "outline"}
+                    size="sm"
+                    onClick={toggleListening}
+                    className="gap-1 text-xs"
+                    title={isListening ? "Stop Listening" : "Start Voice Control"}
+                  >
+                    {isListening ? <Mic className="h-3 w-3 md:h-4 md:w-4 animate-pulse" /> : <MicOff className="h-3 w-3 md:h-4 md:w-4" />}
+                    <span className="hidden sm:inline">{isListening ? "Listening..." : "Voice"}</span>
+                  </Button>
+                  {availableDevices && availableDevices.length > 0 && (
+                    <span className="text-[10px] text-muted-foreground max-w-[150px] truncate hidden md:inline" title="To use a specific mic (like controller), set it as Default in Windows Sound Settings">
+                      {availableDevices.length} mics detected
+                    </span>
+                  )}
+                </div>
+                {role === 'broadcaster' && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => socket.emit('switch-role')}
+                    className="gap-1 text-xs"
+                    title="Switch role with viewer"
+                  >
+                    <RefreshCw className="h-3 w-3 md:h-4 md:w-4" />
+                    <span className="hidden sm:inline">Switch Role</span>
+                  </Button>
+                )}
+                <div className="flex items-center gap-2">
+                  {/* Video Mode Tabs */}
+                  <div className="flex items-center gap-1 bg-muted rounded-md p-1">
+                    <Button
+                      variant={videoMode === 'upload' ? 'default' : 'ghost'}
+                      size="sm"
+                      onClick={() => setVideoMode('upload')}
+                      className="h-7 text-xs"
+                    >
+                      📁 Upload
+                    </Button>
+                    <Button
+                      variant={videoMode === 'live' ? 'default' : 'ghost'}
+                      size="sm"
+                      onClick={() => setVideoMode('live')}
+                      className="h-7 text-xs"
+                    >
+                      📡 Live
+                    </Button>
+                  </div>
+
+
+                  {/* Upload Video Button - Only show in upload mode and when no video is loaded */}
+                  {videoMode === 'upload' && !videoFile && !remoteVideoUrl && (
+                    <>
+                      <input
+                        type="file"
+                        accept="video/*"
+                        id="video-upload-input"
+                        className="hidden"
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+
+                          setVideoFile(file);
+                          setUseVideoMode(true);
+
+                          // Upload to server for viewers
+                          const formData = new FormData();
+                          formData.append('video', file);
+
+                          try {
+                            const response = await fetch(`${API_BASE_URL}/api/upload-video`, {
+                              method: 'POST',
+                              body: formData
+                            });
+                            const data = await response.json();
+                            if (data.success) {
+                              console.log("Video uploaded to server:", data.videoUrl);
+                              socket.emit('video-loaded', data.videoUrl);
+                            }
+                          } catch (e) {
+                            console.error("Failed to upload video:", e);
+                          }
+
+                          // Reset input
+                          e.target.value = '';
+                        }}
+                      />
+                      <Button
+                        variant="default"
+                        size="sm"
+                        onClick={() => document.getElementById('video-upload-input')?.click()}
+                        className="gap-2"
+                      >
+                        <Upload className="h-4 w-4" />
+                        <span className="hidden sm:inline">Upload Video</span>
+                      </Button>
+                    </>
+                  )}
+
+                  {/* Clear Video Button - Show when video is loaded */}
+                  {videoMode === 'upload' && (videoFile || remoteVideoUrl) && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        setVideoFile(null);
+                        setRemoteVideoUrl(null);
+                        setUseVideoMode(false);
+                        setVideoTime(0);
+                      }}
+                      className="gap-2"
+                    >
+                      <X className="h-4 w-4" />
+                      <span className="hidden sm:inline">Clear Video</span>
+                    </Button>
+                  )}
+                </div>
+              </div>
+            )}
+            <div className="flex items-center gap-1 md:gap-2">
+              <Gamepad2 className={`w-4 h-4 md:w-5 md:h-5 ${isConnected ? 'text-success animate-glow-pulse' : 'text-muted-foreground'}`} />
+              <span className={`text-xs md:text-sm font-bold ${isConnected ? 'text-success' : 'text-muted-foreground'}`}>
+                {isConnected ? "Connected" : "Disconnected"}
+              </span>
+              {isConnected && pressedButtons.length > 0 && (
+                <span className="text-xs font-mono bg-primary/20 px-2 py-1 rounded hidden lg:inline">
+                  Buttons: {pressedButtons.join(', ')}
+                </span>
+              )}
+              {!isConnected && (
+                <Button
+                  onClick={() => {
+                    const result = manualCheck();
+                    toast({
+                      title: result ? "Controller Found!" : "No Controller Detected",
+                      description: result ? "Gamepad connected successfully" : "Please connect a controller and press any button, then try again",
+                      variant: result ? "default" : "destructive",
+                    });
+                  }}
+                  variant="ghost"
+                  size="sm"
+                  className="h-6 md:h-7 text-xs hidden md:flex"
+                >
+                  Test Connection
+                </Button>
+              )}
+              <ButtonMappingConfig
+                mappings={mappings}
+                pressedButtons={pressedButtons}
+                onUpdateMapping={updateMapping}
+                onResetMappings={resetMappings}
+              />
+            </div>
+            <Button
+              onClick={handleExport}
+              variant="outline"
+              size="sm"
+              disabled={events.length === 0}
+              className="gap-1 text-xs"
+            >
+              <Download className="w-3 h-3 md:w-4 md:h-4" />
+              <span className="hidden sm:inline">Export CSV</span>
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content Area */}
+      <div className={`flex-1 overflow-hidden relative z-10 transition-colors duration-300 ${videoStream ? 'bg-black/20' : ''}`}>
+        {role === 'viewer' ? (
+          // Viewer Layout: Statistics + Event Log + Starting Lineup
+          <div className="h-full max-w-7xl mx-auto p-2 md:p-4 grid grid-cols-1 lg:grid-cols-12 gap-2 md:gap-4">
+            {/* Left Column: Starting Lineup (3 cols) */}
+            <div className={`lg:col-span-3 flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all duration-300 ${videoStream ? 'bg-black/60 backdrop-blur-md border-white/10' : ''}`}>
+              {teams.get(selectedTeam) ? (
+                <StartingLineup
+                  players={teams.get(selectedTeam)!.PlayerData}
+                  teamName={selectedTeam}
+                />
+              ) : (
+                <div className="p-4 text-center text-muted-foreground">
+                  Waiting for team selection...
+                </div>
+              )}
+            </div>
+
+            {/* Middle Column: Stats (6 cols) */}
+            <div className={`lg:col-span-6 rounded-lg border border-border bg-card shadow-sm p-2 md:p-4 transition-all duration-300 ${videoStream ? 'bg-black/60 backdrop-blur-md border-white/10' : ''}`}>
+              <h2 className="text-lg md:text-xl font-bold mb-2 md:mb-4">Match Statistics</h2>
+              <StatisticsDashboard events={events} />
+            </div>
+
+            {/* Right Column: Event Log (3 cols) */}
+            <div className={`lg:col-span-3 flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all duration-300 ${videoStream ? 'bg-black/60 backdrop-blur-md border-white/10' : ''}`}>
+              <EventLog
+                events={events}
+                teamNames={{
+                  teamA: Array.from(teams.keys())[0] || "Team A",
+                  teamB: Array.from(teams.keys())[1] || "Team B"
+                }}
+                onUndoEvent={handleUndoEvent}
+              />
+            </div>
+          </div>
+        ) : (
+          // Broadcaster Layout: Full Grid
+          <div className="h-full max-w-7xl mx-auto p-2 md:p-4 grid grid-cols-1 lg:grid-cols-12 gap-2 md:gap-4">
+            {/* Left Sidebar - Player Selection */}
+            <div className={`lg:col-span-3 flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all duration-300 ${videoStream ? 'bg-black/60 backdrop-blur-md border-white/10' : ''}`}>
+              {!selectedTeam ? (
+                <div className="space-y-6 p-4 overflow-y-auto">
+                  <PlayerUpload onUpload={handleTeamUpload} />
+                  {teams.size > 0 && (
+                    <TeamGrid
+                      teams={Array.from(teams.keys())}
+                      onSelectTeam={handleTeamSelect}
+                    />
+                  )}
+                </div>
+              ) : (
+                <>
+                  <div className="flex justify-between items-center p-2 border-b border-border">
+                    <Button variant="ghost" size="sm" onClick={() => handleTeamSelect("")}>
+                      ← Back to Teams
+                    </Button>
+                  </div>
+                  {teams.get(selectedTeam) && (
+                    <PlayerSelectionSidebar
+                      players={teams.get(selectedTeam)!.PlayerData}
+                      selectedPlayerId={null}
+                      onSelectPlayer={handlePlayerSelect}
+                      teamName={selectedTeam}
+                      startingNumbers={selectedTeam === "Algeria" ? [1, 2, 5, 6, 7, 8, 9, 10, 11, 15, 22] : undefined}
+                    />
+                  )}
+                </>
+              )}
+            </div>
+
+            {/* Center - Dashboard & Controller */}
+            <div className="lg:col-span-6 flex flex-col gap-2 md:gap-4 overflow-y-auto no-scrollbar">
+              {/* Live Stream Player */}
+              {videoMode === 'live' && (
+                <div className={`rounded-lg border border-border bg-card shadow-sm p-2 md:p-4 transition-all duration-300 ${videoStream ? 'bg-black/60 backdrop-blur-md border-white/10' : ''}`}>
+                  <LiveStreamPlayer />
+                </div>
+              )}
+
+              {/* Video Player */}
+              {(() => {
+                const shouldShow = (videoFile || remoteVideoUrl) && videoMode === 'upload';
+                console.log("Video Player Render Check:", {
+                  videoFile: !!videoFile,
+                  remoteVideoUrl,
+                  videoMode,
+                  shouldShow
+                });
+                return shouldShow;
+              })() && (
+                  <div className={`rounded-lg border border-border bg-card shadow-sm p-2 md:p-4 transition-all duration-300 ${videoStream ? 'bg-black/60 backdrop-blur-md border-white/10' : ''}`}>
+                    {/* Analysis View Toggle */}
+                    <div className="flex justify-end mb-2">
+                      <Button
+                        variant={showAnalysisView ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => setShowAnalysisView(!showAnalysisView)}
+                        className="gap-2"
+                      >
+                        <Monitor className="h-4 w-4" />
+                        {showAnalysisView ? 'Hide' : 'Show'} Analysis View
+                      </Button>
+                    </div>
+                    <div className="space-y-4">
+                      {/* Only show upload if we don't have a file/url OR if we want to replace it */}
+                      {(!videoFile && !remoteVideoUrl) && (
+                        <VideoUpload onVideoUpload={async (file) => {
+                          setVideoFile(file);
+                          setUseVideoMode(true);
+
+                          // Upload to server for viewers
+                          const formData = new FormData();
+                          formData.append('video', file);
+
+                          try {
+                            const response = await fetch(`${API_BASE_URL}/api/upload-video`, {
+                              method: 'POST',
+                              body: formData
+                            });
+                            const data = await response.json();
+                            if (data.success) {
+                              console.log("Video uploaded to server:", data.videoUrl);
+                              socket.emit('video-loaded', data.videoUrl);
+                            }
+                          } catch (e) {
+                            console.error("Failed to upload video:", e);
+                          }
+                        }} />
+                      )}
+
+                      {(videoFile || remoteVideoUrl) && (
+                        <div className="space-y-4">
+                          <div className="aspect-video bg-black rounded-lg overflow-hidden border border-border relative group">
+                            <VideoPlayer
+                              videoFile={videoFile}
+                              videoUrl={remoteVideoUrl}
+                              events={events}
+                              onTimeUpdate={(t) => {
+                                setVideoTime(t);
+                              }}
+                              seekTo={seekTime}
+                              isPlaying={isVideoPlaying}
+                              onPlayPause={(playing) => {
+                                setIsVideoPlaying(playing);
+                                if (playing) socket.emit('video-play', videoTime);
+                                else socket.emit('video-pause', videoTime);
+                              }}
+                              onSeekComplete={() => {
+                                setSeekTime(null);
+                              }}
+                              onSeek={(time) => {
+                                socket.emit('video-seek', time);
+                              }}
+                              axes={axes}
+                              buttons={buttons}
+                              teams={teams}
+                              selectedTeam={selectedTeam}
+                              teamNames={{
+                                teamA: Array.from(teams.keys())[0] || "Team A",
+                                teamB: Array.from(teams.keys())[1] || "Team B"
+                              }}
+                              onPlayerSelect={handlePlayerSelect}
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+              <div className={`rounded-lg border border-border bg-card shadow-sm p-2 md:p-4 transition-all duration-300 ${videoStream ? 'bg-black/60 backdrop-blur-md border-white/10' : ''}`}>
+                <Dashboard
+                  events={events}
+                  teamNames={{
+                    teamA: Array.from(teams.keys())[0] || "Team A",
+                    teamB: Array.from(teams.keys())[1] || "Team B"
+                  }}
+                />
+              </div>
+
+              {/* Analysis Dashboard */}
+              <div className={`rounded-lg border border-border bg-card shadow-sm p-2 md:p-4 transition-all duration-300 ${videoStream ? 'bg-black/60 backdrop-blur-md border-white/10' : ''}`}>
+                <TacticalAnalysisDashboard
+                  events={events}
+                  hasVideo={!!videoFile}
+                  videoFile={videoFile}
+                  onJumpToTime={(time) => {
+                    console.log("Index.tsx: onJumpToTime called with:", time);
+                    console.log("Index.tsx: videoFile exists:", !!videoFile);
+                    setSeekTime(time);
+                  }}
+                  teamNames={{
+                    teamA: Array.from(teams.keys())[0] || "Team A",
+                    teamB: Array.from(teams.keys())[1] || "Team B"
+                  }}
+                  onRunClipAnalysis={async (clipStart, clipEnd) => {
+                    if (!videoFile) {
+                      toast({
+                        title: "No Video",
+                        description: "Please upload a video first.",
+                        variant: "destructive"
+                      });
+                      return;
+                    }
+
+                    toast({
+                      title: "Starting Analysis",
+                      description: `Analyzing clip from ${Math.floor(clipStart)}s to ${Math.floor(clipEnd)}s...`,
+                    });
+
+                    const formData = new FormData();
+                    formData.append('video', videoFile);
+                    formData.append('clips', JSON.stringify([{ start: clipStart, end: clipEnd }]));
+
+                    try {
+                      const response = await fetch('http://localhost:3003/api/analyze-match', {
+                        method: 'POST',
+                        body: formData
+                      });
+
+                      const data = await response.json();
+
+                      if (data.success) {
+                        setAnalysisResults(data.results);
+                        toast({
+                          title: "Analysis Complete",
+                          description: `Tracked ${Object.keys(data.results.tracks || {}).length} players in this clip.`,
+                        });
+                      } else {
+                        throw new Error(data.error || 'Analysis failed');
+                      }
+                    } catch (error) {
+                      console.error(error);
+                      toast({
+                        title: "Error",
+                        description: "Failed to run analysis. Check console.",
+                        variant: "destructive"
+                      });
+                    }
+                  }}
+                />
+              </div>
+
+              {/* Analysis Results Viewer */}
+              {analysisResults && (
+                <div className={`rounded-lg border border-border bg-card shadow-sm transition-all duration-300 ${videoStream ? 'bg-black/60 backdrop-blur-md border-white/10' : ''}`}>
+                  <AnalysisResultsViewer results={analysisResults} />
+                </div>
+              )}
+
+              {/* Controller Grid - Also transparent */}
+              <div className={`rounded-lg border border-border bg-card shadow-sm p-2 md:p-4 flex-1 transition-all duration-300 ${videoStream ? 'bg-black/60 backdrop-blur-md border-white/10' : ''}`}>
+                <ControllerGrid
+                  pressedButtons={pressedButtons}
+                  onManualInput={(event, button) => {
+                    const newEvent: LoggedEvent = {
+                      id: Date.now(),
+                      timestamp: new Date().toISOString(),
+                      eventName: event,
+                      team: "TEAM_A", // Default for manual input
+                      buttonLabel: button,
+                      matchTime: formatTime(matchTimeRef.current)
+                    };
+                    handleEventLogged(newEvent);
+                  }}
+                  lastEventButtonLabel={lastEventButtonLabel}
+                  mappings={mappings}
+                />
+              </div>
+            </div>
+
+            {/* Right Sidebar - Event Log */}
+            <div className={`lg:col-span-3 flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all duration-300 ${videoStream ? 'bg-black/60 backdrop-blur-md border-white/10' : ''}`}>
+              <EventLog
+                events={events}
+                teamNames={{
+                  teamA: Array.from(teams.keys())[0] || "Team A",
+                  teamB: Array.from(teams.keys())[1] || "Team B"
+                }}
+                onUndoEvent={handleUndoEvent}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  return pipWindow ? createPortal(MainContent, pipWindow.document.body) : MainContent;
+};
+
+export default Index;

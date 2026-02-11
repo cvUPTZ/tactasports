@@ -1,0 +1,573 @@
+{
+  "video_info": {
+    "total_frames": 96611,
+    "fps": 30.0,
+    "width": 1920,
+    "height": 1080,
+    "duration": 3220.366666666667,
+    "analysis_start": 0.0,
+    "analysis_end": 10.0
+  },
+  "positions": [
+    {
+      "frame": 0,
+      "timestamp": 0.0,
+      "x": 63.2,
+      "y": 54.04,
+      "team": "B",
+      "confidence": 0.96
+    },
+    {
+      "frame": 0,
+      "timestamp": 0.0,
+      "x": 36.19,
+      "y": 49.3,
+      "team": "A",
+      "confidence": 0.93
+    },
+    {
+      "frame": 5,
+      "timestamp": 0.17,
+      "x": 62.09,
+      "y": 54.55,
+      "team": "B",
+      "confidence": 0.95
+    },
+    {
+      "frame": 5,
+      "timestamp": 0.17,
+      "x": 35.64,
+      "y": 49.52,
+      "team": "A",
+      "confidence": 0.94
+    },
+    {
+      "frame": 10,
+      "timestamp": 0.33,
+      "x": 42.78,
+      "y": 53.87,
+      "team": "A",
+      "confidence": 0.95
+    },
+    {
+      "frame": 10,
+      "timestamp": 0.33,
+      "x": 65.58,
+      "y": 64.79,
+      "team": "B",
+      "confidence": 0.75
+    },
+    {
+      "frame": 15,
+      "timestamp": 0.5,
+      "x": 39.63,
+      "y": 52.69,
+      "team": "A",
+      "confidence": 0.94
+    },
+    {
+      "frame": 15,
+      "timestamp": 0.5,
+      "x": 65.15,
+      "y": 65.07,
+      "team": "B",
+      "confidence": 0.86
+    },
+    {
+      "frame": 20,
+      "timestamp": 0.67,
+      "x": 39.71,
+      "y": 53.06,
+      "team": "A",
+      "confidence": 0.91
+    },
+    {
+      "frame": 20,
+      "timestamp": 0.67,
+      "x": 61.47,
+      "y": 64.99,
+      "team": "B",
+      "confidence": 0.74
+    },
+    {
+      "frame": 25,
+      "timestamp": 0.83,
+      "x": 43.16,
+      "y": 54.86,
+      "team": "A",
+      "confidence": 0.95
+    },
+    {
+      "frame": 30,
+      "timestamp": 1.0,
+      "x": 48.22,
+      "y": 54.83,
+      "team": "A",
+      "confidence": 0.93
+    },
+    {
+      "frame": 35,
+      "timestamp": 1.17,
+      "x": 51.69,
+      "y": 53.73,
+      "team": "B",
+      "confidence": 0.96
+    },
+    {
+      "frame": 35,
+      "timestamp": 1.17,
+      "x": 20.52,
+      "y": 64.68,
+      "team": "A",
+      "confidence": 0.87
+    },
+    {
+      "frame": 40,
+      "timestamp": 1.33,
+      "x": 49.52,
+      "y": 53.46,
+      "team": "A",
+      "confidence": 0.96
+    },
+    {
+      "frame": 40,
+      "timestamp": 1.33,
+      "x": 14.8,
+      "y": 64.8,
+      "team": "A",
+      "confidence": 0.91
+    },
+    {
+      "frame": 45,
+      "timestamp": 1.5,
+      "x": 47.05,
+      "y": 53.36,
+      "team": "A",
+      "confidence": 0.96
+    },
+    {
+      "frame": 45,
+      "timestamp": 1.5,
+      "x": 13.64,
+      "y": 65.2,
+      "team": "A",
+      "confidence": 0.9
+    },
+    {
+      "frame": 50,
+      "timestamp": 1.67,
+      "x": 45.91,
+      "y": 53.81,
+      "team": "A",
+      "confidence": 0.94
+    },
+    {
+      "frame": 50,
+      "timestamp": 1.67,
+      "x": 11.43,
+      "y": 64.49,
+      "team": "A",
+      "confidence": 0.89
+    },
+    {
+      "frame": 55,
+      "timestamp": 1.83,
+      "x": 44.53,
+      "y": 53.32,
+      "team": "A",
+      "confidence": 0.94
+    },
+    {
+      "frame": 60,
+      "timestamp": 2.0,
+      "x": 42.6,
+      "y": 52.9,
+      "team": "A",
+      "confidence": 0.95
+    },
+    {
+      "frame": 65,
+      "timestamp": 2.17,
+      "x": 39.87,
+      "y": 51.71,
+      "team": "A",
+      "confidence": 0.94
+    },
+    {
+      "frame": 70,
+      "timestamp": 2.33,
+      "x": 37.89,
+      "y": 51.02,
+      "team": "A",
+      "confidence": 0.95
+    },
+    {
+      "frame": 75,
+      "timestamp": 2.5,
+      "x": 37.3,
+      "y": 51.68,
+      "team": "A",
+      "confidence": 0.94
+    },
+    {
+      "frame": 80,
+      "timestamp": 2.67,
+      "x": 36.09,
+      "y": 49.93,
+      "team": "A",
+      "confidence": 0.94
+    },
+    {
+      "frame": 85,
+      "timestamp": 2.83,
+      "x": 35.54,
+      "y": 49.8,
+      "team": "A",
+      "confidence": 0.93
+    },
+    {
+      "frame": 90,
+      "timestamp": 3.0,
+      "x": 35.59,
+      "y": 49.78,
+      "team": "A",
+      "confidence": 0.92
+    },
+    {
+      "frame": 95,
+      "timestamp": 3.17,
+      "x": 35.49,
+      "y": 49.75,
+      "team": "A",
+      "confidence": 0.92
+    },
+    {
+      "frame": 100,
+      "timestamp": 3.33,
+      "x": 35.55,
+      "y": 49.76,
+      "team": "A",
+      "confidence": 0.93
+    },
+    {
+      "frame": 105,
+      "timestamp": 3.5,
+      "x": 36.13,
+      "y": 49.98,
+      "team": "A",
+      "confidence": 0.92
+    },
+    {
+      "frame": 110,
+      "timestamp": 3.67,
+      "x": 37.19,
+      "y": 50.07,
+      "team": "A",
+      "confidence": 0.91
+    },
+    {
+      "frame": 115,
+      "timestamp": 3.83,
+      "x": 37.52,
+      "y": 50.0,
+      "team": "A",
+      "confidence": 0.9
+    },
+    {
+      "frame": 120,
+      "timestamp": 4.0,
+      "x": 37.27,
+      "y": 50.02,
+      "team": "A",
+      "confidence": 0.92
+    },
+    {
+      "frame": 125,
+      "timestamp": 4.17,
+      "x": 36.84,
+      "y": 49.94,
+      "team": "A",
+      "confidence": 0.93
+    },
+    {
+      "frame": 130,
+      "timestamp": 4.33,
+      "x": 36.62,
+      "y": 49.65,
+      "team": "A",
+      "confidence": 0.9
+    },
+    {
+      "frame": 135,
+      "timestamp": 4.5,
+      "x": 36.44,
+      "y": 49.72,
+      "team": "A",
+      "confidence": 0.9
+    },
+    {
+      "frame": 140,
+      "timestamp": 4.67,
+      "x": 36.2,
+      "y": 49.72,
+      "team": "A",
+      "confidence": 0.91
+    },
+    {
+      "frame": 145,
+      "timestamp": 4.83,
+      "x": 35.94,
+      "y": 49.82,
+      "team": "A",
+      "confidence": 0.91
+    },
+    {
+      "frame": 150,
+      "timestamp": 5.0,
+      "x": 35.66,
+      "y": 49.66,
+      "team": "A",
+      "confidence": 0.9
+    },
+    {
+      "frame": 155,
+      "timestamp": 5.17,
+      "x": 35.75,
+      "y": 49.72,
+      "team": "A",
+      "confidence": 0.91
+    },
+    {
+      "frame": 160,
+      "timestamp": 5.33,
+      "x": 58.56,
+      "y": 49.66,
+      "team": "B",
+      "confidence": 0.84
+    },
+    {
+      "frame": 165,
+      "timestamp": 5.5,
+      "x": 57.28,
+      "y": 49.61,
+      "team": "B",
+      "confidence": 0.79
+    },
+    {
+      "frame": 170,
+      "timestamp": 5.67,
+      "x": 56.39,
+      "y": 49.34,
+      "team": "B",
+      "confidence": 0.8
+    },
+    {
+      "frame": 175,
+      "timestamp": 5.83,
+      "x": 58.69,
+      "y": 49.99,
+      "team": "B",
+      "confidence": 0.82
+    },
+    {
+      "frame": 180,
+      "timestamp": 6.0,
+      "x": 47.93,
+      "y": 49.69,
+      "team": "A",
+      "confidence": 0.89
+    },
+    {
+      "frame": 185,
+      "timestamp": 6.17,
+      "x": 53.74,
+      "y": 50.37,
+      "team": "B",
+      "confidence": 0.89
+    },
+    {
+      "frame": 190,
+      "timestamp": 6.33,
+      "x": 55.97,
+      "y": 50.15,
+      "team": "B",
+      "confidence": 0.86
+    },
+    {
+      "frame": 195,
+      "timestamp": 6.5,
+      "x": 53.92,
+      "y": 49.63,
+      "team": "B",
+      "confidence": 0.81
+    },
+    {
+      "frame": 200,
+      "timestamp": 6.67,
+      "x": 45.51,
+      "y": 49.49,
+      "team": "A",
+      "confidence": 0.79
+    },
+    {
+      "frame": 205,
+      "timestamp": 6.83,
+      "x": 42.93,
+      "y": 50.13,
+      "team": "A",
+      "confidence": 0.78
+    },
+    {
+      "frame": 210,
+      "timestamp": 7.0,
+      "x": 54.48,
+      "y": 49.46,
+      "team": "B",
+      "confidence": 0.75
+    },
+    {
+      "frame": 215,
+      "timestamp": 7.17,
+      "x": 54.34,
+      "y": 50.07,
+      "team": "B",
+      "confidence": 0.85
+    },
+    {
+      "frame": 220,
+      "timestamp": 7.33,
+      "x": 59.08,
+      "y": 50.05,
+      "team": "B",
+      "confidence": 0.87
+    },
+    {
+      "frame": 225,
+      "timestamp": 7.5,
+      "x": 62.16,
+      "y": 49.57,
+      "team": "B",
+      "confidence": 0.87
+    },
+    {
+      "frame": 230,
+      "timestamp": 7.67,
+      "x": 60.3,
+      "y": 49.67,
+      "team": "B",
+      "confidence": 0.72
+    },
+    {
+      "frame": 235,
+      "timestamp": 7.83,
+      "x": 52.95,
+      "y": 56.61,
+      "team": "B",
+      "confidence": 0.94
+    },
+    {
+      "frame": 235,
+      "timestamp": 7.83,
+      "x": 89.5,
+      "y": 49.77,
+      "team": "B",
+      "confidence": 0.86
+    },
+    {
+      "frame": 240,
+      "timestamp": 8.0,
+      "x": 53.11,
+      "y": 56.62,
+      "team": "B",
+      "confidence": 0.94
+    },
+    {
+      "frame": 245,
+      "timestamp": 8.17,
+      "x": 53.65,
+      "y": 56.8,
+      "team": "B",
+      "confidence": 0.95
+    },
+    {
+      "frame": 250,
+      "timestamp": 8.33,
+      "x": 53.12,
+      "y": 55.51,
+      "team": "B",
+      "confidence": 0.95
+    },
+    {
+      "frame": 255,
+      "timestamp": 8.5,
+      "x": 56.54,
+      "y": 53.69,
+      "team": "B",
+      "confidence": 0.94
+    },
+    {
+      "frame": 260,
+      "timestamp": 8.67,
+      "x": 65.34,
+      "y": 53.53,
+      "team": "B",
+      "confidence": 0.93
+    },
+    {
+      "frame": 265,
+      "timestamp": 8.83,
+      "x": 67.11,
+      "y": 54.32,
+      "team": "B",
+      "confidence": 0.95
+    },
+    {
+      "frame": 270,
+      "timestamp": 9.0,
+      "x": 74.34,
+      "y": 54.93,
+      "team": "B",
+      "confidence": 0.95
+    },
+    {
+      "frame": 275,
+      "timestamp": 9.17,
+      "x": 73.76,
+      "y": 54.03,
+      "team": "B",
+      "confidence": 0.95
+    },
+    {
+      "frame": 280,
+      "timestamp": 9.33,
+      "x": 65.18,
+      "y": 53.7,
+      "team": "B",
+      "confidence": 0.94
+    },
+    {
+      "frame": 285,
+      "timestamp": 9.5,
+      "x": 55.13,
+      "y": 54.31,
+      "team": "B",
+      "confidence": 0.93
+    },
+    {
+      "frame": 290,
+      "timestamp": 9.67,
+      "x": 48.45,
+      "y": 55.15,
+      "team": "A",
+      "confidence": 0.94
+    },
+    {
+      "frame": 295,
+      "timestamp": 9.83,
+      "x": 47.68,
+      "y": 54.77,
+      "team": "A",
+      "confidence": 0.95
+    }
+  ]
+}

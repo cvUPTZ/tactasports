@@ -1,0 +1,2315 @@
+[
+  {
+    "id": 1001,
+    "category": "Core",
+    "eventName": "ui_confirm",
+    "label": "Confirm / A",
+    "defaultDuration": [
+      0,
+      0
+    ],
+    "trigger": "Bouton A",
+    "endCondition": "Instantané",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/",
+    "filenameConvention": "UI.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 0,
+        "mode": "BOTH"
+      }
+    ]
+  },
+  {
+    "id": 1002,
+    "category": "Core",
+    "eventName": "ui_cancel",
+    "label": "Cancel / B",
+    "defaultDuration": [
+      0,
+      0
+    ],
+    "trigger": "Bouton B",
+    "endCondition": "Instantané",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/",
+    "filenameConvention": "UI.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 1,
+        "mode": "BOTH"
+      }
+    ]
+  },
+  {
+    "id": 1003,
+    "category": "Core",
+    "eventName": "pass_start",
+    "label": "Pass Start / X",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Bouton X",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/Core/Pass/",
+    "filenameConvention": "PASS_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 2,
+        "mode": "BOTH"
+      }
+    ]
+  },
+  {
+    "id": 1004,
+    "category": "Core",
+    "eventName": "shot_start",
+    "label": "Shot Start / Y",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Bouton Y",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/Core/Shot/",
+    "filenameConvention": "SHOT_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 3,
+        "mode": "BOTH"
+      }
+    ]
+  },
+  {
+    "id": 1005,
+    "category": "Core",
+    "eventName": "turnover",
+    "label": "Perte / Turnover",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Bouton LB",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/Core/Turnover/",
+    "filenameConvention": "TURNOVER_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 4,
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1006,
+    "category": "Core",
+    "eventName": "carry_start",
+    "label": "Carry / Hold RB",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Hold RB",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/Core/Carry/",
+    "filenameConvention": "CARRY_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 5,
+        "isHold": true,
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1007,
+    "category": "Core",
+    "eventName": "clearance",
+    "label": "Dégagement / LB+Y",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "LB+Y",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/Core/Clearance/",
+    "filenameConvention": "CLEARANCE_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 3,
+        "modifier": "LB",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1008,
+    "category": "Core",
+    "eventName": "dribble_attempt",
+    "label": "Dribble / RB+X",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "RB+X",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/Core/Dribble/",
+    "filenameConvention": "DRIBBLE_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 2,
+        "modifier": "RB",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1009,
+    "category": "Core",
+    "eventName": "tag_start",
+    "label": "Generic Tag / Menu",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Bouton Menu",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/Core/Tags/",
+    "filenameConvention": "TAG_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 9,
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1010,
+    "category": "Core",
+    "eventName": "press_trap",
+    "label": "Press Trap / L3",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Bouton L3",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/Core/Tactical/",
+    "filenameConvention": "PRESS_TRAP_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 10,
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1011,
+    "category": "Core",
+    "eventName": "dangerous_attack",
+    "label": "Dangerous / R3",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Bouton R3",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/Core/Tactical/",
+    "filenameConvention": "DANGER_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 11,
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1012,
+    "category": "Core",
+    "eventName": "pressing_trigger",
+    "label": "Press Trigger / D-Up",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "D-Pad Up",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/Core/Tactical/",
+    "filenameConvention": "PRESS_TRIGGER_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 12,
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1013,
+    "category": "Core",
+    "eventName": "phase_lowblock",
+    "label": "Low Block / D-Down",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "D-Pad Down",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/Core/Tactical/",
+    "filenameConvention": "LOWBLOCK_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 13,
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1014,
+    "category": "Core",
+    "eventName": "switch_of_play",
+    "label": "Switch / D-Left",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "D-Pad Left",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "gamepadMappings": [
+      {
+        "buttonIndex": 14,
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1015,
+    "category": "Core",
+    "eventName": "final_third_entry",
+    "label": "Final Third / RB+A",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "D-Pad Right / RB+A",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "gamepadMappings": [
+      {
+        "buttonIndex": 15,
+        "mode": "LIVE"
+      },
+      {
+        "buttonIndex": 0,
+        "modifier": "RB",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1016,
+    "category": "Core",
+    "eventName": "cross_start",
+    "label": "Cross / RT+B",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "RT+B",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "gamepadMappings": [
+      {
+        "buttonIndex": 1,
+        "modifier": "RT",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1017,
+    "category": "Core",
+    "eventName": "duel_ground",
+    "label": "Duel Ground / RT+X",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "RT+X",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "gamepadMappings": [
+      {
+        "buttonIndex": 2,
+        "modifier": "RT",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1018,
+    "category": "Core",
+    "eventName": "big_chance",
+    "label": "Big Chance / RT+R3",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "RT+R3",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "gamepadMappings": [
+      {
+        "buttonIndex": 11,
+        "modifier": "RT",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1019,
+    "category": "Core",
+    "eventName": "obs_toggle_record",
+    "label": "OBS Record / RT+Menu",
+    "defaultDuration": [
+      0,
+      0
+    ],
+    "trigger": "RT+Menu",
+    "isRealTime": true,
+    "gamepadMappings": [
+      {
+        "buttonIndex": 9,
+        "modifier": "RT",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1020,
+    "category": "Core",
+    "eventName": "ball_out_of_play",
+    "label": "Ball Out / LT+Menu",
+    "defaultDuration": [
+      0,
+      0
+    ],
+    "trigger": "LT+Menu",
+    "isRealTime": true,
+    "gamepadMappings": [
+      {
+        "buttonIndex": 9,
+        "modifier": "LT",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1021,
+    "category": "Core",
+    "eventName": "analyst_note",
+    "label": "Note / View+LB",
+    "defaultDuration": [
+      0,
+      0
+    ],
+    "trigger": "View+LB",
+    "isRealTime": true,
+    "gamepadMappings": [
+      {
+        "buttonIndex": 4,
+        "modifier": "View",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1022,
+    "category": "Core",
+    "eventName": "phase_highpress",
+    "label": "High Press / Hold D-Up",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Hold D-Pad Up",
+    "isRealTime": true,
+    "gamepadMappings": [
+      {
+        "buttonIndex": 12,
+        "isHold": true,
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1023,
+    "category": "Core",
+    "eventName": "free_kick",
+    "label": "Free Kick / RT+View",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "RT+View",
+    "isRealTime": true,
+    "gamepadMappings": [
+      {
+        "buttonIndex": 8,
+        "modifier": "RT",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1024,
+    "category": "Core",
+    "eventName": "offside",
+    "label": "Offside / View+A",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "View+A",
+    "isRealTime": true,
+    "gamepadMappings": [
+      {
+        "buttonIndex": 0,
+        "modifier": "View",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1025,
+    "category": "Core",
+    "eventName": "throw_in_tactical",
+    "label": "Throw-In / Menu+LB",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Menu+LB",
+    "isRealTime": true,
+    "gamepadMappings": [
+      {
+        "buttonIndex": 5,
+        "modifier": "View",
+        "mode": "LIVE"
+      },
+      {
+        "buttonIndex": 4,
+        "modifier": "Menu",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "category": "Build-Up",
+    "eventName": "sortie_de_balle_courte",
+    "label": "Sortie de balle courte",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/01_BuildUp/Sortie_de_balle_courte/",
+    "filenameConvention": "SORTIE_DE_BALLE_COURTE_MIN_SEC.mp4"
+  },
+  {
+    "id": 2,
+    "category": "Build-Up",
+    "eventName": "sortie_de_balle_longue",
+    "label": "Sortie de balle longue",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/01_BuildUp/Sortie_de_balle_longue/",
+    "filenameConvention": "SORTIE_DE_BALLE_LONGUE_MIN_SEC.mp4"
+  },
+  {
+    "id": 3,
+    "category": "Build-Up",
+    "eventName": "progression_axe",
+    "label": "Progression axe",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/01_BuildUp/Progression_axe/",
+    "filenameConvention": "PROGRESSION_AXE_MIN_SEC.mp4"
+  },
+  {
+    "id": 4,
+    "category": "Build-Up",
+    "eventName": "progression_cote",
+    "label": "Progression côté",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/01_BuildUp/Progression_côté/",
+    "filenameConvention": "PROGRESSION_CÔTÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 5,
+    "category": "Build-Up",
+    "eventName": "circulation_lente",
+    "label": "Circulation lente",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/01_BuildUp/Circulation_lente/",
+    "filenameConvention": "CIRCULATION_LENTE_MIN_SEC.mp4"
+  },
+  {
+    "id": 6,
+    "category": "Build-Up",
+    "eventName": "circulation_rapide",
+    "label": "Circulation rapide",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/01_BuildUp/Circulation_rapide/",
+    "filenameConvention": "CIRCULATION_RAPIDE_MIN_SEC.mp4"
+  },
+  {
+    "id": 7,
+    "category": "Build-Up",
+    "eventName": "fixation_bloc",
+    "label": "Fixation bloc",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/01_BuildUp/Fixation_bloc/",
+    "filenameConvention": "FIXATION_BLOC_MIN_SEC.mp4"
+  },
+  {
+    "id": 8,
+    "category": "Build-Up",
+    "eventName": "renversement",
+    "label": "Renversement / D-Left",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/01_BuildUp/Renversement/",
+    "filenameConvention": "RENVERSEMENT_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 14,
+        "mode": "BOTH"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "category": "Build-Up",
+    "eventName": "troisieme_homme",
+    "label": "Troisième homme",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/01_BuildUp/Troisième_homme/",
+    "filenameConvention": "TROISIÈME_HOMME_MIN_SEC.mp4"
+  },
+  {
+    "id": 10,
+    "category": "Build-Up",
+    "eventName": "break_line_pass",
+    "label": "Break line pass",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/01_BuildUp/Break_line_pass/",
+    "filenameConvention": "BREAK_LINE_PASS_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 15,
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "category": "Build-Up",
+    "eventName": "appel_decroche",
+    "label": "Appel décroché",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/01_BuildUp/Appel_décroché/",
+    "filenameConvention": "APPEL_DÉCROCHÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 12,
+    "category": "Build-Up",
+    "eventName": "appel_profondeur",
+    "label": "Appel profondeur",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/01_BuildUp/Appel_profondeur/",
+    "filenameConvention": "APPEL_PROFONDEUR_MIN_SEC.mp4"
+  },
+  {
+    "id": 13,
+    "category": "Offensive",
+    "eventName": "tir_cadre",
+    "label": "Tir cadré",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/02_Offensive/Tir_cadré/",
+    "filenameConvention": "TIR_CADRÉ_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 1,
+        "modifier": "RB",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "category": "Offensive",
+    "eventName": "tir_non_cadre",
+    "label": "Tir non cadré",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/02_Offensive/Tir_non_cadré/",
+    "filenameConvention": "TIR_NON_CADRÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 15,
+    "category": "Offensive",
+    "eventName": "occasion_creee",
+    "label": "Occasion créée",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/02_Offensive/Occasion_créée/",
+    "filenameConvention": "OCCASION_CRÉÉE_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 3,
+        "modifier": "RB",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "category": "Offensive",
+    "eventName": "xg_eleve",
+    "label": "xG élevé",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/02_Offensive/xG_élevé/",
+    "filenameConvention": "XG_ÉLEVÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 17,
+    "category": "Offensive",
+    "eventName": "centre_dangereux",
+    "label": "Centre dangereux",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/02_Offensive/Centre_dangereux/",
+    "filenameConvention": "CENTRE_DANGEREUX_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 2,
+        "modifier": "RB",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "category": "Offensive",
+    "eventName": "centre_rate",
+    "label": "Centre raté",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/02_Offensive/Centre_raté/",
+    "filenameConvention": "CENTRE_RATÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 19,
+    "category": "Offensive",
+    "eventName": "dribble_reussi",
+    "label": "Dribble réussi",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/02_Offensive/Dribble_réussi/",
+    "filenameConvention": "DRIBBLE_RÉUSSI_MIN_SEC.mp4"
+  },
+  {
+    "id": 20,
+    "category": "Offensive",
+    "eventName": "dribble_rate",
+    "label": "Dribble raté",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/02_Offensive/Dribble_raté/",
+    "filenameConvention": "DRIBBLE_RATÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 21,
+    "category": "Offensive",
+    "eventName": "une_deux",
+    "label": "Une-deux",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/02_Offensive/Une-deux/",
+    "filenameConvention": "UNE-DEUX_MIN_SEC.mp4"
+  },
+  {
+    "id": 22,
+    "category": "Offensive",
+    "eventName": "passe_cle",
+    "label": "Passe clé",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/02_Offensive/Passe_clé/",
+    "filenameConvention": "PASSE_CLÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 23,
+    "category": "Offensive",
+    "eventName": "counter_attack",
+    "label": "Contre-attaque",
+    "requiresZone": true,
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/02_Offensive/Contre-attaque/",
+    "filenameConvention": "CONTRE-ATTAQUE_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 3,
+        "modifier": "RB",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "category": "Offensive",
+    "eventName": "projection_milieu",
+    "label": "Projection milieu",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/02_Offensive/Projection_milieu/",
+    "filenameConvention": "PROJECTION_MILIEU_MIN_SEC.mp4"
+  },
+  {
+    "id": 25,
+    "category": "Défensive",
+    "eventName": "duel_gagne",
+    "label": "Duel gagné / LB+B",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/03_Defensive/Duel_gagné/",
+    "filenameConvention": "DUEL_GAGNÉ_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 1,
+        "modifier": "LB",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "category": "Défensive",
+    "eventName": "duel_perdu",
+    "label": "Duel perdu",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/03_Defensive/Duel_perdu/",
+    "filenameConvention": "DUEL_PERDU_MIN_SEC.mp4"
+  },
+  {
+    "id": 27,
+    "category": "Défensive",
+    "eventName": "interception",
+    "label": "Interception / LB+X",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/03_Defensive/Interception/",
+    "filenameConvention": "INTERCEPTION_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 5,
+        "mode": "BOTH"
+      },
+      {
+        "buttonIndex": 2,
+        "modifier": "LB",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "category": "Défensive",
+    "eventName": "tacle_reussi",
+    "label": "Tacle réussi / LB+A",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/03_Defensive/Tacle_réussi/",
+    "filenameConvention": "TACLE_RÉUSSI_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 0,
+        "modifier": "LB",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "category": "Défensive",
+    "eventName": "tacle_rate",
+    "label": "Tacle raté",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/03_Defensive/Tacle_raté/",
+    "filenameConvention": "TACLE_RATÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 30,
+    "category": "Défensive",
+    "eventName": "bloc_bas",
+    "label": "Bloc bas / D-Down",
+    "requiresZone": true,
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/03_Defensive/Bloc_bas/",
+    "filenameConvention": "BLOC_BAS_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 13,
+        "mode": "BOTH"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "category": "Défensive",
+    "eventName": "bloc_median",
+    "label": "Bloc médian",
+    "requiresZone": true,
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/03_Defensive/Bloc_médian/",
+    "filenameConvention": "BLOC_MÉDIAN_MIN_SEC.mp4"
+  },
+  {
+    "id": 32,
+    "category": "Défensive",
+    "eventName": "pressing_haut",
+    "label": "Pressing haut / D-Up",
+    "requiresZone": true,
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/03_Defensive/Pressing_haut/",
+    "filenameConvention": "PRESSING_HAUT_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 12,
+        "mode": "BOTH"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "category": "Défensive",
+    "eventName": "pressing_coordonne",
+    "label": "Pressing coordonné",
+    "requiresZone": true,
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/03_Defensive/Pressing_coordonné/",
+    "filenameConvention": "PRESSING_COORDONNÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 34,
+    "category": "Défensive",
+    "eventName": "sortie_defenseur",
+    "label": "Sortie défenseur",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/03_Defensive/Sortie_défenseur/",
+    "filenameConvention": "SORTIE_DÉFENSEUR_MIN_SEC.mp4"
+  },
+  {
+    "id": 35,
+    "category": "Défensive",
+    "eventName": "couverture",
+    "label": "Couverture",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/03_Defensive/Couverture/",
+    "filenameConvention": "COUVERTURE_MIN_SEC.mp4"
+  },
+  {
+    "id": 36,
+    "category": "Défensive",
+    "eventName": "faute_tactique",
+    "label": "Faute tactique / Menu+RB",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Menu+RB",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/03_Defensive/Faute_tactique/",
+    "filenameConvention": "FAUTE_TACTIQUE_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 5,
+        "modifier": "Menu",
+        "mode": "BOTH"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "category": "Transition",
+    "eventName": "recuperation_haute",
+    "label": "Récupération haute",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/04_Transition/Récupération_haute/",
+    "filenameConvention": "RÉCUPÉRATION_HAUTE_MIN_SEC.mp4"
+  },
+  {
+    "id": 38,
+    "category": "Transition",
+    "eventName": "recuperation_mediane",
+    "label": "Récupération médiane",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/04_Transition/Récupération_médiane/",
+    "filenameConvention": "RÉCUPÉRATION_MÉDIANE_MIN_SEC.mp4"
+  },
+  {
+    "id": 39,
+    "category": "Transition",
+    "eventName": "recuperation_basse",
+    "label": "Récupération basse",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/04_Transition/Récupération_basse/",
+    "filenameConvention": "RÉCUPÉRATION_BASSE_MIN_SEC.mp4"
+  },
+  {
+    "id": 40,
+    "category": "Transition",
+    "eventName": "transition_off_start",
+    "label": "Transition offensive",
+    "requiresZone": true,
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/04_Transition/Transition_offensive/",
+    "filenameConvention": "TRANSITION_OFFENSIVE_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 7,
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "category": "Transition",
+    "eventName": "transition_def_start",
+    "label": "Transition défensive",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/04_Transition/Transition_défensive/",
+    "filenameConvention": "TRANSITION_DÉFENSIVE_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 6,
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "category": "Transition",
+    "eventName": "projection_rapide",
+    "label": "Projection rapide",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/04_Transition/Projection_rapide/",
+    "filenameConvention": "PROJECTION_RAPIDE_MIN_SEC.mp4"
+  },
+  {
+    "id": 43,
+    "category": "Transition",
+    "eventName": "retard_defensif",
+    "label": "Retard défensif",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/04_Transition/Retard_défensif/",
+    "filenameConvention": "RETARD_DÉFENSIF_MIN_SEC.mp4"
+  },
+  {
+    "id": 44,
+    "category": "Transition",
+    "eventName": "contre_pressing",
+    "label": "Contre pressing",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/04_Transition/Contre_pressing/",
+    "filenameConvention": "CONTRE_PRESSING_MIN_SEC.mp4"
+  },
+  {
+    "id": 45,
+    "category": "Transition",
+    "eventName": "perte_dangereuse",
+    "label": "Perte dangereuse",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/04_Transition/Perte_dangereuse/",
+    "filenameConvention": "PERTE_DANGEREUSE_MIN_SEC.mp4"
+  },
+  {
+    "id": 46,
+    "category": "Transition",
+    "eventName": "perte_anodine",
+    "label": "Perte anodine",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/04_Transition/Perte_anodine/",
+    "filenameConvention": "PERTE_ANODINE_MIN_SEC.mp4"
+  },
+  {
+    "id": 47,
+    "category": "Moments Clés",
+    "eventName": "goal",
+    "label": "But / Menu+Y",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Menu+Y",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/05_MomentsCles/But/",
+    "filenameConvention": "BUT_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 3,
+        "modifier": "Menu",
+        "mode": "BOTH"
+      },
+      {
+        "buttonIndex": 5,
+        "mode": "POST"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "category": "Moments Clés",
+    "eventName": "but_refuse",
+    "label": "But refusé",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/05_MomentsCles/But_refusé/",
+    "filenameConvention": "BUT_REFUSÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 49,
+    "category": "Moments Clés",
+    "eventName": "passe_decisive",
+    "label": "Passe décisive / Menu+X",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Menu+X",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/05_MomentsCles/Passe_décisive/",
+    "filenameConvention": "PASSE_DÉCISIVE_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 2,
+        "modifier": "Menu",
+        "mode": "BOTH"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "category": "Moments Clés",
+    "eventName": "penalty",
+    "label": "Penalty obtenu",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/05_MomentsCles/Penalty_obtenu/",
+    "filenameConvention": "PENALTY_OBTENU_MIN_SEC.mp4",
+    "gamepadMappings": []
+  },
+  {
+    "id": 51,
+    "category": "Moments Clés",
+    "eventName": "penalty_concede",
+    "label": "Penalty concédé",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/05_MomentsCles/Penalty_concédé/",
+    "filenameConvention": "PENALTY_CONCÉDÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 52,
+    "category": "Moments Clés",
+    "eventName": "occasion_ratee",
+    "label": "Occasion ratée",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/05_MomentsCles/Occasion_ratée/",
+    "filenameConvention": "OCCASION_RATÉE_MIN_SEC.mp4"
+  },
+  {
+    "id": 53,
+    "category": "Moments Clés",
+    "eventName": "sauvetage_ligne",
+    "label": "Sauvetage ligne",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/05_MomentsCles/Sauvetage_ligne/",
+    "filenameConvention": "SAUVETAGE_LIGNE_MIN_SEC.mp4"
+  },
+  {
+    "id": 54,
+    "category": "Moments Clés",
+    "eventName": "erreur_menant_au_tir",
+    "label": "Erreur menant au tir",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/05_MomentsCles/Erreur_menant_au_tir/",
+    "filenameConvention": "ERREUR_MENANT_AU_TIR_MIN_SEC.mp4"
+  },
+  {
+    "id": 55,
+    "category": "Moments Clés",
+    "eventName": "erreur_menant_au_but",
+    "label": "Erreur menant au but",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/05_MomentsCles/Erreur_menant_au_but/",
+    "filenameConvention": "ERREUR_MENANT_AU_BUT_MIN_SEC.mp4"
+  },
+  {
+    "id": 56,
+    "category": "Moments Clés",
+    "eventName": "action_decisive",
+    "label": "Action décisive",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/05_MomentsCles/Action_décisive/",
+    "filenameConvention": "ACTION_DÉCISIVE_MIN_SEC.mp4"
+  },
+  {
+    "id": 57,
+    "category": "Phases Arrêtées",
+    "eventName": "corner_offensif",
+    "label": "Corner offensif",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/06_SetPieces/Corner_offensif/",
+    "filenameConvention": "CORNER_OFFENSIF_MIN_SEC.mp4"
+  },
+  {
+    "id": 58,
+    "category": "Phases Arrêtées",
+    "eventName": "corner_defensif",
+    "label": "Corner défensif",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/06_SetPieces/Corner_défensif/",
+    "filenameConvention": "CORNER_DÉFENSIF_MIN_SEC.mp4"
+  },
+  {
+    "id": 59,
+    "category": "Phases Arrêtées",
+    "eventName": "coup_franc_direct",
+    "label": "Coup franc direct",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/06_SetPieces/Coup_franc_direct/",
+    "filenameConvention": "COUP_FRANC_DIRECT_MIN_SEC.mp4"
+  },
+  {
+    "id": 60,
+    "category": "Phases Arrêtées",
+    "eventName": "coup_franc_indirect",
+    "label": "Coup franc indirect",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/06_SetPieces/Coup_franc_indirect/",
+    "filenameConvention": "COUP_FRANC_INDIRECT_MIN_SEC.mp4"
+  },
+  {
+    "id": 61,
+    "category": "Phases Arrêtées",
+    "eventName": "penalty_tire",
+    "label": "Penalty tiré",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/06_SetPieces/Penalty_tiré/",
+    "filenameConvention": "PENALTY_TIRÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 62,
+    "category": "Phases Arrêtées",
+    "eventName": "penalty_arrete",
+    "label": "Penalty arrêté",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/06_SetPieces/Penalty_arrêté/",
+    "filenameConvention": "PENALTY_ARRÊTÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 63,
+    "category": "Phases Arrêtées",
+    "eventName": "second_ballon_cpa",
+    "label": "Second ballon CPA",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/06_SetPieces/Second_ballon_CPA/",
+    "filenameConvention": "SECOND_BALLON_CPA_MIN_SEC.mp4"
+  },
+  {
+    "id": 64,
+    "category": "Phases Arrêtées",
+    "eventName": "organisation_cpa",
+    "label": "Organisation CPA",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/06_SetPieces/Organisation_CPA/",
+    "filenameConvention": "ORGANISATION_CPA_MIN_SEC.mp4"
+  },
+  {
+    "id": 65,
+    "category": "Gardien",
+    "eventName": "arret_simple",
+    "label": "Arrêt simple",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/07_Gardien/Arrêt_simple/",
+    "filenameConvention": "ARRÊT_SIMPLE_MIN_SEC.mp4"
+  },
+  {
+    "id": 66,
+    "category": "Gardien",
+    "eventName": "arret_reflexe",
+    "label": "Arrêt réflexe",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/07_Gardien/Arrêt_réflexe/",
+    "filenameConvention": "ARRÊT_RÉFLEXE_MIN_SEC.mp4"
+  },
+  {
+    "id": 67,
+    "category": "Gardien",
+    "eventName": "sortie_aerienne",
+    "label": "Sortie aérienne",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/07_Gardien/Sortie_aérienne/",
+    "filenameConvention": "SORTIE_AÉRIENNE_MIN_SEC.mp4"
+  },
+  {
+    "id": 68,
+    "category": "Gardien",
+    "eventName": "sortie_au_sol",
+    "label": "Sortie au sol",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/07_Gardien/Sortie_au_sol/",
+    "filenameConvention": "SORTIE_AU_SOL_MIN_SEC.mp4"
+  },
+  {
+    "id": 69,
+    "category": "Gardien",
+    "eventName": "relance_courte",
+    "label": "Relance courte",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/07_Gardien/Relance_courte/",
+    "filenameConvention": "RELANCE_COURTE_MIN_SEC.mp4"
+  },
+  {
+    "id": 70,
+    "category": "Gardien",
+    "eventName": "relance_longue",
+    "label": "Relance longue",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/07_Gardien/Relance_longue/",
+    "filenameConvention": "RELANCE_LONGUE_MIN_SEC.mp4"
+  },
+  {
+    "id": 71,
+    "category": "Gardien",
+    "eventName": "erreur_relance",
+    "label": "Erreur relance",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/07_Gardien/Erreur_relance/",
+    "filenameConvention": "ERREUR_RELANCE_MIN_SEC.mp4"
+  },
+  {
+    "id": 72,
+    "category": "Gardien",
+    "eventName": "1v1_gagne",
+    "label": "1v1 gagné",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/07_Gardien/1v1_gagné/",
+    "filenameConvention": "1V1_GAGNÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 73,
+    "category": "Gardien",
+    "eventName": "1v1_perdu",
+    "label": "1v1 perdu",
+    "requiresZone": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/07_Gardien/1v1_perdu/",
+    "filenameConvention": "1V1_PERDU_MIN_SEC.mp4"
+  },
+  {
+    "id": 74,
+    "category": "Discipline",
+    "eventName": "foul",
+    "label": "Faute simple",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/08_Discipline/Faute_simple/",
+    "filenameConvention": "FAUTE_SIMPLE_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 8,
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "category": "Discipline",
+    "eventName": "faute_dangereuse",
+    "label": "Faute dangereuse",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/08_Discipline/Faute_dangereuse/",
+    "filenameConvention": "FAUTE_DANGEREUSE_MIN_SEC.mp4"
+  },
+  {
+    "id": 76,
+    "category": "Discipline",
+    "eventName": "card_yellow",
+    "label": "Carton jaune",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/08_Discipline/Carton_jaune/",
+    "filenameConvention": "CARTON_JAUNE_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 3,
+        "modifier": "View",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "category": "Discipline",
+    "eventName": "card_red",
+    "label": "Carton rouge",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/08_Discipline/Carton_rouge/",
+    "filenameConvention": "CARTON_ROUGE_MIN_SEC.mp4",
+    "gamepadMappings": [
+      {
+        "buttonIndex": 1,
+        "modifier": "View",
+        "mode": "LIVE"
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "category": "Discipline",
+    "eventName": "avertissement_verbal",
+    "label": "Avertissement verbal",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/08_Discipline/Avertissement_verbal/",
+    "filenameConvention": "AVERTISSEMENT_VERBAL_MIN_SEC.mp4"
+  },
+  {
+    "id": 79,
+    "category": "Physique",
+    "eventName": "sprint",
+    "label": "Sprint",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/09_Physique/Sprint/",
+    "filenameConvention": "SPRINT_MIN_SEC.mp4"
+  },
+  {
+    "id": 80,
+    "category": "Physique",
+    "eventName": "haute_intensite",
+    "label": "Haute intensité",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/09_Physique/Haute_intensité/",
+    "filenameConvention": "HAUTE_INTENSITÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 81,
+    "category": "Physique",
+    "eventName": "baisse_de_rythme",
+    "label": "Baisse de rythme",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/09_Physique/Baisse_de_rythme/",
+    "filenameConvention": "BAISSE_DE_RYTHME_MIN_SEC.mp4"
+  },
+  {
+    "id": 82,
+    "category": "Physique",
+    "eventName": "retour_defensif_long",
+    "label": "Retour défensif long",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/09_Physique/Retour_défensif_long/",
+    "filenameConvention": "RETOUR_DÉFENSIF_LONG_MIN_SEC.mp4"
+  },
+  {
+    "id": 83,
+    "category": "Physique",
+    "eventName": "fatigue_visible",
+    "label": "Fatigue visible",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/09_Physique/Fatigue_visible/",
+    "filenameConvention": "FATIGUE_VISIBLE_MIN_SEC.mp4"
+  },
+  {
+    "id": 84,
+    "category": "Tactique",
+    "eventName": "changement_systeme",
+    "label": "Changement système",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/10_Tactique/Changement_système/",
+    "filenameConvention": "CHANGEMENT_SYSTÈME_MIN_SEC.mp4"
+  },
+  {
+    "id": 85,
+    "category": "Tactique",
+    "eventName": "ajustement_pressing",
+    "label": "Ajustement pressing",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/10_Tactique/Ajustement_pressing/",
+    "filenameConvention": "AJUSTEMENT_PRESSING_MIN_SEC.mp4"
+  },
+  {
+    "id": 86,
+    "category": "Tactique",
+    "eventName": "bloc_plus_haut",
+    "label": "Bloc plus haut",
+    "requiresZone": true,
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/10_Tactique/Bloc_plus_haut/",
+    "filenameConvention": "BLOC_PLUS_HAUT_MIN_SEC.mp4"
+  },
+  {
+    "id": 87,
+    "category": "Tactique",
+    "eventName": "bloc_plus_bas",
+    "label": "Bloc plus bas",
+    "requiresZone": true,
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/10_Tactique/Bloc_plus_bas/",
+    "filenameConvention": "BLOC_PLUS_BAS_MIN_SEC.mp4"
+  },
+  {
+    "id": 88,
+    "category": "Tactique",
+    "eventName": "desequilibre_cote",
+    "label": "Déséquilibre côté",
+    "requiresZone": true,
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/10_Tactique/Déséquilibre_côté/",
+    "filenameConvention": "DÉSÉQUILIBRE_CÔTÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 89,
+    "category": "Tactique",
+    "eventName": "surnombre_cree",
+    "label": "Surnombre créé",
+    "requiresZone": true,
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/10_Tactique/Surnombre_créé/",
+    "filenameConvention": "SURNOMBRE_CRÉÉ_MIN_SEC.mp4"
+  },
+  {
+    "id": 90,
+    "category": "Psychologique",
+    "eventName": "leadership",
+    "label": "Leadership",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/11_Psychologique/Leadership/",
+    "filenameConvention": "LEADERSHIP_MIN_SEC.mp4"
+  },
+  {
+    "id": 91,
+    "category": "Psychologique",
+    "eventName": "reaction_apres_but",
+    "label": "Réaction après but",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/11_Psychologique/Réaction_après_but/",
+    "filenameConvention": "RÉACTION_APRÈS_BUT_MIN_SEC.mp4"
+  },
+  {
+    "id": 92,
+    "category": "Psychologique",
+    "eventName": "perte_de_concentration",
+    "label": "Perte de concentration",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/11_Psychologique/Perte_de_concentration/",
+    "filenameConvention": "PERTE_DE_CONCENTRATION_MIN_SEC.mp4"
+  },
+  {
+    "id": 93,
+    "category": "Psychologique",
+    "eventName": "motivation_collective",
+    "label": "Motivation collective",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/11_Psychologique/Motivation_collective/",
+    "filenameConvention": "MOTIVATION_COLLECTIVE_MIN_SEC.mp4"
+  },
+  {
+    "id": 94,
+    "category": "Match",
+    "eventName": "coup_denvoi",
+    "label": "Coup d’envoi",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/12_Match/Coup_d’envoi/",
+    "filenameConvention": "COUP_D’ENVOI_MIN_SEC.mp4"
+  },
+  {
+    "id": 95,
+    "category": "Match",
+    "eventName": "mi_temps",
+    "label": "Mi-temps",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/12_Match/Mi-temps/",
+    "filenameConvention": "MI-TEMPS_MIN_SEC.mp4"
+  },
+  {
+    "id": 96,
+    "category": "Match",
+    "eventName": "fin_de_match",
+    "label": "Fin de match",
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": false,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/12_Match/Fin_de_match/",
+    "filenameConvention": "FIN_DE_MATCH_MIN_SEC.mp4"
+  },
+  {
+    "id": 97,
+    "category": "Match",
+    "eventName": "temps_fort",
+    "label": "Temps fort",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/12_Match/Temps_fort/",
+    "filenameConvention": "TEMPS_FORT_MIN_SEC.mp4"
+  },
+  {
+    "id": 98,
+    "category": "Match",
+    "eventName": "temps_faible",
+    "label": "Temps faible",
+    "requiresDuration": true,
+    "defaultDuration": [
+      5,
+      12
+    ],
+    "trigger": "Déclencheur terrain",
+    "endCondition": "Action terminée",
+    "isRealTime": true,
+    "isPostMatch": true,
+    "folderPath": "/Match_DATE/12_Match/Temps_faible/",
+    "filenameConvention": "TEMPS_FAIBLE_MIN_SEC.mp4"
+  }
+]

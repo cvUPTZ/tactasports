@@ -1,0 +1,5 @@
+{
+  "success": false,
+  "error": "n_samples=1 should be >= n_clusters=2.",
+  "error_type": "ValueError"
+}

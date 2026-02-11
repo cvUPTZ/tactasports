@@ -1,0 +1,1021 @@
+import { useRef, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Play, Pause, Volume2, VolumeX, Maximize, SkipBack, SkipForward, Users, Scan, Upload, Target, ZoomIn } from "lucide-react";
+import { LoggedEvent } from "@/hooks/useGamepad";
+import { TeamRoster } from "@/types/player";
+import { PitchMap } from "@/components/PitchMap";
+import { computeHomography, transformPoint, Point, transformPointInverse } from "@/utils/calibration";
+import { useToast } from "@/hooks/use-toast";
+
+interface VideoPlayerProps {
+    videoFile: File | null;
+    events: LoggedEvent[];
+    onTimeUpdate: (currentTime: number) => void;
+    onEventMarkerClick?: (event: LoggedEvent) => void;
+    seekTo?: number | null;
+    isPlaying?: boolean;
+    onPlayPause?: (isPlaying: boolean) => void;
+    onSeekComplete?: () => void;
+    axes?: number[];
+    buttons?: GamepadButton[];
+    teams?: Map<string, TeamRoster>;
+    selectedTeam?: string;
+    teamNames?: { teamA: string, teamB: string };
+}
+
+interface CalibrationPoint {
+    id: number;
+    video: Point | null;
+    pitch: Point | null;
+}
+
+interface TrackingData {
+    positions: Array<{
+        frame: number;
+        timestamp: number;
+        x: number;
+        y: number;
+        team: string;
+        confidence: number;
+    }>;
+    video_info: any;
+}
+
+export const VideoPlayer = ({ videoFile, events, onTimeUpdate, onEventMarkerClick, seekTo, isPlaying: externalIsPlaying, onPlayPause, onSeekComplete, axes, buttons, teams, selectedTeam, teamNames }: VideoPlayerProps) => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const fullscreenContainerRef = useRef<HTMLDivElement>(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [localIsPlaying, setLocalIsPlaying] = useState(false);
+    const { toast } = useToast();
+
+    const isPlaying = externalIsPlaying !== undefined ? externalIsPlaying : localIsPlaying;
+
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
+    const [volume, setVolume] = useState(1);
+    const [isMuted, setIsMuted] = useState(false);
+    const [playbackRate, setPlaybackRate] = useState(1);
+    const [videoUrl, setVideoUrl] = useState<string | null>(null);
+
+    const [eventNotifications, setEventNotifications] = useState<Array<{ id: number, event: LoggedEvent, timestamp: number }>>([]);
+    const [showRoster, setShowRoster] = useState(false);
+
+    // Calibration State
+    const [isCalibrationMode, setIsCalibrationMode] = useState(false);
+    const [calibrationPoints, setCalibrationPoints] = useState<CalibrationPoint[]>([]);
+    const [activePointId, setActivePointId] = useState<number | null>(null);
+    const [homographyMatrix, setHomographyMatrix] = useState<number[] | null>(null);
+
+    // Tracking Data State
+    const [trackingData, setTrackingData] = useState<TrackingData | null>(null);
+    const [visiblePlayers, setVisiblePlayers] = useState<Array<{ x: number; y: number; team: string }>>([]);
+
+    // Auto-Zoom State
+    const [autoZoomEnabled, setAutoZoomEnabled] = useState(false);
+
+    // Controller Cursor State
+    const [videoCursor, setVideoCursor] = useState<Point>({ x: 50, y: 50 });
+    const lastButtonState = useRef<boolean>(false);
+
+    const playPauseButtonRef = useRef(false);
+    const fullscreenButtonRef = useRef(false);
+    const fullscreenAltButtonRef = useRef(false);
+
+    useEffect(() => {
+        if (videoFile) {
+            const url = URL.createObjectURL(videoFile);
+            setVideoUrl(url);
+            return () => URL.revokeObjectURL(url);
+        } else {
+            setVideoUrl(null);
+        }
+    }, [videoFile]);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        if (isPlaying && video.paused) {
+            video.play().catch(e => console.error("Play failed:", e));
+        } else if (!isPlaying && !video.paused) {
+            video.pause();
+        }
+    }, [isPlaying]);
+
+    useEffect(() => {
+        if (seekTo !== undefined && seekTo !== null && videoRef.current) {
+            videoRef.current.currentTime = seekTo;
+            setCurrentTime(seekTo);
+            if (onSeekComplete) onSeekComplete();
+        }
+    }, [seekTo, onSeekComplete]);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const handleTimeUpdate = () => {
+            setCurrentTime(video.currentTime);
+            onTimeUpdate(video.currentTime);
+        };
+
+        const handleLoadedMetadata = () => {
+            setDuration(video.duration);
+        };
+
+        const handleEnded = () => {
+            if (onPlayPause) onPlayPause(false);
+            else setLocalIsPlaying(false);
+        };
+
+        const handlePlay = () => {
+            if (onPlayPause) onPlayPause(true);
+            else setLocalIsPlaying(true);
+        };
+
+        const handlePause = () => {
+            if (onPlayPause) onPlayPause(false);
+            else setLocalIsPlaying(false);
+        };
+
+        video.addEventListener('timeupdate', handleTimeUpdate);
+        video.addEventListener('loadedmetadata', handleLoadedMetadata);
+        video.addEventListener('ended', handleEnded);
+        video.addEventListener('play', handlePlay);
+        video.addEventListener('pause', handlePause);
+
+        return () => {
+            video.removeEventListener('timeupdate', handleTimeUpdate);
+            video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+            video.removeEventListener('ended', handleEnded);
+            video.removeEventListener('play', handlePlay);
+            video.removeEventListener('pause', handlePause);
+        };
+    }, [onTimeUpdate, onPlayPause]);
+
+    useEffect(() => {
+        if (events.length > 0) {
+            const latestEvent = events[0];
+            const now = Date.now();
+
+            setEventNotifications(prev => {
+                if (prev.some(n => n.event.id === latestEvent.id)) {
+                    return prev;
+                }
+
+                return [{
+                    id: now,
+                    event: latestEvent,
+                    timestamp: now
+                }, ...prev];
+            });
+        }
+    }, [events]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const now = Date.now();
+            setEventNotifications(prev =>
+                prev.filter(n => now - n.timestamp < 3000)
+            );
+        }, 100);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const togglePlay = () => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const newState = !isPlaying;
+        if (onPlayPause) {
+            onPlayPause(newState);
+        } else {
+            setLocalIsPlaying(newState);
+        }
+
+        if (newState) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    };
+
+    const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const time = parseFloat(e.target.value);
+        video.currentTime = time;
+        setCurrentTime(time);
+    };
+
+    const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const vol = parseFloat(e.target.value);
+        video.volume = vol;
+        setVolume(vol);
+        setIsMuted(vol === 0);
+    };
+
+    const toggleMute = () => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        video.muted = !isMuted;
+        setIsMuted(!isMuted);
+    };
+
+    const changePlaybackRate = () => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const rates = [0.5, 0.75, 1, 1.25, 1.5, 2];
+        const currentIndex = rates.indexOf(playbackRate);
+        const nextRate = rates[(currentIndex + 1) % rates.length];
+        video.playbackRate = nextRate;
+        setPlaybackRate(nextRate);
+    };
+
+    const toggleFullscreen = () => {
+        const container = fullscreenContainerRef.current;
+        if (!container) return;
+
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            container.requestFullscreen();
+        }
+    };
+
+    const skipTime = (seconds: number) => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        video.currentTime = Math.max(0, Math.min(duration, currentTime + seconds));
+    };
+
+    const jumpToEvent = (event: LoggedEvent) => {
+        const video = videoRef.current;
+        if (!video || !event.videoTime) return;
+
+        video.currentTime = event.videoTime;
+        setCurrentTime(event.videoTime);
+        if (onEventMarkerClick) {
+            onEventMarkerClick(event);
+        }
+    };
+
+    const formatTime = (seconds: number) => {
+        const hrs = Math.floor(seconds / 3600);
+        const mins = Math.floor((seconds % 3600) / 60);
+        const secs = Math.floor(seconds % 60);
+
+        if (hrs > 0) {
+            return `${hrs}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    };
+
+    const [zoomLevel, setZoomLevel] = useState(1);
+    const [panPosition, setPanPosition] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        if (!axes || !buttons) return;
+
+        // Play/Pause button (button 4 = LB)
+        const playPauseButton = buttons[4];
+        if (playPauseButton && playPauseButton.pressed && !playPauseButtonRef.current) {
+            togglePlay();
+        }
+        playPauseButtonRef.current = playPauseButton?.pressed || false;
+
+        // Fullscreen toggle (button 9 = Start)
+        const fullscreenButton = buttons[9];
+        if (fullscreenButton && fullscreenButton.pressed && !fullscreenButtonRef.current) {
+            toggleFullscreen();
+        }
+        fullscreenButtonRef.current = fullscreenButton?.pressed || false;
+
+        // Fullscreen toggle alternative (button 8 = Select/Back)
+        const fullscreenAltButton = buttons[8];
+        if (fullscreenAltButton && fullscreenAltButton.pressed && !fullscreenAltButtonRef.current) {
+            toggleFullscreen();
+        }
+        fullscreenAltButtonRef.current = fullscreenAltButton?.pressed || false;
+
+        const zoomOutVal = buttons[6]?.value || 0;
+        const zoomInVal = buttons[7]?.value || 0;
+
+        if (zoomInVal > 0.1 || zoomOutVal > 0.1) {
+            setZoomLevel(prev => {
+                const speed = 0.03;
+                const change = (zoomInVal * speed) - (zoomOutVal * speed);
+                const newZoom = Math.max(1, Math.min(5, prev + change));
+                return newZoom;
+            });
+        }
+
+        const xVal = axes[0] || 0;
+        const yVal = axes[1] || 0;
+        const deadzone = 0.15;
+
+        if (Math.abs(xVal) > deadzone || Math.abs(yVal) > deadzone) {
+            setPanPosition(prev => {
+                if (zoomLevel <= 1) return { x: 0, y: 0 };
+
+                const speed = 1.5;
+                const newX = prev.x - (xVal * speed);
+                const newY = prev.y - (yVal * speed);
+
+                const limit = 50 * (1 - 1 / zoomLevel);
+
+                return {
+                    x: Math.max(-limit, Math.min(limit, newX)),
+                    y: Math.max(-limit, Math.min(limit, newY))
+                };
+            });
+        } else if (zoomLevel <= 1.05) {
+            setPanPosition({ x: 0, y: 0 });
+        }
+
+    }, [axes, buttons, zoomLevel]);
+
+    // Controller Input Loop for Calibration Cursor
+    useEffect(() => {
+        if (!axes || !isCalibrationMode) return;
+
+        const deadzone = 0.1;
+        const maxSpeed = 2.0; // Max speed multiplier
+
+        const rawX = Math.abs(axes[0]) > deadzone ? axes[0] : 0;
+        const rawY = Math.abs(axes[1]) > deadzone ? axes[1] : 0;
+
+        // Quadratic curve for precision: (input^2) * sign * speed
+        // This allows fine control at low tilt and fast movement at full tilt
+        const xInput = Math.sign(rawX) * Math.pow(Math.abs(rawX), 2.5) * maxSpeed;
+        const yInput = Math.sign(rawY) * Math.pow(Math.abs(rawY), 2.5) * maxSpeed;
+
+        if (xInput !== 0 || yInput !== 0) {
+            setVideoCursor(prev => {
+                let newX = prev.x + xInput;
+                let newY = prev.y + yInput;
+
+                // Clamp to 0-100
+                newX = Math.max(0, Math.min(100, newX));
+                newY = Math.max(0, Math.min(100, newY));
+
+                return { x: newX, y: newY };
+            });
+        }
+
+        // Handle Button A (Index 0) for clicking
+        if (buttons && buttons[0]) {
+            if (buttons[0].pressed && !lastButtonState.current) {
+                // Button Down Event
+                handleVideoClick({
+                    stopPropagation: () => { },
+                    currentTarget: videoRef.current,
+                    clientX: 0, // Dummy
+                    clientY: 0, // Dummy
+                } as any, true);
+            }
+            lastButtonState.current = buttons[0].pressed;
+        }
+
+    }, [axes, buttons, isCalibrationMode]);
+
+    // Calibration Logic
+    const handleVideoMouseMove = (e: React.MouseEvent<HTMLVideoElement>) => {
+        if (!isCalibrationMode) return;
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        setVideoCursor({ x, y });
+    };
+
+    const handleVideoClick = (e: React.MouseEvent<HTMLVideoElement> | any, isControllerInput = false) => {
+        if (!isCalibrationMode || !videoRef.current) {
+            togglePlay();
+            return;
+        }
+
+        if (e.stopPropagation) e.stopPropagation();
+
+        let x, y;
+
+        if (isControllerInput) {
+            x = videoCursor.x;
+            y = videoCursor.y;
+        } else {
+            // For mouse clicks, we can trust the current videoCursor state 
+            // because we are now updating it on mouse move.
+            // But to be safe and precise, let's recalculate if it's a real mouse event
+            if (e.clientX) {
+                const rect = e.currentTarget.getBoundingClientRect();
+                x = ((e.clientX - rect.left) / rect.width) * 100;
+                y = ((e.clientY - rect.top) / rect.height) * 100;
+                setVideoCursor({ x, y });
+            } else {
+                x = videoCursor.x;
+                y = videoCursor.y;
+            }
+        }
+
+        // Add new point
+        const newId = calibrationPoints.length + 1;
+        setCalibrationPoints(prev => [...prev, { id: newId, video: { x, y }, pitch: null }]);
+        setActivePointId(newId);
+    };
+
+    const handlePitchPointClick = (point: Point) => {
+        if (!activePointId) return;
+
+        setCalibrationPoints(prev => prev.map(p =>
+            p.id === activePointId ? { ...p, pitch: point } : p
+        ));
+
+        // Auto-advance to next point if it exists and has no pitch point, or just clear active
+        const nextPoint = calibrationPoints.find(p => p.id === activePointId + 1);
+        if (nextPoint) {
+            setActivePointId(nextPoint.id);
+        } else {
+            setActivePointId(null);
+        }
+    };
+
+    const computeCalibration = () => {
+        const validPoints = calibrationPoints.filter(p => p.video && p.pitch);
+        if (validPoints.length < 4) {
+            toast({
+                title: "Calibration Failed",
+                description: "Need at least 4 points with both video and pitch coordinates.",
+                variant: "destructive"
+            });
+            return;
+        }
+
+        const src = validPoints.map(p => p.video!);
+        const dst = validPoints.map(p => p.pitch!);
+
+        const matrix = computeHomography(src, dst);
+        if (matrix) {
+            setHomographyMatrix(matrix);
+            toast({
+                title: "Calibration Successful",
+                description: "Field mapping computed successfully.",
+            });
+            setIsCalibrationMode(false);
+        } else {
+            toast({
+                title: "Calibration Failed",
+                description: "Could not compute valid homography matrix.",
+                variant: "destructive"
+            });
+        }
+    };
+
+    const handleTrackingUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            try {
+                const data = JSON.parse(event.target?.result as string);
+                setTrackingData(data);
+                toast({
+                    title: "Tracking Data Loaded",
+                    description: `Loaded ${data.positions.length} positions.`,
+                });
+            } catch (err) {
+                console.error(err);
+                toast({
+                    title: "Upload Failed",
+                    description: "Invalid JSON file.",
+                    variant: "destructive"
+                });
+            }
+        };
+        reader.readAsText(file);
+    };
+
+    // Update visible players based on current time
+    useEffect(() => {
+        if (!trackingData || !homographyMatrix) return;
+
+        // Find positions for current time (within small window)
+        const currentPositions = trackingData.positions.filter(p =>
+            Math.abs(p.timestamp - currentTime) < 0.1 // 100ms window
+        );
+
+        const transformed = currentPositions.map(p => {
+            // Transform video coordinates (0-100) to pitch coordinates
+            const pt = transformPoint(homographyMatrix, { x: p.x, y: p.y });
+            return { ...pt, team: p.team };
+        });
+
+        setVisiblePlayers(transformed);
+
+    }, [currentTime, trackingData, homographyMatrix]);
+
+    // Video-Based Auto-Zoom (analyzes video frames - no calibration needed)
+    useEffect(() => {
+        if (!autoZoomEnabled || !videoRef.current || !canvasRef.current) {
+            // Reset zoom if auto-zoom is disabled
+            if (!autoZoomEnabled && zoomLevel !== 1) {
+                setZoomLevel(1);
+                setPanPosition({ x: 0, y: 0 });
+            }
+            return;
+        }
+
+        const analyzeFrame = () => {
+            const canvas = canvasRef.current;
+            const video = videoRef.current;
+            if (!canvas || !video || video.paused || video.ended) return;
+
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            // Sample at low resolution for performance
+            canvas.width = 320;
+            canvas.height = 180;
+
+            try {
+                ctx.drawImage(video, 0, 0, 320, 180);
+                const imageData = ctx.getImageData(0, 0, 320, 180);
+                const pixels = imageData.data;
+
+                let greenPixels = 0;
+                const totalPixels = pixels.length / 4;
+
+                // Track non-green pixels (players, ball, etc.) for focus detection
+                let focusX = 0;
+                let focusY = 0;
+                let focusCount = 0;
+
+                // Detect green field pixels and non-green focus points
+                for (let i = 0; i < pixels.length; i += 4) {
+                    const r = pixels[i];
+                    const g = pixels[i + 1];
+                    const b = pixels[i + 2];
+
+                    // Calculate position in frame
+                    const pixelIndex = i / 4;
+                    const x = (pixelIndex % 320) / 320; // 0-1
+                    const y = Math.floor(pixelIndex / 320) / 180; // 0-1
+
+                    // IGNORE TOP 30% of frame (crowd/stands area)
+                    if (y < 0.3) continue;
+
+                    // Green detection: g > r && g > b && g > threshold
+                    if (g > r && g > b && g > 60) {
+                        greenPixels++;
+                    } else {
+                        // Non-green pixel (potential player/ball)
+                        // Only consider pixels in the field area (lower 70% of frame)
+
+                        // Weight brighter pixels more (likely to be players/ball)
+                        const brightness = (r + g + b) / 3;
+
+                        // Filter: bright enough but not too bright (avoid ads/graphics)
+                        if (brightness > 80 && brightness < 240) {
+                            focusX += x * brightness;
+                            focusY += y * brightness;
+                            focusCount += brightness;
+                        }
+                    }
+                }
+
+                const fieldRatio = greenPixels / totalPixels;
+
+                // Calculate focus point (center of action)
+                let targetX = 50; // Default center
+                let targetY = 50;
+
+                if (focusCount > 0) {
+                    targetX = (focusX / focusCount) * 100; // Convert to 0-100
+                    targetY = (focusY / focusCount) * 100;
+                }
+
+                // High field ratio = wide shot = zoom in
+                if (fieldRatio > 0.4) {
+                    setZoomLevel(2.5);
+                    // Pan to focus point
+                    setPanPosition({
+                        x: (50 - targetX) * 1.5,
+                        y: (50 - targetY) * 1.5
+                    });
+                } else if (fieldRatio > 0.25) {
+                    setZoomLevel(1.8);
+                    setPanPosition({
+                        x: (50 - targetX) * 0.8,
+                        y: (50 - targetY) * 0.8
+                    });
+                } else {
+                    setZoomLevel(1);
+                    setPanPosition({ x: 0, y: 0 });
+                }
+            } catch (err) {
+                console.error('Frame analysis error:', err);
+            }
+        };
+
+        // Analyze frames every 500ms
+        const interval = setInterval(analyzeFrame, 500);
+
+        // Initial analysis
+        analyzeFrame();
+
+        return () => clearInterval(interval);
+    }, [autoZoomEnabled, isPlaying]);
+
+    const toggleCalibrationMode = () => {
+        if (!isCalibrationMode) {
+            setZoomLevel(1);
+            setPanPosition({ x: 0, y: 0 });
+        }
+        setIsCalibrationMode(!isCalibrationMode);
+    };
+
+    if (!videoUrl) {
+        return (
+            <div className="w-full aspect-video bg-muted rounded-lg flex items-center justify-center">
+                <p className="text-muted-foreground">No video loaded</p>
+            </div>
+        );
+    }
+
+    return (
+        <div className="w-full space-y-2">
+            {/* Main Container - Ref moved here for Fullscreen */}
+            <div
+                ref={fullscreenContainerRef}
+                className={`flex gap-4 bg-background ${document.fullscreenElement ? 'p-4 h-screen items-center justify-center' : ''}`}
+            >
+                {/* Video Container */}
+                <div className={`relative bg-black rounded-lg overflow-hidden group transition-all duration-300 ${isCalibrationMode ? 'w-2/3' : 'w-full'}`}>
+                    <div className={`w-full ${document.fullscreenElement && !isCalibrationMode ? 'h-full' : 'aspect-video'} overflow-hidden relative`}>
+                        <video
+                            ref={videoRef}
+                            src={videoUrl}
+                            className={`w-full h-full object-contain will-change-transform ${isCalibrationMode ? 'cursor-crosshair' : ''}`}
+                            style={{
+                                transform: `scale(${zoomLevel}) translate(${panPosition.x}%, ${panPosition.y}%)`,
+                                transition: 'transform 0.15s cubic-bezier(0.4, 0, 0.2, 1)'
+                            }}
+                            onClick={handleVideoClick}
+                            onMouseMove={handleVideoMouseMove}
+                        />
+
+                        {/* Hidden Canvas for Frame Analysis */}
+                        <canvas ref={canvasRef} className="hidden" />
+
+                        {/* Virtual Cursor for Controller */}
+                        {isCalibrationMode && (
+                            <div
+                                className="absolute w-6 h-6 -ml-3 -mt-3 pointer-events-none z-50 transition-transform duration-75"
+                                style={{
+                                    left: `${videoCursor.x}%`,
+                                    top: `${videoCursor.y}%`,
+                                    color: '#ef4444' // Red cursor
+                                }}
+                            >
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <line x1="12" y1="0" x2="12" y2="24" />
+                                    <line x1="0" y1="12" x2="24" y2="12" />
+                                </svg>
+                            </div>
+                        )}
+
+                        {/* Calibration Markers on Video */}
+                        {isCalibrationMode && calibrationPoints.map((p) => p.video && (
+                            <div
+                                key={p.id}
+                                className={`absolute w-4 h-4 -ml-2 -mt-2 rounded-full flex items-center justify-center text-[10px] font-bold border border-white shadow-sm pointer-events-none z-20
+                                    ${activePointId === p.id ? 'bg-yellow-500 text-black scale-125' : 'bg-blue-500 text-white'}`}
+                                style={{ left: `${p.video.x}%`, top: `${p.video.y}%` }}
+                            >
+                                {p.id}
+                            </div>
+                        ))}
+
+                        {zoomLevel > 1 && (
+                            <div className="absolute top-2 right-2 bg-black/50 text-white px-2 py-1 rounded text-xs font-mono pointer-events-none z-20">
+                                {zoomLevel.toFixed(1)}x
+                            </div>
+                        )}
+
+                        {!isCalibrationMode && (
+                            <div className="absolute top-4 left-1/2 -translate-x-1/2 pointer-events-none z-30 space-y-2 w-96">
+                                {eventNotifications.map((notification) => {
+                                    const age = Date.now() - notification.timestamp;
+                                    const opacity = Math.max(0, 1 - (age / 3000));
+                                    const translateY = (age / 3000) * -20;
+
+                                    return (
+                                        <div
+                                            key={notification.id}
+                                            className="bg-black/80 backdrop-blur-sm text-white px-4 py-3 rounded-lg border-l-4 border-primary shadow-lg"
+                                            style={{
+                                                opacity,
+                                                transform: `translateY(${translateY}px)`,
+                                                transition: 'opacity 0.1s, transform 0.1s'
+                                            }}
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                <div className="flex-1">
+                                                    <div className="font-bold text-lg">{notification.event.eventName}</div>
+                                                    <div className="text-sm text-gray-300 flex items-center gap-2">
+                                                        <span>
+                                                            {notification.event.team === "TEAM_A"
+                                                                ? (teamNames?.teamA || "Team A")
+                                                                : (teamNames?.teamB || "Team B")}
+                                                        </span>
+                                                        {notification.event.player && (
+                                                            <span>• {notification.event.player.name}</span>
+                                                        )}
+                                                        {notification.event.matchTime && (
+                                                            <span>• {notification.event.matchTime}</span>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                                {notification.event.isCalculated && (
+                                                    <div className="text-xs bg-primary/20 text-primary px-2 py-1 rounded">
+                                                        AUTO
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        )}
+
+                        {showRoster && teams && selectedTeam && teams.get(selectedTeam) && !isCalibrationMode && (
+                            <>
+                                <button
+                                    onClick={() => setShowRoster(false)}
+                                    className="absolute top-2 right-2 h-6 w-6 flex items-center justify-center bg-black/30 hover:bg-black/50 rounded-full text-white/60 hover:text-white transition-colors z-40 pointer-events-auto"
+                                >
+                                    ×
+                                </button>
+
+                                {/* Starting XI - Vertical on Left */}
+                                <div className="absolute top-4 left-4 bottom-4 flex flex-col gap-2 pointer-events-none z-30">
+                                    {(() => {
+                                        const startingNumbers = [1, 2, 5, 6, 7, 8, 9, 10, 11, 15, 22];
+                                        return teams.get(selectedTeam)?.PlayerData
+                                            .filter(p => startingNumbers.includes(p.Number || 0))
+                                            .sort((a, b) => {
+                                                const aIndex = startingNumbers.indexOf(a.Number || 0);
+                                                const bIndex = startingNumbers.indexOf(b.Number || 0);
+                                                return aIndex - bIndex;
+                                            })
+                                            .slice(0, 11)
+                                            .map((player) => (
+                                                <div
+                                                    key={player.ID}
+                                                    className="bg-black/20 backdrop-blur-sm rounded-md p-1.5 hover:bg-black/30 transition-all border border-white/10 hover:border-primary/30 pointer-events-auto"
+                                                >
+                                                    <div className="flex flex-col items-center gap-0.5">
+                                                        <div className="w-7 h-7 bg-primary/20 rounded-full flex items-center justify-center font-bold text-primary text-xs">
+                                                            {player.Number || '?'}
+                                                        </div>
+                                                        <div className="text-center">
+                                                            <div className="font-semibold text-[9px] text-white/90">
+                                                                {player.Surname}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ));
+                                    })()}
+                                </div>
+
+                                {/* Substitutes - Vertical on Right */}
+                                {(() => {
+                                    const startingNumbers = [1, 2, 5, 6, 7, 8, 9, 10, 11, 15, 22];
+                                    const subs = teams.get(selectedTeam)?.PlayerData
+                                        .filter(p => !startingNumbers.includes(p.Number || 0))
+                                        .sort((a, b) => (a.Number || 99) - (b.Number || 99))
+                                        .slice(0, 7);
+
+                                    return subs && subs.length > 0 && (
+                                        <div className="absolute top-4 right-4 bottom-4 flex flex-col gap-2 pointer-events-none z-30">
+                                            {subs.map((player) => (
+                                                <div
+                                                    key={player.ID}
+                                                    className="bg-black/15 backdrop-blur-sm rounded-md p-1.5 hover:bg-black/25 transition-all border border-white/5 hover:border-white/15 pointer-events-auto"
+                                                >
+                                                    <div className="flex flex-col items-center gap-0.5">
+                                                        <div className="w-6 h-6 bg-gray-500/20 rounded-full flex items-center justify-center font-bold text-gray-300 text-[10px]">
+                                                            {player.Number || '?'}
+                                                        </div>
+                                                        <div className="text-center">
+                                                            <div className="font-medium text-[8px] text-white/70">
+                                                                {player.Surname}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    );
+                                })()}
+                            </>
+                        )}
+                    </div>
+
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-transparent pointer-events-none z-10">
+                        {events.filter(e => e.videoTime).map((event, index) => {
+                            const position = ((event.videoTime! / duration) * 100);
+                            return (
+                                <div
+                                    key={`${event.id}-${event.videoTime}-${index}`}
+                                    className="absolute w-1 h-3 bg-red-500 cursor-pointer pointer-events-auto bottom-0"
+                                    style={{ left: `${position}%` }}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        jumpToEvent(event);
+                                    }}
+                                    title={`${event.eventName} - ${formatTime(event.videoTime!)}`}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
+
+                {/* Calibration Side Panel */}
+                {isCalibrationMode && (
+                    <div className="w-1/3 space-y-4 bg-card p-4 rounded-lg border overflow-y-auto max-h-screen">
+                        <h3 className="font-semibold flex items-center gap-2">
+                            <Scan className="w-4 h-4" />
+                            Pitch Calibration
+                        </h3>
+                        <p className="text-xs text-muted-foreground">
+                            Use Controller Left Stick to move cursor.<br />
+                            Press 'A' (Cross) to select point.<br />
+                            Or use mouse.
+                        </p>
+
+                        <PitchMap
+                            onPointClick={handlePitchPointClick}
+                            selectedPoint={activePointId ? calibrationPoints.find(p => p.id === activePointId)?.pitch : null}
+                            calibrationPoints={calibrationPoints.filter(p => p.pitch).map(p => ({ pitch: p.pitch!, label: p.id }))}
+                            playerPositions={visiblePlayers}
+                        />
+
+                        <div className="flex flex-col gap-2">
+                            <div className="flex gap-2">
+                                <Button size="sm" onClick={computeCalibration} className="flex-1">
+                                    Apply Calibration
+                                </Button>
+                                <Button size="sm" variant="outline" onClick={() => {
+                                    setCalibrationPoints([]);
+                                    setActivePointId(null);
+                                    setHomographyMatrix(null);
+                                }}>
+                                    Reset
+                                </Button>
+                            </div>
+
+                            <div className="relative">
+                                <input
+                                    type="file"
+                                    accept=".json"
+                                    onChange={handleTrackingUpload}
+                                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                />
+                                <Button size="sm" variant="secondary" className="w-full">
+                                    <Upload className="w-4 h-4 mr-2" />
+                                    Upload Tracking Data
+                                </Button>
+                            </div>
+                        </div>
+
+                        <div className="space-y-1 max-h-40 overflow-y-auto text-xs">
+                            {calibrationPoints.map(p => (
+                                <div
+                                    key={p.id}
+                                    className={`flex justify-between items-center p-2 rounded cursor-pointer ${activePointId === p.id ? 'bg-accent' : 'hover:bg-accent/50'}`}
+                                    onClick={() => setActivePointId(p.id)}
+                                >
+                                    <span>Point {p.id}</span>
+                                    <div className="flex gap-2 text-[10px] text-muted-foreground">
+                                        <span className={p.video ? 'text-green-500' : ''}>Video {p.video ? '✓' : '✗'}</span>
+                                        <span className={p.pitch ? 'text-green-500' : ''}>Pitch {p.pitch ? '✓' : '✗'}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            {/* Controls Bar */}
+            <div className="space-y-2 p-2 bg-card rounded-lg border">
+                <div className="flex items-center gap-2">
+                    <span className="text-xs text-muted-foreground min-w-[45px]">
+                        {formatTime(currentTime)}
+                    </span>
+                    <input
+                        type="range"
+                        min="0"
+                        max={duration || 0}
+                        value={currentTime}
+                        onChange={handleSeek}
+                        className="flex-1 h-1 bg-muted rounded-lg appearance-none cursor-pointer"
+                        style={{
+                            background: `linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary)) ${(currentTime / duration) * 100}%, hsl(var(--muted)) ${(currentTime / duration) * 100}%, hsl(var(--muted)) 100%)`
+                        }}
+                    />
+                    <span className="text-xs text-muted-foreground min-w-[45px]">
+                        {formatTime(duration)}
+                    </span>
+                </div>
+
+                <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-1">
+                        <Button variant="ghost" size="sm" onClick={() => skipTime(-10)} title="Back 10s">
+                            <SkipBack className="h-4 w-4" />
+                        </Button>
+                        <Button variant="ghost" size="sm" onClick={togglePlay}>
+                            {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+                        </Button>
+                        <Button variant="ghost" size="sm" onClick={() => skipTime(10)} title="Forward 10s">
+                            <SkipForward className="h-4 w-4" />
+                        </Button>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <Button
+                            variant={isCalibrationMode ? "default" : "secondary"}
+                            size="sm"
+                            onClick={toggleCalibrationMode}
+                            title="Calibration Mode"
+                            className="gap-1"
+                        >
+                            <Scan className="h-4 w-4" />
+                            <span className="hidden sm:inline">Calibrate</span>
+                        </Button>
+
+                        <Button
+                            variant={autoZoomEnabled ? "default" : "ghost"}
+                            size="sm"
+                            onClick={() => setAutoZoomEnabled(!autoZoomEnabled)}
+                            title="Auto-Zoom based on camera distance"
+                            className="gap-1"
+                        >
+                            <ZoomIn className="h-4 w-4" />
+                            <span className="hidden sm:inline">Auto Zoom</span>
+                        </Button>
+
+                        {teams && selectedTeam && teams.get(selectedTeam) && (
+                            <Button
+                                variant={showRoster ? "default" : "ghost"}
+                                size="sm"
+                                onClick={() => setShowRoster(!showRoster)}
+                                title="Toggle Team Roster"
+                            >
+                                <Users className="h-4 w-4" />
+                            </Button>
+                        )}
+
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={changePlaybackRate}
+                            className="text-xs min-w-[45px]"
+                            title="Playback speed"
+                        >
+                            {playbackRate}x
+                        </Button>
+
+                        <div className="flex items-center gap-1">
+                            <Button variant="ghost" size="sm" onClick={toggleMute}>
+                                {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                            </Button>
+                            <input
+                                type="range"
+                                min="0"
+                                max="1"
+                                step="0.1"
+                                value={isMuted ? 0 : volume}
+                                onChange={handleVolumeChange}
+                                className="w-16 h-1 bg-muted rounded-lg appearance-none cursor-pointer hidden md:block"
+                            />
+                        </div>
+
+                        <Button variant="ghost" size="sm" onClick={toggleFullscreen} title="Fullscreen">
+                            <Maximize className="h-4 w-4" />
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
