@@ -21,13 +21,11 @@ const getEnv = (key) => {
  */
 export const API_BASE_URL = (() => {
     const envUrl = getEnv('VITE_API_BASE_URL');
-
     if (envUrl !== undefined) {
         return envUrl;
     }
-
-    // Same-origin fallback (Vite proxy or monolith)
-    return '';
+    // Development fallback
+    return 'http://localhost:3001';
 })();
 
 /**
@@ -36,18 +34,10 @@ export const API_BASE_URL = (() => {
  * Example: http://localhost:3001
  */
 export const API_SOCKET_URL = (() => {
-    const envUrl = getEnv('VITE_SOCKET_URL');
+    const envUrl = getEnv('VITE_SOCKET_URL') || API_BASE_URL;
 
-    if (envUrl !== undefined) {
-        return envUrl;
-    }
-
-    // Auto-fix if API_BASE_URL ends with `/api`
-    if (API_BASE_URL.endsWith('/api')) {
-        return API_BASE_URL.replace(/\/api$/, '');
-    }
-
-    return API_BASE_URL;
+    // Remove /api if present for socket connection
+    return envUrl.replace(/\/api$/, '');
 })();
 
 /**

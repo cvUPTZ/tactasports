@@ -43,20 +43,28 @@ const app = express();
 // ===== CORS CONFIG =====
 const corsOptions = {
     origin: (origin, callback) => {
-        // Log the origin for debugging
-        if (origin) console.log(`[CORS] Request from origin: ${origin}`);
+        const allowedOrigins = [
+            'http://localhost:5173',
+            'http://localhost:8080',
+            process.env.CORS_ORIGIN, // Vercel Domain
+            process.env.FRONTEND_URL  // Alternative name
+        ].filter(Boolean);
 
         // Allow requests with no origin (like mobile apps or curl)
         if (!origin) return callback(null, true);
 
-        // Allow any origin for development
-        // This is safe because we only use it for the controller
-        return callback(null, true);
+        // Allow exact matches or development
+        if (allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
+            return callback(null, true);
+        }
+
+        console.warn(`[CORS] Blocked request from unauthorized origin: ${origin}`);
+        return callback(new Error('Not allowed by CORS'));
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'ngrok-skip-browser-warning', 'Bypass-Tunnel-Reminder', 'Accept', 'Origin'],
-    optionsSuccessStatus: 200 // Some legacy browsers/proxies (and ngrok) prefer 200 over 204
+    optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
@@ -224,6 +232,8 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3001;
+console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+console.log(`🌐 Allowed CORS Origin: ${process.env.CORS_ORIGIN || 'None (Dev Mode)'}`);
 // ... rest of your code
 httpServer.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
