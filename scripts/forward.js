@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const PORT = 8080;
+const PORT = 3001; // backend port
 
 async function startForwarding() {
     try {

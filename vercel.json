@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "https://4fb9-154-241-34-171.ngrok-free.app/api/$1"
+        },
+        {
+            "source": "/socket.io/(.*)",
+            "destination": "https://4fb9-154-241-34-171.ngrok-free.app/socket.io/$1"
+        }
+    ]
+}
