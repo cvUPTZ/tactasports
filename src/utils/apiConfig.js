@@ -21,8 +21,12 @@ const getEnv = (key) => {
  */
 export const API_BASE_URL = (() => {
     const envUrl = getEnv('VITE_API_BASE_URL');
-    if (envUrl !== undefined) {
+    if (envUrl !== undefined && envUrl !== "") {
         return envUrl;
+    }
+    // Same-origin fallback (Relative URL for monolith)
+    if (typeof window !== 'undefined') {
+        return '/api';
     }
     // Development fallback
     return 'http://localhost:3001';

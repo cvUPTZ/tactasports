@@ -46,6 +46,8 @@ const corsOptions = {
         const allowedOrigins = [
             'http://localhost:5173',
             'http://localhost:8080',
+            'https://tactasports.onrender.com',
+            'https://tactasports-1.onrender.com',
             process.env.CORS_ORIGIN, // Vercel Domain
             process.env.FRONTEND_URL  // Alternative name
         ].filter(Boolean);
@@ -78,14 +80,11 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser.json({ limit: '50mb' }));
 
-// Static folders
+// Static
 app.use('/heatmaps', express.static(path.join(__dirname, 'public/heatmaps')));
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 app.use('/analysis', express.static(path.join(__dirname, 'public/analysis')));
 app.use('/extracted', express.static(path.join(__dirname, 'public/extracted')));
-
-// ✅ Frontend Static Files (Built by Vite)
-app.use(express.static(path.join(__dirname, 'dist')));
 
 // API
 app.use('/api/auth', authRoutes);
@@ -97,15 +96,6 @@ app.use('/api', roboflowRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api', lfpRoutes);
 app.use('/api', exportRoutes);
-
-// ✅ Wildcard Route for SPA (Serve index.html for any non-API routes)
-app.get('*', (req, res) => {
-    // Skip if it looks like an API or file request
-    if (req.path.startsWith('/api') || req.path.includes('.')) {
-        return res.status(404).json({ error: 'Not Found' });
-    }
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
 
 // ===== HTTP + SOCKET.IO =====
 const httpServer = createServer(app);
@@ -156,9 +146,6 @@ io.on('connection', (socket) => {
 // Modular handlers
 setupSocketHandlers(io);
 
-// ===== START SERVER =====
-// Add this BEFORE httpServer.listen(PORT, ...)
-
 // ===== OBS TEST ENDPOINT =====
 app.get('/api/test-obs', async (req, res) => {
     try {
@@ -188,8 +175,16 @@ app.get('/api/test-obs', async (req, res) => {
     }
 });
 
-// ===== START SERVER =====
-// --- Event Config API ---
+// ===== HEALTH CHECK ENDPOINT =====
+app.get('/api/health', (req, res) => {
+    res.json({
+        status: 'ok',
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV || 'development'
+    });
+});
+
+// ===== EVENT CONFIG API =====
 const EVENTS_CONFIG_FILE = path.join(__dirname, 'config', 'events.json');
 
 app.get('/api/events-config', async (req, res) => {
@@ -227,6 +222,19 @@ app.post('/api/events-config', async (req, res) => {
     }
 });
 
+// ===== SERVE REACT FRONTEND (VITE BUILD) =====
+// This must come AFTER all API routes
+if (process.env.NODE_ENV === 'production') {
+    // Serve static files from the Vite build
+    app.use(express.static(path.join(__dirname, 'dist')));
+
+    // Handle React Router - send all non-API requests to index.html
+    // Use regex to match anything that doesn't start with /api
+    app.get(/^(?!\/api).*/, (req, res) => {
+        res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    });
+}
+
 // Global Error Handler (Must be last middleware)
 app.use((err, req, res, next) => {
     console.error('[Global Error]', err);
@@ -246,7 +254,7 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 3001;
 console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
 console.log(`🌐 Allowed CORS Origin: ${process.env.CORS_ORIGIN || 'None (Dev Mode)'}`);
-// ... rest of your code
+
 httpServer.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
     console.log(`📡 API available at http://localhost:${PORT}/api`);
