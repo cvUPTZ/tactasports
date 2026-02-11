@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import {
     Mic, MicOff, Play, Pause,
     ChevronDown, X, Settings,
-    Save, RotateCcw, Layout
+    Save, RotateCcw, Layout, HelpCircle
 } from 'lucide-react';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { SequenceAssistantCompact } from '@/components/SequenceAssistant';
@@ -36,6 +36,7 @@ interface DashboardHeaderProps {
     setIsEditMode: (mode: boolean) => void;
     saveLayout: () => void;
     resetLayout: () => void;
+    onStartGuide?: () => void;
 }
 
 export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
@@ -62,10 +63,11 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
     isEditMode,
     setIsEditMode,
     saveLayout,
-    resetLayout
+    resetLayout,
+    onStartGuide
 }) => {
     return (
-        <div className="h-12 border-b bg-card/95 backdrop-blur-md flex items-center px-4 select-none z-50 shrink-0 gap-4 justify-between shadow-sm">
+        <div id="dashboard-header" className="h-12 border-b bg-card/95 backdrop-blur-md flex items-center px-4 select-none z-50 shrink-0 gap-4 justify-between shadow-sm">
             <div className="flex items-center gap-3">
                 {userRole !== 'eye_spotter' && <SidebarTrigger className="h-8 w-8" />}
                 <div className="h-4 w-px bg-border/60" />
@@ -212,6 +214,19 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
                 <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground" onClick={() => setActiveView('settings')}>
                     <Settings className="h-4 w-4" />
                 </Button>
+
+                {onStartGuide && (
+                    <Button
+                        id="help-button"
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 text-muted-foreground hover:text-primary transition-colors"
+                        onClick={onStartGuide}
+                        title="Start Visual Guide"
+                    >
+                        <HelpCircle className="h-4 w-4" />
+                    </Button>
+                )}
             </div>
         </div>
     );

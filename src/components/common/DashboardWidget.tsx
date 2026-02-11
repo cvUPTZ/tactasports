@@ -28,7 +28,7 @@ export const DashboardWidget: React.FC<DashboardWidgetProps> = ({
     }
 
     return (
-        <div className={cn(
+        <div id={id} className={cn(
             "relative transition-all duration-300",
             className,
             isEditMode && "ring-2 ring-dashed ring-slate-600 rounded-lg p-1",

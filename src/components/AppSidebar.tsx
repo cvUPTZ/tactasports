@@ -113,7 +113,7 @@ export function AppSidebar({ currentView, onViewChange }: AppSidebarProps) {
     });
 
     return (
-        <Sidebar collapsible="icon" className="border-r border-border/50 bg-card/50 backdrop-blur-xl">
+        <Sidebar id="app-sidebar" collapsible="icon" className="border-r border-border/50 bg-card/50 backdrop-blur-xl">
             <SidebarHeader className="p-4">
                 <div className="flex items-center gap-3">
                     <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary font-bold text-primary-foreground shadow-lg shadow-primary/20">

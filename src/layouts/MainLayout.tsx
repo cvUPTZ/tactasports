@@ -1,5 +1,8 @@
 import React from 'react';
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
+import { ViewType } from '@/components/AppSidebar';
+import { VisualGuide } from '@/components/dashboard/VisualGuide';
+import { useAuth } from '@/contexts/AuthContext';
 import { AppSidebar } from '@/components/AppSidebar';
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
 import { VideoBackground } from '@/components/Index/VideoBackground';
@@ -111,6 +114,27 @@ export function MainLayout(props: any) {
         handleAssignZone
     } = props;
 
+    // Visual Guide State
+    const [runGuide, setRunGuide] = React.useState(false);
+
+    React.useEffect(() => {
+        const hasSeenGuide = localStorage.getItem('tacta-guide-seen');
+        if (!hasSeenGuide) {
+            // Delay slightly to ensure layout is ready
+            const timer = setTimeout(() => setRunGuide(true), 1500);
+            return () => clearTimeout(timer);
+        }
+    }, []);
+
+    const handleGuideFinish = () => {
+        setRunGuide(false);
+        localStorage.setItem('tacta-guide-seen', 'true');
+    };
+
+    const handleStartGuide = () => {
+        setRunGuide(true);
+    };
+
     return (
         <SidebarProvider>
             <div className="flex h-screen w-screen bg-background overflow-hidden text-xs">
@@ -124,6 +148,7 @@ export function MainLayout(props: any) {
                         userRole={user?.role}
                         activeView={activeView}
                         setActiveView={setActiveView}
+                        onStartGuide={handleStartGuide}
                         hasPermission={hasPermission}
                         trackingMode={trackingMode}
                         setTrackingMode={setTrackingMode}
@@ -321,6 +346,7 @@ export function MainLayout(props: any) {
                     {showFeed && <LiveEventToast events={events} />}
                 </SidebarInset >
             </div >
+            <VisualGuide run={runGuide} onFinish={handleGuideFinish} />
         </SidebarProvider >
     );
 }
