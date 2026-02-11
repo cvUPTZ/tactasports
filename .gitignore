@@ -115,6 +115,7 @@ python/models/weights/
 *.pptx
 
 *.html
+!index.html
 *.txt
 ~$*
 
