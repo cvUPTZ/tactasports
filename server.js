@@ -78,11 +78,14 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser.json({ limit: '50mb' }));
 
-// Static
+// Static folders
 app.use('/heatmaps', express.static(path.join(__dirname, 'public/heatmaps')));
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 app.use('/analysis', express.static(path.join(__dirname, 'public/analysis')));
 app.use('/extracted', express.static(path.join(__dirname, 'public/extracted')));
+
+// ✅ Frontend Static Files (Built by Vite)
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // API
 app.use('/api/auth', authRoutes);
@@ -94,6 +97,15 @@ app.use('/api', roboflowRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api', lfpRoutes);
 app.use('/api', exportRoutes);
+
+// ✅ Wildcard Route for SPA (Serve index.html for any non-API routes)
+app.get('*', (req, res) => {
+    // Skip if it looks like an API or file request
+    if (req.path.startsWith('/api') || req.path.includes('.')) {
+        return res.status(404).json({ error: 'Not Found' });
+    }
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 // ===== HTTP + SOCKET.IO =====
 const httpServer = createServer(app);
