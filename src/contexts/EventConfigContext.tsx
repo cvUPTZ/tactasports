@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { EVENT_REGISTRY, EventDefinition } from '../config/eventRegistry';
 import { toast } from 'sonner';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 interface EventConfigContextType {
     events: EventDefinition[];
@@ -19,7 +20,7 @@ export const EventConfigProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const fetchConfig = async () => {
         try {
             setIsLoading(true);
-            const res = await fetch('http://localhost:3001/api/events-config');
+            const res = await fetch(`${API_BASE_URL}/api/events-config`);
             if (!res.ok) throw new Error('Failed to fetch config');
             const data = await res.json();
 
@@ -45,7 +46,7 @@ export const EventConfigProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
     const saveConfig = async (newEvents = events) => {
         try {
-            const res = await fetch('http://localhost:3001/api/events-config', {
+            const res = await fetch(`${API_BASE_URL}/api/events-config`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newEvents)
