@@ -9,6 +9,7 @@ import { useIPTVAuth } from "@/contexts/IPTVAuthContext";
 import type { ChannelCategory, ChannelStream, IPTVCredentials } from "@/types/xtream";
 import { useMatchContext } from "@/contexts/MatchContext";
 import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "sonner";
 
 const CACHE_KEY = "react-iptv-categories-cache";
 const CACHE_DURATION = 5 * 60 * 1000;

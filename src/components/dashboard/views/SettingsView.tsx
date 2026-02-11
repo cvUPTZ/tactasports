@@ -1,12 +1,12 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ButtonMappingConfig } from '@/components/ButtonMappingConfig';
-import { LoggedEvent } from '@/hooks/useGamepad';
+import { LoggedEvent, GamepadButtonMapping } from '@/hooks/useGamepad';
 
 interface SettingsViewProps {
-    mappings: Record<string, string>;
-    pressedButtons: Set<string>;
-    updateMapping: (button: string, action: string) => void;
+    mappings: GamepadButtonMapping[];
+    pressedButtons: number[];
+    updateMapping: (index: number, eventName: string) => void;
     resetMappings: () => void;
     events: LoggedEvent[];
 }

@@ -123,10 +123,12 @@ export const AnalysisResultsViewer = ({ results }: AnalysisResultsViewerProps) =
     // Construct Passing Networks if data exists
     const networkA = results.passes ? buildPassingNetwork(
         results.passes.map(p => ({
+            id: Date.now() + Math.random(),
             eventName: "PASS",
             team: "TEAM_A",
-            player: { id: p.passer_id },
-            timestamp: p.timestamp
+            player: { id: p.passer_id, name: `Player ${p.passer_id}` },
+            timestamp: p.timestamp.toString(),
+            buttonLabel: "AI"
         })),
         "TEAM_A",
         teamAPlayers.map(id => ({ id: parseInt(id), name: `Player ${id}` }))
@@ -134,10 +136,12 @@ export const AnalysisResultsViewer = ({ results }: AnalysisResultsViewerProps) =
 
     const networkB = results.passes ? buildPassingNetwork(
         results.passes.map(p => ({
+            id: Date.now() + Math.random(),
             eventName: "PASS",
             team: "TEAM_B",
-            player: { id: p.passer_id },
-            timestamp: p.timestamp
+            player: { id: p.passer_id, name: `Player ${p.passer_id}` },
+            timestamp: p.timestamp.toString(),
+            buttonLabel: "AI"
         })),
         "TEAM_B",
         teamBPlayers.map(id => ({ id: parseInt(id), name: `Player ${id}` }))

@@ -124,7 +124,7 @@ export function buildPassingNetwork(
 ): PassingNetwork {
     const teamPasses = events
         .filter(e => e.team === team && isPass(e))
-        .sort((a, b) => (a.videoTime || a.timestamp || 0) - (b.videoTime || b.timestamp || 0));
+        .sort((a, b) => (Number(a.videoTime) || Number(a.timestamp) || 0) - (Number(b.videoTime) || Number(b.timestamp) || 0));
 
     if (teamPasses.length === 0) return createEmptyNetwork(team);
 
@@ -135,7 +135,7 @@ export function buildPassingNetwork(
     for (let i = 0; i < passesWithPlayers.length - 1; i++) {
         const p = passesWithPlayers[i];
         const r = passesWithPlayers[i + 1];
-        const dt = (r.videoTime || r.timestamp || 0) - (p.videoTime || p.timestamp || 0);
+        const dt = (Number(r.videoTime) || Number(r.timestamp) || 0) - (Number(p.videoTime) || Number(p.timestamp) || 0);
 
         if (p.player!.id !== r.player!.id && dt >= 0 && dt < timeWindow) {
             connectionsList.push({ from: p.player!.id, to: r.player!.id });
@@ -227,7 +227,7 @@ export function buildPassingNetwork(
     });
 
     // Metric Calculations
-    const times = teamPasses.map(p => p.videoTime || p.timestamp || 0).filter(t => t > 0);
+    const times = teamPasses.map(p => Number(p.videoTime) || Number(p.timestamp) || 0).filter(t => t > 0);
     const durationSec = times.length > 1 ? Math.max(...times) - Math.min(...times) : 60;
     const transmissionRate = (teamPasses.length / (durationSec / 60));
     const threatVectors = teamPasses.filter(p => (p.endX || 0) > 70).length;

@@ -70,8 +70,8 @@ export function Header({
     onUndoEvent,
     onEventClick,
 }: HeaderProps) {
-    const { user, role } = useAuth();
-    const { isConnected, role: socketRole } = useSocketContext();
+    const { user } = useAuth();
+    const { connected, role: socketRole } = useSocketContext();
     const { isMatchActive } = useMatchContext();
     const navigate = useNavigate();
 
@@ -84,9 +84,9 @@ export function Header({
                         <img src="/logo.png" alt="Tacta" className="h-8 md:h-10 w-auto object-contain" />
                     </h1>
 
-                    <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${isConnected ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'}`}>
-                        {isConnected ? <Wifi className="w-3 h-3" /> : <WifiOff className="w-3 h-3" />}
-                        <span className="hidden sm:inline">{isConnected ? 'Synced' : 'Offline'}</span>
+                    <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${connected ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'}`}>
+                        {connected ? <Wifi className="w-3 h-3" /> : <WifiOff className="w-3 h-3" />}
+                        <span className="hidden sm:inline">{connected ? 'Synced' : 'Offline'}</span>
                     </div>
                 </div>
 
@@ -109,7 +109,7 @@ export function Header({
                 </div>
 
                 {/* Analysis Mode & Controls - Centered or Near Title */}
-                {(role === 'admin' || role === 'tactical_analyst' || role === 'quality_controller') && (
+                {(user?.role === 'admin' || user?.role === 'tactical_analyst' || user?.role === 'quality_controller') && (
                     <div className="flex items-center gap-4 border-l pl-4 ml-4">
                         <Tabs
                             value={trackingMode}
@@ -122,7 +122,7 @@ export function Header({
                             </TabsList>
                         </Tabs>
 
-                        {trackingMode === 'POST_MATCH' && (role === 'admin' || role === 'tactical_analyst') && (
+                        {trackingMode === 'POST_MATCH' && (user?.role === 'admin' || user?.role === 'tactical_analyst') && (
                             <Dialog>
                                 <DialogTrigger asChild>
                                     <Button size="sm" className="gap-2 h-8 text-xs bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white border-0 shadow-md">
@@ -156,7 +156,7 @@ export function Header({
                     />
 
                     {/* Analytics Button */}
-                    {(role === 'admin' || role === 'tactical_analyst') && (
+                    {(user?.role === 'admin' || user?.role === 'tactical_analyst') && (
                         <Button
                             variant="outline"
                             size="sm"
@@ -170,7 +170,7 @@ export function Header({
                     )}
 
                     {/* Event Mapping Reference */}
-                    {(role === 'admin' || role === 'operational_analyst') && (
+                    {(user?.role === 'admin' || user?.role === 'operational_analyst') && (
                         <Dialog>
                             <DialogTrigger asChild>
                                 <Button

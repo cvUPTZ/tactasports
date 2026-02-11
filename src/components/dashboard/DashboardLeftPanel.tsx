@@ -9,6 +9,7 @@ import { TeamGrid } from '@/components/TeamGrid';
 import { ButtonMappingConfig } from '@/components/ButtonMappingConfig';
 import { ControllerMappingsGrid } from '@/components/ControllerMappingsGrid';
 import { KeyboardShortcutsGrid } from '@/components/KeyboardShortcutsGrid';
+import { GamepadButtonMapping } from '@/hooks/useGamepad';
 import { TeamRoster } from '@/types/player';
 import type { AnalysisMode } from '@/components/AnalysisModeSelector';
 import { LayoutConfig } from '@/hooks/useDashboardLayout';
@@ -27,9 +28,9 @@ interface DashboardLeftPanelProps {
     trackingMode: AnalysisMode;
     keyboardBuffer: string;
     showMappings: boolean;
-    mappings: Record<string, string>;  // FIXED: Changed from GamepadButtonMapping[]
-    pressedButtons: Set<string>;  // FIXED: Changed from number[]
-    onUpdateMapping: (button: string, action: string) => void;  // FIXED: Changed parameters from (index: number, eventName: string)
+    mappings: GamepadButtonMapping[];
+    pressedButtons: number[];
+    onUpdateMapping: (index: number, eventName: string) => void;
     onResetMappings: () => void;
     handleGameEvent: (eventName: string, source?: string) => void;
     // Local Edit Mode for mappings

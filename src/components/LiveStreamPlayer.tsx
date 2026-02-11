@@ -534,7 +534,10 @@ export const LiveStreamPlayer = React.forwardRef<LiveStreamPlayerRef, {
     };
 
     const toggleRecording = async () => {
-        if (!obsConnected) return toast.error("OBS not connected");
+        if (!obsConnected) {
+            toast.error("OBS not connected");
+            return;
+        }
         try {
             if (isRecording) {
                 await callOBS("StopRecord");
