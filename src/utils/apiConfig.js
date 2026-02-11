@@ -17,17 +17,22 @@ const getEnv = (key) => {
 
 /**
  * HTTP API base URL
- * Example: http://localhost:3001/api
+ * Empty in production since we serve from same domain
+ * Routes already include /api prefix
  */
 export const API_BASE_URL = (() => {
     const envUrl = getEnv('VITE_API_BASE_URL');
-    if (envUrl !== undefined && envUrl !== "") {
+
+    // If explicitly set (even if empty string), use it
+    if (envUrl !== undefined) {
         return envUrl;
     }
-    // Same-origin fallback (Relative URL for monolith)
+
+    // Same-origin fallback - EMPTY because routes already have /api
     if (typeof window !== 'undefined') {
-        return '/api';
+        return '';  // ✅ FIXED: Changed from '/api' to ''
     }
+
     // Development fallback
     return 'http://localhost:3001';
 })();
