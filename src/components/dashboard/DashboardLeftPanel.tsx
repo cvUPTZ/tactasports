@@ -27,9 +27,9 @@ interface DashboardLeftPanelProps {
     trackingMode: AnalysisMode;
     keyboardBuffer: string;
     showMappings: boolean;
-    mappings: Record<string, string>;
-    pressedButtons: Set<string>;
-    onUpdateMapping: (button: string, action: string) => void;
+    mappings: Record<string, string>;  // FIXED: Changed from GamepadButtonMapping[]
+    pressedButtons: Set<string>;  // FIXED: Changed from number[]
+    onUpdateMapping: (button: string, action: string) => void;  // FIXED: Changed parameters from (index: number, eventName: string)
     onResetMappings: () => void;
     handleGameEvent: (eventName: string, source?: string) => void;
     // Local Edit Mode for mappings
