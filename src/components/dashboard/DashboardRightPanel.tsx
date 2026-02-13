@@ -91,35 +91,37 @@ export const DashboardRightPanel: React.FC<DashboardRightPanelProps> = ({
                         onToggleVisibility={toggleComponentVisibility}
                         className="flex-1 min-h-0"
                     >
-                        <SafetyBoundary name="EventLog">
-                            <EventLog
-                                events={events}
-                                onUndoEvent={(id) => {
-                                    setEvents(prev => prev.filter(e => e.id !== id));
-                                    toast.success("Event removed from log");
-                                }}
-                                onMissedEvent={() => {
-                                    const newEvent: LoggedEvent = {
-                                        id: Number(`${Date.now()}${Math.floor(Math.random() * 1000)}`),
-                                        timestamp: new Date().toISOString(),
-                                        eventName: "missed_event",
-                                        team: selectedTeam as any || "TEAM_A",
-                                        buttonLabel: "LOGGER",
-                                        isMissed: true,
-                                        mode: trackingMode as any
-                                    };
-                                    setEvents(prev => [...prev, newEvent]);
-                                    toast.warning("Missed event recorded in audit log");
-                                }}
-                                onToggleDelay={(eventId: number) => {
-                                    setEvents(prev => prev.map(e =>
-                                        e.id === eventId ? { ...e, isDelayed: !e.isDelayed } : e
-                                    ));
-                                    toast.info("Event delay flag toggled");
-                                }}
-                                teamNames={teamNames}
-                            />
-                        </SafetyBoundary>
+                        <div id="event-log-container" className="h-full">
+                            <SafetyBoundary name="EventLog">
+                                <EventLog
+                                    events={events}
+                                    onUndoEvent={(id) => {
+                                        setEvents(prev => prev.filter(e => e.id !== id));
+                                        toast.success("Event removed from log");
+                                    }}
+                                    onMissedEvent={() => {
+                                        const newEvent: LoggedEvent = {
+                                            id: Number(`${Date.now()}${Math.floor(Math.random() * 1000)}`),
+                                            timestamp: new Date().toISOString(),
+                                            eventName: "missed_event",
+                                            team: selectedTeam as any || "TEAM_A",
+                                            buttonLabel: "LOGGER",
+                                            isMissed: true,
+                                            mode: trackingMode as any
+                                        };
+                                        setEvents(prev => [...prev, newEvent]);
+                                        toast.warning("Missed event recorded in audit log");
+                                    }}
+                                    onToggleDelay={(eventId: number) => {
+                                        setEvents(prev => prev.map(e =>
+                                            e.id === eventId ? { ...e, isDelayed: !e.isDelayed } : e
+                                        ));
+                                        toast.info("Event delay flag toggled");
+                                    }}
+                                    teamNames={teamNames}
+                                />
+                            </SafetyBoundary>
+                        </div>
                     </DashboardWidget>
 
                     <DashboardWidget
@@ -130,30 +132,32 @@ export const DashboardRightPanel: React.FC<DashboardRightPanelProps> = ({
                         onToggleVisibility={toggleComponentVisibility}
                         className="flex-1 min-h-0 overflow-y-auto pl-1 no-scrollbar"
                     >
-                        {teams.get(selectedTeam) ? (
-                            <SafetyBoundary name="PlayerSelectionSidebar">
-                                <PlayerSelectionSidebar
-                                    players={teams.get(selectedTeam)!.PlayerData}
-                                    selectedPlayerId={null}
-                                    onSelectPlayer={onPlayerSelect}
-                                    teamName={selectedTeam}
-                                />
-                            </SafetyBoundary>
-                        ) : (
-                            <div className="h-full flex flex-col items-center justify-center text-muted-foreground opacity-30 border border-dashed rounded-lg bg-card/30">
-                                <LayoutTemplate className="w-8 h-8 mb-2" />
-                                <span className="text-[10px] font-medium text-center">Select a team<br />to view roster</span>
-                            </div>
-                        )}
+                        <div id="context-review-section" className="h-full">
+                            {teams.get(selectedTeam) ? (
+                                <SafetyBoundary name="PlayerSelectionSidebar">
+                                    <PlayerSelectionSidebar
+                                        players={teams.get(selectedTeam)!.PlayerData}
+                                        selectedPlayerId={null}
+                                        onSelectPlayer={onPlayerSelect}
+                                        teamName={selectedTeam}
+                                    />
+                                </SafetyBoundary>
+                            ) : (
+                                <div className="h-full flex flex-col items-center justify-center text-muted-foreground opacity-30 border border-dashed rounded-lg bg-card/30">
+                                    <LayoutTemplate className="w-8 h-8 mb-2" />
+                                    <span className="text-[10px] font-medium text-center">Select a team<br />to view roster</span>
+                                </div>
+                            )}
 
-                        {useVideoMode && trackingMode === 'POST_MATCH' && (
-                            <CrowdReviewPanel
-                                videoFile={videoFile}
-                                currentVideoTime={videoTime}
-                                matchName={Array.from(teams.keys()).join(' vs ') || 'Unknown Match'}
-                                preSelectedEvent={lastEventButtonLabel}
-                            />
-                        )}
+                            {useVideoMode && trackingMode === 'POST_MATCH' && (
+                                <CrowdReviewPanel
+                                    videoFile={videoFile}
+                                    currentVideoTime={videoTime}
+                                    matchName={Array.from(teams.keys()).join(' vs ') || 'Unknown Match'}
+                                    preSelectedEvent={lastEventButtonLabel}
+                                />
+                            )}
+                        </div>
                     </DashboardWidget>
                 </>
             )}

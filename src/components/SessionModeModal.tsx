@@ -9,7 +9,7 @@ interface SessionModeModalProps {
 
 export const SessionModeModal: React.FC<SessionModeModalProps> = ({ onSelectMode }) => {
     return (
-        <div className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div id="session-mode-modal" className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-sm flex items-center justify-center p-4">
             <Card className="max-w-3xl w-full bg-card shadow-2xl border-primary/20 animate-in fade-in zoom-in duration-300">
                 <CardHeader className="text-center pb-8 border-b border-border/50">
                     <CardTitle className="text-2xl md:text-3xl font-bold tracking-tight text-primary">

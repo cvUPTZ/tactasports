@@ -10,7 +10,8 @@ import {
     Monitor,
     UserCog,
     Globe,
-    FileVideo
+    FileVideo,
+    BookOpen
 } from "lucide-react";
 
 import {
@@ -29,7 +30,7 @@ import {
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-export type ViewType = "dashboard" | "analytics" | "qa" | "tactics" | "community" | "settings" | "monitoring" | "admin" | "video_manager";
+export type ViewType = "dashboard" | "analytics" | "qa" | "tactics" | "community" | "settings" | "monitoring" | "admin" | "video_manager" | "documentation";
 
 interface AppSidebarProps {
     currentView: ViewType;
@@ -57,6 +58,13 @@ const items = [
         icon: BarChart3,
         permission: "analytics.view",
         description: "Data Trends"
+    },
+    {
+        title: "Documentation",
+        view: "documentation" as ViewType,
+        icon: BookOpen,
+        permission: "dashboard.view",
+        description: "Auto-Scribe Guides"
     },
     {
         title: "Tactics",

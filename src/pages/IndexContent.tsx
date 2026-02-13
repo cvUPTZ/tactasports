@@ -47,7 +47,7 @@ export function IndexContent() {
         <SafetyBoundary name="IndexContent">
             <>
                 {layoutComponent}
-                {indexState.pipWindow && createPortal(layoutComponent, indexState.pipWindow.document.body)}
+                {indexState.pipWindow && createPortal(<MainLayout {...allProps} isPiP={true} />, indexState.pipWindow.document.body)}
             </>
         </SafetyBoundary>
     );

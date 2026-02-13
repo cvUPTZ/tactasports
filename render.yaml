@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: tacta-unified
+    env: docker
+    plan: starter # Minimum recommended for Python AI
+    region: frankfurt
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: REPLICATE_API_TOKEN
+        sync: false
+      - key: CORS_ORIGIN
+        value: https://tacta-unified.onrender.com
+    autoDeploy: true

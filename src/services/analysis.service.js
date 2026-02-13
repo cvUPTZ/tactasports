@@ -140,7 +140,10 @@ export async function detectPlayers(image, homography, useHighContrast = false) 
         form.append('high_contrast', useHighContrast ? 'true' : 'false');
 
         // Try local Python API or remote analysis URL
-        const analysisBaseUrl = process.env.VITE_ANALYSIS_API_URL || 'http://localhost:8000';
+        // In the unified container, Python is always at localhost:8000
+        const analysisBaseUrl = process.env.VITE_ANALYSIS_API_URL && process.env.VITE_ANALYSIS_API_URL.startsWith('http')
+            ? process.env.VITE_ANALYSIS_API_URL
+            : 'http://localhost:8000';
         const response = await fetch(`${analysisBaseUrl}/api/detect-players`, {
             method: 'POST',
             body: form,

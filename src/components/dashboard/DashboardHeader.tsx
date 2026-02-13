@@ -81,7 +81,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
 
             {/* Match Control */}
             <div className="flex items-center gap-2">
-                <div className="flex items-center bg-muted/50 rounded-md p-0.5 border border-border/50 shadow-inner">
+                <div id="analysis-mode-selector" className="flex items-center bg-muted/50 rounded-md p-0.5 border border-border/50 shadow-inner">
                     {hasPermission('dashboard.live.view') && (
                         <Button
                             variant={trackingMode === 'LIVE' ? 'default' : 'ghost'}
@@ -104,7 +104,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
                     )}
                 </div>
 
-                <div className="flex items-center gap-2 bg-card px-3 py-0.5 rounded-md border border-border shadow-sm">
+                <div id="match-timer-section" className="flex items-center gap-2 bg-card px-3 py-0.5 rounded-md border border-border shadow-sm">
                     <span className={`font-mono font-bold text-base min-w-[70px] text-center ${isMatchActive ? 'text-primary' : 'text-muted-foreground'}`}>
                         {formatTime(matchTime)}
                     </span>
@@ -138,6 +138,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
 
                     {hasPermission('dashboard.live.voice') && (
                         <Button
+                            id="voice-commands-btn"
                             variant={isListening ? "default" : "outline"}
                             size="sm"
                             className={`h-7 gap-1.5 px-2 transition-all text-[11px] ${isListening ? 'bg-red-500 hover:bg-red-600 border-red-500 text-white shadow-md animate-pulse' : 'text-muted-foreground'}`}
@@ -203,7 +204,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
                             </Button>
                         </>
                     ) : (
-                        <Button variant="ghost" size="icon" className={cn("h-8 w-8 text-muted-foreground hover:text-foreground", isEditMode && "text-primary bg-primary/10")} onClick={() => setIsEditMode(true)}>
+                        <Button id="layout-edit-btn" variant="ghost" size="icon" className={cn("h-8 w-8 text-muted-foreground hover:text-foreground", isEditMode && "text-primary bg-primary/10")} onClick={() => setIsEditMode(true)}>
                             <Layout className="h-4 w-4" />
                         </Button>
                     )}
@@ -211,7 +212,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
 
                 <div className="h-4 w-px bg-border/60" />
 
-                <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground" onClick={() => setActiveView('settings')}>
+                <Button id="settings-btn" variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground" onClick={() => setActiveView('settings')}>
                     <Settings className="h-4 w-4" />
                 </Button>
 

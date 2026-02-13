@@ -16,6 +16,7 @@ import { VideoManager } from '@/components/VideoManager';
 import { LiveEventToast } from '@/components/Index/LiveEventToast';
 import { SessionModeModal } from '@/components/SessionModeModal';
 import { AdminWaitingRoom } from '@/components/AdminWaitingRoom';
+import { VisualDocumentationView } from '@/components/dashboard/views/VisualDocumentationView';
 import PendingEventsQueue from '@/components/PendingEventsQueue';
 import ZoneSelectorOverlay from "@/components/ZoneSelectorOverlay";
 import { QuickPlayerSelector } from "@/components/QuickPlayerSelector";
@@ -111,38 +112,55 @@ export function MainLayout(props: any) {
         selectedPendingEvent,
         setSelectedPendingEvent,
         handleDismissPending,
-        handleAssignZone
+        handleAssignZone,
+        isPiP = false
     } = props;
 
     // Visual Guide State
     const [runGuide, setRunGuide] = React.useState(false);
 
     React.useEffect(() => {
-        const hasSeenGuide = localStorage.getItem('tacta-guide-seen');
-        if (!hasSeenGuide) {
-            // Delay slightly to ensure layout is ready
-            const timer = setTimeout(() => setRunGuide(true), 1500);
+        const guideKey = 'tacta-guide-v3'; // Incremented version to force restart
+        const hasSeenGuide = localStorage.getItem(guideKey);
+
+        console.log("[Tour] Checking guide status:", { hasSeenGuide, isPiP });
+
+        if (!hasSeenGuide && !isPiP) {
+            console.log("[Tour] Triggering auto-start timer...");
+            const timer = setTimeout(() => {
+                console.log("[Tour] Starting guide now");
+                setRunGuide(true);
+            }, 2500);
             return () => clearTimeout(timer);
         }
+    }, [isPiP]);
+
+    const handleGuideFinish = React.useCallback(() => {
+        console.log("[Tour] Guide finished or skipped");
+        setRunGuide(false);
+        localStorage.setItem('tacta-guide-v3', 'true');
     }, []);
 
-    const handleGuideFinish = () => {
-        setRunGuide(false);
-        localStorage.setItem('tacta-guide-seen', 'true');
-    };
-
-    const handleStartGuide = () => {
+    const handleStartGuide = React.useCallback(() => {
+        console.log("[Tour] Manual start requested");
         setRunGuide(true);
-    };
+    }, []);
 
     return (
         <SidebarProvider>
+            {!isPiP && <VisualGuide run={runGuide} onFinish={handleGuideFinish} />}
             <div className="flex h-screen w-screen bg-background overflow-hidden text-xs">
                 {user?.role !== 'eye_spotter' && <AppSidebar currentView={activeView} onViewChange={setActiveView} />}
 
                 <SidebarInset className="flex flex-col relative min-w-0 flex-1 h-screen overflow-hidden">
                     <VideoBackground videoRef={videoRef} videoStream={videoStream} />
-                    <audio ref={audioRef} autoPlay playsInline />
+                    <audio
+                        ref={audioRef}
+                        playsInline
+                        onCanPlay={() => {
+                            audioRef.current?.play().catch(() => { });
+                        }}
+                    />
 
                     <DashboardHeader
                         userRole={user?.role}
@@ -276,6 +294,8 @@ export function MainLayout(props: any) {
                                 resetMappings={resetMappings}
                                 events={events}
                             />
+                        ) : activeView === 'documentation' ? (
+                            <VisualDocumentationView />
                         ) : null}
 
                         {sessionMode === null && (
@@ -346,7 +366,6 @@ export function MainLayout(props: any) {
                     {showFeed && <LiveEventToast events={events} />}
                 </SidebarInset >
             </div >
-            <VisualGuide run={runGuide} onFinish={handleGuideFinish} />
         </SidebarProvider >
     );
 }

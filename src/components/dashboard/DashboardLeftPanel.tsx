@@ -82,11 +82,11 @@ export const DashboardLeftPanel: React.FC<DashboardLeftPanelProps> = ({
                     onToggleVisibility={toggleComponentVisibility}
                     className="flex-1 min-h-0 overflow-y-auto pr-1 space-y-2 no-scrollbar"
                 >
-                    {userRole !== 'live_tagger' && <PlayerUpload onUpload={onTeamUpload} />}
-                    {teams.size > 0 && <TeamGrid teams={Array.from(teams.keys())} selectedTeam={selectedTeam} onSelectTeam={onSelectTeam} />}
+                    {userRole !== 'live_tagger' && <div id="team-upload-section"><PlayerUpload onUpload={onTeamUpload} /></div>}
+                    {teams.size > 0 && <div id="team-grid-section"><TeamGrid teams={Array.from(teams.keys())} selectedTeam={selectedTeam} onSelectTeam={onSelectTeam} /></div>}
 
                     {trackingMode === 'LIVE' && keyboardBuffer && (
-                        <div className="bg-black/90 border border-primary p-2 rounded-lg text-center shadow-lg">
+                        <div id="live-voice-buffer" className="bg-black/90 border border-primary p-2 rounded-lg text-center shadow-lg">
                             <span className="text-[9px] text-muted-foreground uppercase tracking-widest font-semibold">Voice Buffer</span>
                             <div className="text-2xl font-mono font-bold text-primary mt-0.5">#{keyboardBuffer}</div>
                         </div>
@@ -100,7 +100,7 @@ export const DashboardLeftPanel: React.FC<DashboardLeftPanelProps> = ({
                                 </Button>
                             )}
                             {trackingMode === 'LIVE' ? (
-                                <div className="space-y-3">
+                                <div id="controller-config-section" className="space-y-3">
                                     <div className="flex items-center justify-between px-1">
                                         <div className="flex flex-col gap-1">
                                             <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Overlays</span>

@@ -97,6 +97,29 @@ app.use('/api/users', userRoutes);
 app.use('/api', lfpRoutes);
 app.use('/api', exportRoutes);
 
+// Proxy for Python Analysis API
+app.use('/analysis-api', (req, res) => {
+    const targetUrl = `http://127.0.0.1:8000${req.url}`;
+    const method = req.method;
+    const headers = { ...req.headers };
+    delete headers.host; // Let the underlying requester handle this
+
+    const proxyReq = http.request(targetUrl, {
+        method,
+        headers,
+    }, (proxyRes) => {
+        res.writeHead(proxyRes.statusCode, proxyRes.headers);
+        proxyRes.pipe(res);
+    });
+
+    req.pipe(proxyReq);
+
+    proxyReq.on('error', (err) => {
+        console.error('[Node Proxy Error]:', err.message);
+        res.status(502).json({ error: 'Python Analysis API is unreachable', detail: err.message });
+    });
+});
+
 // ===== HTTP + SOCKET.IO =====
 const httpServer = createServer(app);
 

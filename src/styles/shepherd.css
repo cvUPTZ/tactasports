@@ -1,0 +1,147 @@
+/* src/styles/shepherd.css */
+
+/* Importing base shepherd styles */
+@import 'shepherd.js/dist/css/shepherd.css';
+
+:root {
+    --shepherd-bg: rgba(15, 23, 42, 0.8);
+    --shepherd-text: #f8fafc;
+    --shepherd-primary: #16a34a;
+    --shepherd-accent: #22c55e;
+    --shepherd-border: rgba(255, 255, 255, 0.1);
+}
+
+.shepherd-element {
+    background: var(--shepherd-bg) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid var(--shepherd-border) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4) !important;
+    max-width: 400px !important;
+    outline: none !important;
+}
+
+.shepherd-content {
+    padding: 0 !important;
+}
+
+.shepherd-header {
+    background: transparent !important;
+    padding: 16px 20px 8px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.shepherd-text {
+    padding: 16px 20px !important;
+    color: var(--shepherd-text) !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+}
+
+.shepherd-footer {
+    padding: 12px 20px 20px !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+}
+
+.shepherd-button {
+    background: transparent !important;
+    color: #94a3b8 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 6px !important;
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.shepherd-button:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: white !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.shepherd-button-primary {
+    background: var(--shepherd-primary) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.2) !important;
+}
+
+.shepherd-button-primary:hover {
+    background: var(--shepherd-accent) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.3) !important;
+}
+
+.shepherd-button-secondary {
+    opacity: 0.6 !important;
+}
+
+.shepherd-arrow:before {
+    background: var(--shepherd-bg) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid var(--shepherd-border) !important;
+}
+
+/* Modal Overlay Branding */
+.shepherd-modal-overlay-container {
+    opacity: 0.75 !important;
+}
+
+.shepherd-modal-overlay-container.shepherd-modal-is-visible path {
+    fill: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Step Title Styling */
+.shepherd-title {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    color: var(--shepherd-primary) !important;
+    text-transform: uppercase !important;
+    letter-spacing: -0.01em !important;
+}
+
+/* Welcome Step Specifics */
+.shepherd-welcome {
+    max-width: 500px !important;
+    text-align: center !important;
+}
+
+.shepherd-welcome .shepherd-title {
+    font-size: 24px !important;
+    margin-bottom: 12px !important;
+    display: block;
+}
+
+.shepherd-welcome .shepherd-text {
+    font-size: 16px !important;
+    opacity: 0.9;
+}
+
+.shepherd-welcome .shepherd-footer {
+    justify-content: center !important;
+    padding-top: 20px !important;
+}
+
+/* Animations */
+@keyframes shepherd-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.shepherd-element.shepherd-enabled {
+    animation: shepherd-reveal 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}

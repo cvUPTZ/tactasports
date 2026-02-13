@@ -1,5 +1,6 @@
-import React from 'react';
-import Joyride, { Step, CallBackProps, STATUS } from 'react-joyride';
+import React, { useEffect, useRef } from 'react';
+import Shepherd from 'shepherd.js';
+import '@/styles/shepherd.css';
 
 interface VisualGuideProps {
     run: boolean;
@@ -7,149 +8,377 @@ interface VisualGuideProps {
 }
 
 export const VisualGuide: React.FC<VisualGuideProps> = ({ run, onFinish }) => {
-    const steps: Step[] = [
-        {
-            target: 'body',
-            placement: 'center',
-            content: (
-                <div className="text-left">
-                    <h3 className="text-lg font-bold mb-2">Welcome to Tacta!</h3>
-                    <p className="text-sm text-muted-foreground">
-                        Let's take a quick tour of the dashboard to help you get started with soccer analysis.
-                    </p>
-                </div>
-            ),
-            disableBeacon: true,
-        },
-        {
-            target: '#app-sidebar',
-            content: (
-                <div className="text-left">
-                    <h3 className="text-sm font-bold mb-1 uppercase tracking-tight">Navigation</h3>
-                    <p className="text-xs text-muted-foreground">
-                        Quickly switch between the Dashboard, Analytics, QA Suite, and other specialized views.
-                    </p>
-                </div>
-            ),
-            placement: 'right',
-        },
-        {
-            target: '#dashboard-header',
-            content: (
-                <div className="text-left">
-                    <h3 className="text-sm font-bold mb-1 uppercase tracking-tight">Match Control</h3>
-                    <p className="text-xs text-muted-foreground">
-                        Switch between LIVE and POST-MATCH modes, control the match timer, and manage layout settings.
-                    </p>
-                </div>
-            ),
-            placement: 'bottom',
-        },
-        {
-            target: '#left-tools',
-            content: (
-                <div className="text-left">
-                    <h3 className="text-sm font-bold mb-1 uppercase tracking-tight">Team Tools</h3>
-                    <p className="text-xs text-muted-foreground">
-                        Upload team rosters, select active teams, and view controller/keyboard mappings for event tagging.
-                    </p>
-                </div>
-            ),
-            placement: 'right',
-        },
-        {
-            target: '#main-video',
-            content: (
-                <div className="text-left">
-                    <h3 className="text-sm font-bold mb-1 uppercase tracking-tight">Video & Media</h3>
-                    <p className="text-xs text-muted-foreground">
-                        Upload video files or connect to a live broadcast for analysis. This is your primary workspace.
-                    </p>
-                </div>
-            ),
-            placement: 'top',
-        },
-        {
-            target: '#event-log',
-            content: (
-                <div className="text-left">
-                    <h3 className="text-sm font-bold mb-1 uppercase tracking-tight">Event Log</h3>
-                    <p className="text-xs text-muted-foreground">
-                        All tagged events appear here in real-time. You can undo, edit, or flag missed events.
-                    </p>
-                </div>
-            ),
-            placement: 'left',
-        },
-        {
-            target: '#predictor-stats',
-            content: (
-                <div className="text-left">
-                    <h3 className="text-sm font-bold mb-1 uppercase tracking-tight">Sequence Assistant</h3>
-                    <p className="text-xs text-muted-foreground">
-                        AI-powered predictions for the next likely event to help you tag faster and more accurately.
-                    </p>
-                </div>
-            ),
-            placement: 'left',
-        },
-        {
-            target: '#help-button',
-            content: (
-                <div className="text-left">
-                    <h3 className="text-sm font-bold mb-1 uppercase tracking-tight">Need Help?</h3>
-                    <p className="text-xs text-muted-foreground">
-                        You can restart this tour anytime by clicking the help icon in the header.
-                    </p>
-                </div>
-            ),
-            placement: 'bottom',
-        },
-    ];
+    const tourRef = useRef<Shepherd.Tour | null>(null);
 
-    const handleJoyrideCallback = (data: CallBackProps) => {
-        const { status } = data;
-        if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status as any)) {
-            onFinish();
-        }
-    };
+    useEffect(() => {
+        // Initialize Tour
+        tourRef.current = new Shepherd.Tour({
+            defaultStepOptions: {
+                classes: 'shepherd-element shadow-2xl',
+                scrollTo: { behavior: 'smooth', block: 'center' },
+                cancelIcon: {
+                    enabled: true
+                },
+                modalOverlayOpeningPadding: 8,
+                modalOverlayOpeningRadius: 8,
+            },
+            useModalOverlay: true
+        });
 
-    return (
-        <Joyride
-            steps={steps}
-            run={run}
-            continuous
-            showProgress
-            showSkipButton
-            callback={handleJoyrideCallback}
-            styles={{
-                options: {
-                    zIndex: 10000,
-                    primaryColor: '#16a34a', // matches Tailwind's green-600
-                    backgroundColor: '#0f172a', // matches slate-900
-                    textColor: '#f8fafc', // matches slate-50
-                    arrowColor: '#0f172a',
+        const tour = tourRef.current;
+
+        // --- Step 1: Welcome ---
+        tour.addStep({
+            id: 'welcome',
+            title: 'Welcome to Tacta!',
+            text: 'Let\'s take a deep dive into the dashboard to master soccer analysis.',
+            classes: 'shepherd-element shepherd-welcome shadow-2xl',
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Skip',
+                    action: tour.cancel
                 },
-                tooltipContainer: {
-                    textAlign: 'left',
-                },
-                buttonBack: {
-                    marginRight: 10,
-                    color: '#94a3b8', // slate-400
-                },
-                buttonNext: {
-                    fontSize: '12px',
-                    fontWeight: 'bold',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
-                    padding: '8px 16px',
-                    borderRadius: '6px'
-                },
-                buttonSkip: {
-                    fontSize: '12px',
-                    color: '#94a3b8'
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Get Started',
+                    action: tour.next
                 }
-            }}
-        />
-    );
+            ]
+        });
+
+        // --- Step 2: Session Mode ---
+        tour.addStep({
+            id: 'session-mode',
+            title: 'Session Mode',
+            text: 'Your first choice: <b>Collaboration</b> for voice-linked team analysis, or <b>Individual Work</b> for solo tagging.',
+            attachTo: {
+                element: '#session-mode-modal',
+                on: 'bottom'
+            },
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Back',
+                    action: tour.back
+                },
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        // --- Step 3: Sidebar ---
+        tour.addStep({
+            id: 'sidebar',
+            title: 'Global Navigation',
+            text: 'Access the Dashboard, Analytics, QA Suite, and more from this centralized hub.',
+            attachTo: {
+                element: '#app-sidebar',
+                on: 'right'
+            },
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Back',
+                    action: tour.back
+                },
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        // --- Step 4: Analysis Mode Selector ---
+        tour.addStep({
+            id: 'analysis-mode',
+            title: 'Analysis Context',
+            text: 'Switch between <b>LIVE</b> for real-time tagging and <b>POST-MATCH</b> for deep retrospective analysis.',
+            attachTo: {
+                element: '#analysis-mode-selector',
+                on: 'bottom'
+            },
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Back',
+                    action: tour.back
+                },
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        // --- Step 5: Match Timer ---
+        tour.addStep({
+            id: 'match-timer',
+            title: 'Match Synchronization',
+            text: 'Control the match clock. All tagged events are automatically timestamped based on this duration.',
+            attachTo: {
+                element: '#match-timer-section',
+                on: 'bottom'
+            },
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Back',
+                    action: tour.back
+                },
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        // --- Step 6: Voice Commands ---
+        tour.addStep({
+            id: 'voice-cmd',
+            title: 'Hands-Free Tagging',
+            text: 'Activate <b>Voice Cmd</b> to tag events using your voice while keeping your eyes on the action.',
+            attachTo: {
+                element: '#voice-commands-btn',
+                on: 'bottom'
+            },
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Back',
+                    action: tour.back
+                },
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        // --- Step 7: Team Tools ---
+        tour.addStep({
+            id: 'team-tools',
+            title: 'Squad Management',
+            text: 'Upload rosters and switch between active teams to ensure accurate player-event attribution.',
+            attachTo: {
+                element: '#team-grid-section',
+                on: 'right'
+            },
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Back',
+                    action: tour.back
+                },
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        // --- Step 8: Voice Buffer ---
+        tour.addStep({
+            id: 'voice-buffer',
+            title: 'Real-time Feedback',
+            text: 'The <b>Voice Buffer</b> shows phonetic feedback as you speak, ensuring your commands are accurately recognized.',
+            attachTo: {
+                element: '#live-voice-buffer',
+                on: 'bottom'
+            },
+            canClickTarget: false,
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Back',
+                    action: tour.back
+                },
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        // --- Step 9: Controller Config ---
+        tour.addStep({
+            id: 'controller-config',
+            title: 'Custom Configuration',
+            text: 'Review active mappings or customize your gamepad/keyboard layout to suit your tagging style.',
+            attachTo: {
+                element: '#controller-config-section',
+                on: 'right'
+            },
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Back',
+                    action: tour.back
+                },
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        // --- Step 10: Video Player ---
+        tour.addStep({
+            id: 'main-video',
+            title: 'Visual Core',
+            text: 'This is where the magic happens. Connect to a live stream or local file for frame-by-frame analysis.',
+            attachTo: {
+                element: '#main-video',
+                on: 'top'
+            },
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Back',
+                    action: tour.back
+                },
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        // --- Step 11: Prediction Engine ---
+        tour.addStep({
+            id: 'predictor',
+            title: 'AI Prediction Engine',
+            text: 'Our AI analyzes patterns to suggest the most likely next event, speeding up your workflow significantly.',
+            attachTo: {
+                element: '#predictor-stats',
+                on: 'left'
+            },
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Back',
+                    action: tour.back
+                },
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        // --- Step 12: Event Log ---
+        tour.addStep({
+            id: 'event-log',
+            title: 'Live Event Log',
+            text: 'Every tagged moment appears here. Review, edit, or undo events instantly to maintain data integrity.',
+            attachTo: {
+                element: '#event-log-container',
+                on: 'left'
+            },
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Back',
+                    action: tour.back
+                },
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        // --- Step 13: Context Review ---
+        tour.addStep({
+            id: 'context-review',
+            title: 'Context & Review',
+            text: 'Select players from the roster or deep-dive into video clips for verification and coaching bits.',
+            attachTo: {
+                element: '#context-review-section',
+                on: 'left'
+            },
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Back',
+                    action: tour.back
+                },
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        // --- Step 14: Help & Support ---
+        tour.addStep({
+            id: 'help',
+            title: 'Always Available',
+            text: 'Need a refresher? Restart this tour or access detailed help documentation anytime from the header.',
+            attachTo: {
+                element: '#help-button',
+                on: 'bottom'
+            },
+            buttons: [
+                {
+                    classes: 'shepherd-button-secondary shepherd-button',
+                    text: 'Back',
+                    action: tour.back
+                },
+                {
+                    classes: 'shepherd-button-primary shepherd-button',
+                    text: 'Finish',
+                    action: tour.complete
+                }
+            ]
+        });
+
+        // Events
+        tour.on('complete', () => {
+            console.log("[Tour] Complete event fired");
+            onFinish();
+        });
+
+        tour.on('cancel', () => {
+            console.log("[Tour] Cancel event fired");
+            onFinish();
+        });
+
+        return () => {
+            console.log("[Tour] Cleaning up tour instance...");
+            if (tourRef.current) {
+                // Remove listeners to prevent cleanup from triggering onFinish
+                tourRef.current.off('complete');
+                tourRef.current.off('cancel');
+                tourRef.current.cancel();
+            }
+        };
+    }, [onFinish]);
+
+    useEffect(() => {
+        if (run && tourRef.current) {
+            console.log("[Tour] Starting tour via run prop");
+            // Check if any element in the sequence is missing (Optional: Shepherd handles this, but logging helps)
+            tourRef.current.start();
+        } else if (!run && tourRef.current && tourRef.current.isActive()) {
+            console.log("[Tour] Stopping tour via run prop");
+            tourRef.current.cancel();
+        }
+    }, [run]);
+
+    return null; // Shepherd handles its own rendering
 };
