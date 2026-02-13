@@ -1,6 +1,5 @@
-import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import React, { createContext, useContext, useState, useCallback, useEffect, useRef } from 'react';
 import html2canvas from 'html2canvas';
-import { StaticCanvas, FabricImage, Rect } from 'fabric';
 
 interface ScribeStep {
     id: string;
@@ -24,6 +23,18 @@ const ScribeContext = createContext<ScribeContextType | undefined>(undefined);
 export const ScribeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [isRecording, setIsRecording] = useState(false);
     const [steps, setSteps] = useState<ScribeStep[]>([]);
+    const fabricRef = useRef<typeof import('fabric') | null>(null);
+
+    // Lazy-load fabric only when recording starts
+    useEffect(() => {
+        if (isRecording && !fabricRef.current) {
+            import('fabric').then(mod => {
+                fabricRef.current = mod;
+            }).catch(err => {
+                console.warn('Failed to load fabric:', err);
+            });
+        }
+    }, [isRecording]);
 
     const startRecording = () => setIsRecording(true);
     const stopRecording = () => setIsRecording(false);
@@ -33,6 +44,12 @@ export const ScribeProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         if (!isRecording) return;
 
         try {
+            // Ensure fabric is loaded
+            if (!fabricRef.current) {
+                fabricRef.current = await import('fabric');
+            }
+            const { StaticCanvas, FabricImage, Rect } = fabricRef.current;
+
             // Find the nearest widget or reasonable container for context
             const container = element.closest('.dashboard-widget') ||
                 element.closest('#dashboard-header') ||
@@ -49,7 +66,6 @@ export const ScribeProvider: React.FC<{ children: React.ReactNode }> = ({ childr
             const htmlCanvas = await html2canvas(container as HTMLElement, {
                 useCORS: true,
                 scale: 1,
-                // Don't capture the whole body if we can help it
             });
 
             // Use Fabric to Auto-Annotate v7 style

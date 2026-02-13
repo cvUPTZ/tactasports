@@ -47,7 +47,6 @@ export default defineConfig(({ mode }: { mode: string }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      "fabric": path.resolve(__dirname, "node_modules/fabric/dist/index.min.mjs"),
     },
   },
   build: {
