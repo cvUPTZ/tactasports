@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import html2canvas from 'html2canvas';
-import * as fabric from 'fabric';
+import { StaticCanvas, FabricImage, Rect } from 'fabric';
 
 interface ScribeStep {
     id: string;
@@ -53,18 +53,18 @@ export const ScribeProvider: React.FC<{ children: React.ReactNode }> = ({ childr
             });
 
             // Use Fabric to Auto-Annotate v7 style
-            const fabricCanvas = new fabric.StaticCanvas(undefined, {
+            const fabricCanvas = new StaticCanvas(undefined, {
                 width: htmlCanvas.width,
                 height: htmlCanvas.height
             });
 
             // v7 uses FabricImage and fromURL returns a Promise
-            const img = await fabric.FabricImage.fromURL(htmlCanvas.toDataURL());
+            const img = await FabricImage.fromURL(htmlCanvas.toDataURL());
 
             fabricCanvas.add(img);
 
             // Add highlight box
-            const rect = new fabric.Rect({
+            const rect = new Rect({
                 left: relX,
                 top: relY,
                 width: elementRect.width,
