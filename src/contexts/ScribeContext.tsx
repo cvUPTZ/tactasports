@@ -1,5 +1,9 @@
-import React, { createContext, useContext, useState, useCallback, useEffect, useRef } from 'react';
+import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import html2canvas from 'html2canvas';
+
+// Fabric is loaded globally via CDN (see index.html) to avoid bundler resolution issues
+// Access it via window.fabric
+const getFabric = (): any => (window as any).fabric;
 
 interface ScribeStep {
     id: string;
@@ -23,18 +27,6 @@ const ScribeContext = createContext<ScribeContextType | undefined>(undefined);
 export const ScribeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [isRecording, setIsRecording] = useState(false);
     const [steps, setSteps] = useState<ScribeStep[]>([]);
-    const fabricRef = useRef<typeof import('fabric') | null>(null);
-
-    // Lazy-load fabric only when recording starts
-    useEffect(() => {
-        if (isRecording && !fabricRef.current) {
-            import('fabric').then(mod => {
-                fabricRef.current = mod;
-            }).catch(err => {
-                console.warn('Failed to load fabric:', err);
-            });
-        }
-    }, [isRecording]);
 
     const startRecording = () => setIsRecording(true);
     const stopRecording = () => setIsRecording(false);
@@ -43,13 +35,13 @@ export const ScribeProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     const captureStep = useCallback(async (element: HTMLElement, label: string) => {
         if (!isRecording) return;
 
-        try {
-            // Ensure fabric is loaded
-            if (!fabricRef.current) {
-                fabricRef.current = await import('fabric');
-            }
-            const { StaticCanvas, FabricImage, Rect } = fabricRef.current;
+        const fabric = getFabric();
+        if (!fabric) {
+            console.warn('Fabric.js not loaded from CDN');
+            return;
+        }
 
+        try {
             // Find the nearest widget or reasonable container for context
             const container = element.closest('.dashboard-widget') ||
                 element.closest('#dashboard-header') ||
@@ -69,18 +61,18 @@ export const ScribeProvider: React.FC<{ children: React.ReactNode }> = ({ childr
             });
 
             // Use Fabric to Auto-Annotate v7 style
-            const fabricCanvas = new StaticCanvas(undefined, {
+            const fabricCanvas = new fabric.StaticCanvas(undefined, {
                 width: htmlCanvas.width,
                 height: htmlCanvas.height
             });
 
             // v7 uses FabricImage and fromURL returns a Promise
-            const img = await FabricImage.fromURL(htmlCanvas.toDataURL());
+            const img = await fabric.FabricImage.fromURL(htmlCanvas.toDataURL());
 
             fabricCanvas.add(img);
 
             // Add highlight box
-            const rect = new Rect({
+            const rect = new fabric.Rect({
                 left: relX,
                 top: relY,
                 width: elementRect.width,

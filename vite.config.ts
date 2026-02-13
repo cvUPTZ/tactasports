@@ -50,8 +50,13 @@ export default defineConfig(({ mode }: { mode: string }) => ({
     },
   },
   build: {
-    commonjsOptions: {
-      include: [/node_modules/],
+    rollupOptions: {
+      external: ["fabric"],
+      output: {
+        globals: {
+          fabric: "fabric",
+        },
+      },
     },
   },
 }));
