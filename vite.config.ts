@@ -32,6 +32,9 @@ export default defineConfig(({ mode }: { mode: string }) => ({
         rewrite: (path: string) => path.replace(/^\/analysis-api/, ""),
       },
     },
+    optimizeDeps: {
+      include: ["fabric"],
+    },
     watch: {
       ignored: [
         "**/python_env_new/**",
@@ -47,6 +50,12 @@ export default defineConfig(({ mode }: { mode: string }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "fabric": path.resolve(__dirname, "node_modules/fabric"),
+    },
+  },
+  build: {
+    commonjsOptions: {
+      include: [/node_modules/],
     },
   },
 }));
